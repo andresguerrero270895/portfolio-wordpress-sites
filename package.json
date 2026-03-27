@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-wordpress-sites",
+  "version": "1.0.0",
+  "description": "Professional WordPress Portfolio - 3 sites",
+  "scripts": {
+    "dev:site1": "browser-sync start --proxy 'medpractice-usa.local' --files 'site1-medpractice/**/*.css, site1-medpractice/**/*.js, site1-medpractice/**/*.php'",
+    "dev:site2": "browser-sync start --proxy 'techflow-agency.local' --files 'site2-techflow/**/*.css, site2-techflow/**/*.js, site2-techflow/**/*.php'",
+    "dev:site3": "browser-sync start --proxy 'freshbite-marketplace.local' --files 'site3-marketplace/**/*.css, site3-marketplace/**/*.js, site3-marketplace/**/*.php'",
+    "build:css": "gulp buildCSS",
+    "build:js": "gulp buildJS",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "author": "Andres Esteban Guerrero Rios",
+  "license": "MIT"
+}
