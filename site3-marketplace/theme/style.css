@@ -2295,3 +2295,49 @@ p {
 .fb-hamburger.open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
+
+/* ============================================================
+   FOOTER EXTRA STYLES
+   ============================================================ */
+
+/* Payment badges */
+.fb-payment-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.fb-payment-badge {
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--fb-radius-sm);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--fb-font);
+}
+
+/* Certification badges */
+.fb-certifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fb-cert-badge {
+    padding: 5px 10px;
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.15);
+    border-radius: var(--fb-radius-full);
+    font-size: 0.72rem;
+    color: var(--fb-secondary);
+    font-family: var(--fb-font);
+    font-weight: 600;
+}
+
+/* Header scrolled state */
+.fb-header.scrolled {
+    box-shadow: var(--fb-shadow-lg);
+    border-bottom-color: rgba(249,115,22,0.12);
+}
