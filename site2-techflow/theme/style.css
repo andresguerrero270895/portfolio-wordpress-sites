@@ -2376,3 +2376,179 @@ html { margin-top: 0 !important; }
     .tf-contact-sidebar    { grid-template-columns: 1fr; }
     .tf-contact-form-wrap  { padding: 1.5rem; }
 }
+
+/* ============================================================
+   404.PHP — STYLES
+   ============================================================ */
+
+.tf-404-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 6rem 0;
+}
+.tf-404-section__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+.tf-404-section .tf-container {
+    position: relative;
+    z-index: 1;
+}
+.tf-404-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* Terminal */
+.tf-404-terminal {
+    background: #0a0d1a;
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(124,58,237,0.15);
+}
+.tf-404-terminal__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tf-terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.tf-terminal-dot--red    { background: #FF5F57; }
+.tf-terminal-dot--yellow { background: #FEBC2E; }
+.tf-terminal-dot--green  { background: #28C840; }
+.tf-terminal-title {
+    font-family: var(--tf-font-mono);
+    font-size: 0.75rem;
+    color: var(--tf-gray-500);
+    margin-left: 0.5rem;
+}
+.tf-404-terminal__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 200px;
+}
+.tf-terminal-line {
+    font-family: var(--tf-font-mono);
+    font-size: 0.875rem;
+    color: var(--tf-gray-400);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.tf-terminal-line--error {
+    color: #EF4444;
+    padding-left: 1.25rem;
+}
+.tf-terminal-prompt {
+    color: var(--tf-primary-light);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.tf-terminal-cmd { color: var(--tf-white); }
+.tf-terminal-cursor {
+    animation: tf-blink 1s step-end infinite;
+}
+@keyframes tf-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* 404 Content */
+.tf-404-content { text-align: left; }
+.tf-404-code {
+    font-family: var(--tf-font-display);
+    font-size: clamp(6rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(6,182,212,0.3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.05em;
+}
+.tf-404-title {
+    font-family: var(--tf-font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--tf-white);
+    margin-bottom: 1rem;
+}
+.tf-404-desc {
+    font-size: 1.05rem;
+    color: var(--tf-gray-400);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 460px;
+}
+.tf-404-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+/* Suggestions */
+.tf-404-suggestions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.tf-404-suggestions__label {
+    font-size: 0.875rem;
+    color: var(--tf-gray-500);
+    white-space: nowrap;
+}
+.tf-404-suggestions__links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.tf-404-pill {
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--tf-gray-400);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.tf-404-pill:hover {
+    border-color: rgba(124,58,237,0.4);
+    color: var(--tf-white);
+    background: var(--tf-bg-card-hover);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tf-404-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .tf-404-content { text-align: center; }
+    .tf-404-links   { justify-content: center; }
+    .tf-404-suggestions { justify-content: center; }
+    .tf-404-desc    { margin-left: auto; margin-right: auto; }
+}
