@@ -297,4 +297,56 @@
         }
     });
 
+        /* ── Vendor profile tabs ─────────────────────────── */
+    document.querySelectorAll('.fb-vendor-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+
+            // Remove active from all tabs
+            document.querySelectorAll('.fb-vendor-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+
+            // Hide all tab content
+            document.querySelectorAll('.fb-tab-content').forEach(c => {
+                c.classList.remove('active');
+            });
+
+            // Activate clicked tab
+            this.classList.add('active');
+
+            // Show corresponding content
+            const tabId = 'tab-' + this.dataset.tab;
+            const content = document.getElementById(tabId);
+            if (content) content.classList.add('active');
+        });
+    });
+
+    /* ── Smooth scroll to reservation ───────────────── */
+    document.querySelectorAll('a[href="#fb-reservation-section"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById('fb-reservation-section');
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    /* ── Smooth scroll to products ───────────────────── */
+    document.querySelectorAll('a[href="#fb-vendor-products"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById('fb-vendor-products');
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
 })(jQuery);
