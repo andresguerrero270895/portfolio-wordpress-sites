@@ -3703,3 +3703,578 @@ p {
         width: 100%;
     }
 }
+
+/* ============================================================
+   SINGLE VENDOR PAGE STYLES
+   ============================================================ */
+
+/* Hero banner */
+.fb-vendor-hero-section {
+    position: relative;
+    padding-bottom: 0;
+}
+
+.fb-vendor-banner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        var(--fb-dark) 0%,
+        #1A2A0A 100%
+    );
+    overflow: hidden;
+}
+
+.fb-vendor-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.6) 100%
+    );
+    z-index: 1;
+}
+
+.fb-vendor-banner-pattern {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    opacity: 0.04;
+    font-size: 2.5rem;
+    pointer-events: none;
+}
+
+/* Vendor profile row */
+.fb-vendor-profile {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 48px 0 32px;
+}
+
+.fb-vendor-profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--fb-radius);
+    background: white;
+    border: 3px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    overflow: hidden;
+    box-shadow: var(--fb-shadow-lg);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.fb-vendor-profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fb-vendor-verified-badge {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    box-shadow: var(--fb-shadow-sm);
+}
+
+.fb-vendor-profile-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Stats bar */
+.fb-vendor-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--fb-radius);
+    margin-bottom: -24px;
+    position: relative;
+    z-index: 3;
+}
+
+.fb-vendor-stat-bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 16px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.fb-vendor-stat-bar-item:last-child {
+    border-right: none;
+}
+
+.fb-vendor-stat-bar-icon {
+    font-size: 1.2rem;
+}
+
+.fb-vendor-stat-bar-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--fb-white);
+    font-family: var(--fb-font);
+    line-height: 1;
+}
+
+.fb-vendor-stat-bar-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--fb-font);
+}
+
+/* Single vendor layout */
+.fb-vendor-single-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    padding-top: 40px;
+}
+
+.fb-vendor-single-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+/* Vendor info cards */
+.fb-vendor-info-card {
+    background: var(--fb-white);
+    border: 1.5px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius);
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.fb-vendor-info-title {
+    font-family: var(--fb-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--fb-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--fb-border-gray);
+}
+
+.fb-vendor-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fb-vendor-info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.fb-vendor-info-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.fb-vendor-info-label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--fb-gray-300);
+    font-family: var(--fb-font);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.fb-vendor-info-value {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--fb-dark);
+    font-family: var(--fb-font);
+    font-weight: 500;
+}
+
+/* Tabs */
+.fb-vendor-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--fb-border-gray);
+    margin-bottom: 28px;
+}
+
+.fb-vendor-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-family: var(--fb-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--fb-gray-400);
+    cursor: pointer;
+    transition: var(--fb-transition);
+}
+
+.fb-vendor-tab:hover {
+    color: var(--fb-primary);
+}
+
+.fb-vendor-tab.active {
+    color: var(--fb-primary);
+    border-bottom-color: var(--fb-primary);
+}
+
+.fb-tab-count {
+    background: var(--fb-bg-2);
+    color: var(--fb-gray-400);
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: var(--fb-radius-full);
+    font-weight: 600;
+}
+
+.fb-vendor-tab.active .fb-tab-count {
+    background: rgba(249,115,22,0.1);
+    color: var(--fb-primary);
+}
+
+/* Tab content */
+.fb-tab-content {
+    display: none;
+}
+
+.fb-tab-content.active {
+    display: block;
+}
+
+/* No products */
+.fb-vendor-no-products {
+    text-align: center;
+    padding: 64px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 2px dashed var(--fb-border-gray);
+    border-radius: var(--fb-radius-lg);
+}
+
+.fb-vendor-no-products span {
+    font-size: 3.5rem;
+}
+
+/* Story content */
+.fb-vendor-story-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.fb-vendor-story-block h3,
+.fb-vendor-certifications h3 {
+    font-family: var(--fb-font);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--fb-dark);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--fb-border-gray);
+}
+
+.fb-vendor-story-block p {
+    font-family: var(--fb-font);
+    font-size: 0.9rem;
+    color: var(--fb-gray-400);
+    line-height: 1.8;
+}
+
+/* Reviews */
+.fb-reviews-summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 24px;
+    background: var(--fb-bg);
+    border-radius: var(--fb-radius);
+    margin-bottom: 28px;
+    border: 1.5px solid var(--fb-border-gray);
+}
+
+.fb-reviews-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-right: 32px;
+    border-right: 1px solid var(--fb-border-gray);
+}
+
+.fb-reviews-big-num {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--fb-primary);
+    font-family: var(--fb-font);
+    line-height: 1;
+}
+
+.fb-reviews-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fb-review-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fb-review-bar-label {
+    font-size: 0.8rem;
+    color: var(--fb-gray-400);
+    font-family: var(--fb-font);
+    width: 28px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.fb-review-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--fb-border-gray);
+    border-radius: var(--fb-radius-full);
+    overflow: hidden;
+}
+
+.fb-review-bar-fill {
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        var(--fb-accent),
+        var(--fb-primary)
+    );
+    border-radius: var(--fb-radius-full);
+}
+
+.fb-review-bar-pct {
+    font-size: 0.75rem;
+    color: var(--fb-gray-300);
+    font-family: var(--fb-font);
+    width: 32px;
+    flex-shrink: 0;
+}
+
+/* Review cards */
+.fb-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fb-review-card {
+    background: var(--fb-white);
+    border: 1.5px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius);
+    padding: 20px;
+    transition: var(--fb-transition);
+}
+
+.fb-review-card:hover {
+    box-shadow: var(--fb-shadow);
+    border-color: var(--fb-border);
+}
+
+.fb-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.fb-review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        var(--fb-primary),
+        var(--fb-accent)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.fb-review-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--fb-dark);
+    font-family: var(--fb-font);
+}
+
+.fb-review-role {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--fb-gray-300);
+    font-family: var(--fb-font);
+}
+
+.fb-review-text {
+    font-size: 0.88rem;
+    color: var(--fb-gray-400);
+    font-family: var(--fb-font);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+/* ============================================================
+   RESPONSIVE — SINGLE VENDOR
+   ============================================================ */
+@media (max-width: 1024px) {
+    .fb-vendor-single-layout {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .fb-vendor-profile {
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+    }
+
+    .fb-vendor-profile-ctas {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .fb-vendor-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fb-vendor-stat-bar-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .fb-vendor-stat-bar-item:nth-child(3) {
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fb-vendor-stat-bar-item:nth-child(4) {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-right: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .fb-vendor-profile {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .fb-vendor-profile-info {
+        text-align: center;
+    }
+
+    .fb-vendor-profile-info > div {
+        justify-content: center !important;
+    }
+
+    .fb-vendor-profile-ctas {
+        justify-content: center;
+    }
+
+    .fb-vendor-single-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fb-vendor-single-sidebar {
+        position: static;
+    }
+
+    .fb-vendor-tabs {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .fb-vendor-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fb-vendor-tab {
+        white-space: nowrap;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+
+    .fb-reviews-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .fb-reviews-score {
+        padding-right: 0;
+        padding-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--fb-border-gray);
+    }
+
+    .fb-product-grid[style*="repeat(3"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .fb-vendor-profile-ctas {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .fb-vendor-profile-ctas .fb-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .fb-vendor-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fb-product-grid[style*="repeat(3"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .fb-vendor-tab {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
+
+    .fb-reservation-form-card {
+        padding: 20px 16px;
+    }
+}
