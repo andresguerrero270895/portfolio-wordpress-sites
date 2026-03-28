@@ -126,7 +126,7 @@ function techflow_register_cpt_services() {
         'public'       => true,
         'show_in_rest' => true,
         'has_archive'  => false,
-        'rewrite' => ['slug' => 'projects'],
+        'rewrite' => ['slug' => 'our-services'],
         'menu_icon'    => 'dashicons-admin-tools',
         'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
     ]);
