@@ -2,6 +2,7 @@
 /**
  * FreshBite Theme — functions.php
  * Astra Child Theme + WooCommerce + Dokan
+ * Idioma: Español
  */
 
 defined('ABSPATH') || exit;
@@ -12,7 +13,6 @@ defined('ABSPATH') || exit;
 add_action('wp_enqueue_scripts', 'freshbite_enqueue_styles');
 function freshbite_enqueue_styles() {
 
-    // Parent Astra style
     wp_enqueue_style(
         'astra-style',
         get_template_directory_uri() . '/style.css',
@@ -20,7 +20,6 @@ function freshbite_enqueue_styles() {
         wp_get_theme('astra')->get('Version')
     );
 
-    // Child theme style
     wp_enqueue_style(
         'freshbite-style',
         get_stylesheet_directory_uri() . '/style.css',
@@ -28,7 +27,6 @@ function freshbite_enqueue_styles() {
         '1.0.0'
     );
 
-    // Google Fonts
     wp_enqueue_style(
         'freshbite-fonts',
         'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap',
@@ -36,7 +34,6 @@ function freshbite_enqueue_styles() {
         null
     );
 
-    // Main JS
     wp_enqueue_script(
         'freshbite-main',
         get_stylesheet_directory_uri() . '/assets/js/main.js',
@@ -45,7 +42,6 @@ function freshbite_enqueue_styles() {
         true
     );
 
-    // AJAX para contact form
     wp_localize_script('freshbite-main', 'freshbite_ajax', [
         'url'   => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('freshbite_nonce'),
@@ -61,32 +57,24 @@ function freshbite_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('html5', [
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'style',
-        'script',
+        'search-form', 'comment-form', 'comment-list',
+        'gallery', 'caption', 'style', 'script',
     ]);
 
-    // WooCommerce support
     add_theme_support('woocommerce');
     add_theme_support('wc-product-gallery-zoom');
     add_theme_support('wc-product-gallery-lightbox');
     add_theme_support('wc-product-gallery-slider');
 
-    // Image sizes
-    add_image_size('freshbite-product',  480, 480, true);
-    add_image_size('freshbite-vendor',   300, 300, true);
-    add_image_size('freshbite-banner',  1280, 480, true);
-    add_image_size('freshbite-thumb',    80,   80, true);
+    add_image_size('freshbite-product', 480, 480, true);
+    add_image_size('freshbite-vendor',  300, 300, true);
+    add_image_size('freshbite-banner', 1280, 480, true);
+    add_image_size('freshbite-thumb',   80,  80,  true);
 
-    // Nav menus
     register_nav_menus([
-        'primary'  => __('Primary Menu',  'freshbite-theme'),
-        'footer'   => __('Footer Menu',   'freshbite-theme'),
-        'mobile'   => __('Mobile Menu',   'freshbite-theme'),
+        'primary' => __('Menú Principal',  'freshbite-theme'),
+        'footer'  => __('Menú Pie',        'freshbite-theme'),
+        'mobile'  => __('Menú Móvil',      'freshbite-theme'),
     ]);
 }
 
@@ -96,34 +84,53 @@ function freshbite_setup() {
 add_action('init', 'freshbite_register_cpts');
 function freshbite_register_cpts() {
 
-    // fb_vendor — Vendor profiles (complementa Dokan)
+    // fb_vendor — Perfiles de agricultores/vendedores
     register_post_type('fb_vendor', [
         'labels' => [
-            'name'          => 'Vendors',
-            'singular_name' => 'Vendor',
-            'add_new_item'  => 'Add New Vendor',
-            'edit_item'     => 'Edit Vendor',
+            'name'          => 'Vendedores',
+            'singular_name' => 'Vendedor',
+            'add_new_item'  => 'Agregar Vendedor',
+            'edit_item'     => 'Editar Vendedor',
         ],
         'public'       => true,
         'has_archive'  => true,
-        'rewrite'      => ['slug' => 'vendors'],
+        'rewrite'      => ['slug' => 'vendedores'],
         'supports'     => ['title', 'editor', 'thumbnail', 'excerpt'],
         'show_in_rest' => true,
         'menu_icon'    => 'dashicons-store',
     ]);
 
-    // fb_testimonial
+    // fb_testimonial — Testimonios de clientes
     register_post_type('fb_testimonial', [
         'labels' => [
-            'name'          => 'Testimonials',
-            'singular_name' => 'Testimonial',
-            'add_new_item'  => 'Add New Testimonial',
+            'name'          => 'Testimonios',
+            'singular_name' => 'Testimonio',
+            'add_new_item'  => 'Agregar Testimonio',
         ],
         'public'       => false,
         'show_ui'      => true,
         'supports'     => ['title', 'editor', 'thumbnail'],
         'show_in_rest' => true,
         'menu_icon'    => 'dashicons-format-quote',
+    ]);
+
+    // fb_reservation — Reservas de pickup/delivery
+    register_post_type('fb_reservation', [
+        'labels' => [
+            'name'          => 'Reservas',
+            'singular_name' => 'Reserva',
+            'add_new_item'  => 'Nueva Reserva',
+            'edit_item'     => 'Editar Reserva',
+        ],
+        'public'       => false,
+        'show_ui'      => true,
+        'supports'     => ['title'],
+        'show_in_rest' => false,
+        'menu_icon'    => 'dashicons-calendar-alt',
+        'capabilities' => [
+            'create_posts' => 'do_not_allow',
+        ],
+        'map_meta_cap' => true,
     ]);
 }
 
@@ -133,26 +140,37 @@ function freshbite_register_cpts() {
 add_action('init', 'freshbite_register_taxonomies');
 function freshbite_register_taxonomies() {
 
-    // Vendor category
+    // Tipo de vendedor
     register_taxonomy('vendor_type', ['fb_vendor'], [
         'labels' => [
-            'name'          => 'Vendor Types',
-            'singular_name' => 'Vendor Type',
+            'name'          => 'Tipos de Vendedor',
+            'singular_name' => 'Tipo de Vendedor',
         ],
         'hierarchical' => true,
-        'rewrite'      => ['slug' => 'vendor-type'],
+        'rewrite'      => ['slug' => 'tipo-vendedor'],
+        'show_in_rest' => true,
+    ]);
+
+    // Estado/Región del vendedor
+    register_taxonomy('vendor_region', ['fb_vendor'], [
+        'labels' => [
+            'name'          => 'Regiones',
+            'singular_name' => 'Región',
+        ],
+        'hierarchical' => true,
+        'rewrite'      => ['slug' => 'region'],
         'show_in_rest' => true,
     ]);
 }
 
 /* ============================================================
-   5. META BOXES — VENDOR
+   5. META BOXES — VENDEDOR
    ============================================================ */
 add_action('add_meta_boxes', 'freshbite_vendor_meta_boxes');
 function freshbite_vendor_meta_boxes() {
     add_meta_box(
         'fb_vendor_details',
-        'Vendor Details',
+        'Detalles del Vendedor',
         'freshbite_vendor_meta_callback',
         'fb_vendor',
         'normal',
@@ -163,19 +181,23 @@ function freshbite_vendor_meta_boxes() {
 function freshbite_vendor_meta_callback($post) {
     wp_nonce_field('fb_vendor_nonce', 'fb_vendor_nonce_field');
     $fields = [
-        'fb_vendor_specialty'    => ['Specialty / Category', 'text',   'e.g. Organic Fruits'],
-        'fb_vendor_location'     => ['Location',             'text',   'e.g. California, USA'],
-        'fb_vendor_since'        => ['Member Since',         'text',   'e.g. 2020'],
-        'fb_vendor_products'     => ['Total Products',       'number', '0'],
-        'fb_vendor_rating'       => ['Rating (1-5)',         'number', '5'],
-        'fb_vendor_reviews'      => ['Total Reviews',        'number', '0'],
-        'fb_vendor_sales'        => ['Total Sales',          'text',   'e.g. 1.2k'],
-        'fb_vendor_badge'        => ['Badge',                'text',   'e.g. Top Seller'],
-        'fb_vendor_verified'     => ['Verified (yes/no)',    'text',   'yes'],
-        'fb_vendor_website'      => ['Website URL',          'url',    ''],
-        'fb_vendor_instagram'    => ['Instagram URL',        'url',    ''],
-        'fb_vendor_story'        => ['Short Story',          'textarea',''],
-        'fb_vendor_emoji'        => ['Store Emoji',          'text',   '🥬'],
+        'fb_vendor_specialty'  => ['Especialidad',          'text',     'ej. Frutas Orgánicas'],
+        'fb_vendor_location'   => ['Ubicación',             'text',     'ej. California, USA'],
+        'fb_vendor_since'      => ['Miembro desde',         'text',     'ej. 2020'],
+        'fb_vendor_products'   => ['Total Productos',       'number',   '0'],
+        'fb_vendor_rating'     => ['Calificación (1-5)',    'number',   '5'],
+        'fb_vendor_reviews'    => ['Total Reseñas',         'number',   '0'],
+        'fb_vendor_sales'      => ['Total Ventas',          'text',     'ej. 1.2k'],
+        'fb_vendor_badge'      => ['Insignia',              'text',     'ej. Top Vendedor'],
+        'fb_vendor_verified'   => ['Verificado (si/no)',    'text',     'si'],
+        'fb_vendor_website'    => ['Sitio Web',             'url',      ''],
+        'fb_vendor_instagram'  => ['Instagram URL',        'url',      ''],
+        'fb_vendor_story'      => ['Historia corta',        'textarea', ''],
+        'fb_vendor_emoji'      => ['Emoji de la tienda',    'text',     '🥬'],
+        'fb_vendor_pickup'     => ['Ofrece Pickup (si/no)', 'text',     'si'],
+        'fb_vendor_delivery'   => ['Ofrece Delivery (si/no)','text',    'si'],
+        'fb_vendor_schedule'   => ['Horario',               'text',     'ej. Lun-Vie 8am-5pm'],
+        'fb_vendor_min_order'  => ['Pedido Mínimo ($)',     'number',   '0'],
     ];
     echo '<table class="form-table">';
     foreach ($fields as $key => [$label, $type, $placeholder]) {
@@ -199,13 +221,13 @@ function freshbite_save_vendor_meta($post_id) {
     if (!current_user_can('edit_post', $post_id)) return;
 
     $fields = [
-        'fb_vendor_specialty', 'fb_vendor_location', 'fb_vendor_since',
-        'fb_vendor_products',  'fb_vendor_rating',   'fb_vendor_reviews',
-        'fb_vendor_sales',     'fb_vendor_badge',    'fb_vendor_verified',
-        'fb_vendor_website',   'fb_vendor_instagram','fb_vendor_story',
-        'fb_vendor_emoji',
+        'fb_vendor_specialty', 'fb_vendor_location',  'fb_vendor_since',
+        'fb_vendor_products',  'fb_vendor_rating',    'fb_vendor_reviews',
+        'fb_vendor_sales',     'fb_vendor_badge',     'fb_vendor_verified',
+        'fb_vendor_website',   'fb_vendor_instagram', 'fb_vendor_story',
+        'fb_vendor_emoji',     'fb_vendor_pickup',    'fb_vendor_delivery',
+        'fb_vendor_schedule',  'fb_vendor_min_order',
     ];
-
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {
             update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
@@ -214,13 +236,13 @@ function freshbite_save_vendor_meta($post_id) {
 }
 
 /* ============================================================
-   6. META BOXES — TESTIMONIAL
+   6. META BOXES — TESTIMONIO
    ============================================================ */
 add_action('add_meta_boxes', 'freshbite_testimonial_meta_boxes');
 function freshbite_testimonial_meta_boxes() {
     add_meta_box(
         'fb_testimonial_details',
-        'Testimonial Details',
+        'Detalles del Testimonio',
         'freshbite_testimonial_meta_callback',
         'fb_testimonial',
         'normal',
@@ -231,12 +253,12 @@ function freshbite_testimonial_meta_boxes() {
 function freshbite_testimonial_meta_callback($post) {
     wp_nonce_field('fb_testimonial_nonce', 'fb_testimonial_nonce_field');
     $fields = [
-        'fb_testimonial_author'   => ['Author Name',     'text',   'Jane Doe'],
-        'fb_testimonial_role'     => ['Role / Location', 'text',   'e.g. Home Chef, NYC'],
-        'fb_testimonial_rating'   => ['Rating (1-5)',    'number', '5'],
-        'fb_testimonial_product'  => ['Product Bought',  'text',   'e.g. Organic Apples'],
-        'fb_testimonial_emoji'    => ['Avatar Emoji',    'text',   '😊'],
-        'fb_testimonial_verified' => ['Verified (yes/no)','text',  'yes'],
+        'fb_testimonial_author'   => ['Nombre del autor',       'text',   'Ana García'],
+        'fb_testimonial_role'     => ['Rol / Ciudad',           'text',   'ej. Chef en casa, Miami'],
+        'fb_testimonial_rating'   => ['Calificación (1-5)',     'number', '5'],
+        'fb_testimonial_product'  => ['Producto comprado',      'text',   'ej. Manzanas Orgánicas'],
+        'fb_testimonial_emoji'    => ['Emoji avatar',           'text',   '😊'],
+        'fb_testimonial_verified' => ['Verificado (si/no)',     'text',   'si'],
     ];
     echo '<table class="form-table">';
     foreach ($fields as $key => [$label, $type, $placeholder]) {
@@ -268,33 +290,65 @@ function freshbite_save_testimonial_meta($post_id) {
 }
 
 /* ============================================================
-   7. WOOCOMMERCE — ASTRA OVERRIDE
+   7. META BOXES — RESERVA
    ============================================================ */
-// Remover breadcrumbs de Astra en WooCommerce
+add_action('add_meta_boxes', 'freshbite_reservation_meta_boxes');
+function freshbite_reservation_meta_boxes() {
+    add_meta_box(
+        'fb_reservation_details',
+        'Detalles de la Reserva',
+        'freshbite_reservation_meta_callback',
+        'fb_reservation',
+        'normal',
+        'high'
+    );
+}
+
+function freshbite_reservation_meta_callback($post) {
+    $fields = [
+        'fb_res_name'       => 'Nombre del cliente',
+        'fb_res_email'      => 'Email',
+        'fb_res_phone'      => 'Teléfono',
+        'fb_res_vendor'     => 'Vendedor',
+        'fb_res_type'       => 'Tipo (pickup/delivery)',
+        'fb_res_date'       => 'Fecha',
+        'fb_res_time'       => 'Hora',
+        'fb_res_items'      => 'Productos',
+        'fb_res_total'      => 'Total ($)',
+        'fb_res_status'     => 'Estado',
+        'fb_res_notes'      => 'Notas',
+    ];
+    echo '<table class="form-table">';
+    foreach ($fields as $key => $label) {
+        $value = get_post_meta($post->ID, $key, true);
+        echo '<tr><th>' . $label . '</th><td>';
+        echo '<input type="text" name="' . $key . '" value="' . esc_attr($value) . '" style="width:100%" readonly>';
+        echo '</td></tr>';
+    }
+    echo '</table>';
+}
+
+/* ============================================================
+   8. WOOCOMMERCE + ASTRA TWEAKS
+   ============================================================ */
 add_action('init', 'freshbite_woo_astra_tweaks');
 function freshbite_woo_astra_tweaks() {
     remove_action('astra_woocommerce_before_main_content', 'astra_woo_breadcrumb', 10);
 }
 
-// Desactivar sidebar de Astra en shop
 add_filter('is_active_sidebar', 'freshbite_disable_astra_sidebar', 10, 2);
 function freshbite_disable_astra_sidebar($is_active, $index) {
-    if (is_woocommerce()) {
-        return false;
-    }
+    if (is_woocommerce()) return false;
     return $is_active;
 }
 
-// Cambiar columnas de productos WooCommerce
-add_filter('loop_shop_columns', function() { return 3; });
+add_filter('loop_shop_columns',  function() { return 3; });
 add_filter('loop_shop_per_page', function() { return 12; });
-
-// Desactivar header/footer de Astra para usar los nuestros
 add_filter('astra_header_enabled', '__return_false');
 add_filter('astra_footer_enabled', '__return_false');
 
 /* ============================================================
-   8. AJAX — CONTACT FORM
+   9. AJAX — FORMULARIO DE CONTACTO
    ============================================================ */
 add_action('wp_ajax_freshbite_contact',        'freshbite_handle_contact');
 add_action('wp_ajax_nopriv_freshbite_contact', 'freshbite_handle_contact');
@@ -302,35 +356,34 @@ add_action('wp_ajax_nopriv_freshbite_contact', 'freshbite_handle_contact');
 function freshbite_handle_contact() {
     check_ajax_referer('freshbite_nonce', 'nonce');
 
-    $name    = sanitize_text_field($_POST['name']    ?? '');
-    $email   = sanitize_email($_POST['email']         ?? '');
-    $subject = sanitize_text_field($_POST['subject']  ?? '');
-    $message = sanitize_textarea_field($_POST['message'] ?? '');
+    $name    = sanitize_text_field($_POST['name']        ?? '');
+    $email   = sanitize_email($_POST['email']             ?? '');
+    $subject = sanitize_text_field($_POST['subject']      ?? '');
+    $message = sanitize_textarea_field($_POST['message']  ?? '');
 
     if (empty($name) || empty($email) || empty($message)) {
-        wp_send_json_error(['message' => 'Please fill in all required fields.']);
+        wp_send_json_error(['message' => 'Por favor completa todos los campos requeridos.']);
     }
 
     if (!is_email($email)) {
-        wp_send_json_error(['message' => 'Please enter a valid email address.']);
+        wp_send_json_error(['message' => 'Por favor ingresa un correo electrónico válido.']);
     }
 
     $to      = get_option('admin_email');
-    $subject = $subject ?: 'New message from ' . $name . ' — FreshBite';
-    $body    = "Name: {$name}\nEmail: {$email}\n\n{$message}";
+    $subject = $subject ?: 'Nuevo mensaje de ' . $name . ' — FreshBite';
+    $body    = "Nombre: {$name}\nEmail: {$email}\n\n{$message}";
     $headers = ['Content-Type: text/plain; charset=UTF-8', 'Reply-To: ' . $email];
-
-    $sent = wp_mail($to, $subject, $body, $headers);
+    $sent    = wp_mail($to, $subject, $body, $headers);
 
     if ($sent) {
-        wp_send_json_success(['message' => 'Message sent! We\'ll get back to you soon. 🥦']);
+        wp_send_json_success(['message' => '¡Mensaje enviado! Te responderemos pronto. 🥦']);
     } else {
-        wp_send_json_error(['message' => 'Something went wrong. Please try again.']);
+        wp_send_json_error(['message' => 'Algo salió mal. Por favor intenta de nuevo.']);
     }
 }
 
 /* ============================================================
-   9. AJAX — NEWSLETTER SUBSCRIBE
+   10. AJAX — NEWSLETTER
    ============================================================ */
 add_action('wp_ajax_freshbite_newsletter',        'freshbite_handle_newsletter');
 add_action('wp_ajax_nopriv_freshbite_newsletter', 'freshbite_handle_newsletter');
@@ -341,26 +394,90 @@ function freshbite_handle_newsletter() {
     $email = sanitize_email($_POST['email'] ?? '');
 
     if (!is_email($email)) {
-        wp_send_json_error(['message' => 'Please enter a valid email.']);
+        wp_send_json_error(['message' => 'Por favor ingresa un correo válido.']);
     }
 
-    // Guardar en options (simulado para portafolio)
     $subscribers = get_option('freshbite_subscribers', []);
     if (!in_array($email, $subscribers)) {
         $subscribers[] = $email;
         update_option('freshbite_subscribers', $subscribers);
     }
 
-    wp_send_json_success(['message' => 'You\'re in! Welcome to FreshBite 🎉']);
+    wp_send_json_success(['message' => '¡Ya eres parte de FreshBite! Bienvenido 🎉']);
 }
 
 /* ============================================================
-   10. HELPER FUNCTIONS
+   11. AJAX — RESERVAS
+   ============================================================ */
+add_action('wp_ajax_freshbite_reservation',        'freshbite_handle_reservation');
+add_action('wp_ajax_nopriv_freshbite_reservation', 'freshbite_handle_reservation');
+
+function freshbite_handle_reservation() {
+    check_ajax_referer('freshbite_nonce', 'nonce');
+
+    $name   = sanitize_text_field($_POST['name']   ?? '');
+    $email  = sanitize_email($_POST['email']        ?? '');
+    $phone  = sanitize_text_field($_POST['phone']   ?? '');
+    $vendor = sanitize_text_field($_POST['vendor']  ?? '');
+    $type   = sanitize_text_field($_POST['type']    ?? 'pickup');
+    $date   = sanitize_text_field($_POST['date']    ?? '');
+    $time   = sanitize_text_field($_POST['time']    ?? '');
+    $items  = sanitize_textarea_field($_POST['items'] ?? '');
+    $notes  = sanitize_textarea_field($_POST['notes'] ?? '');
+
+    if (empty($name) || empty($email) || empty($date) || empty($time)) {
+        wp_send_json_error(['message' => 'Por favor completa los campos requeridos.']);
+    }
+
+    // Crear post de reserva
+    $post_id = wp_insert_post([
+        'post_type'   => 'fb_reservation',
+        'post_title'  => 'Reserva — ' . $name . ' — ' . $date,
+        'post_status' => 'publish',
+    ]);
+
+    if ($post_id) {
+        $res_fields = [
+            'fb_res_name'   => $name,
+            'fb_res_email'  => $email,
+            'fb_res_phone'  => $phone,
+            'fb_res_vendor' => $vendor,
+            'fb_res_type'   => $type,
+            'fb_res_date'   => $date,
+            'fb_res_time'   => $time,
+            'fb_res_items'  => $items,
+            'fb_res_notes'  => $notes,
+            'fb_res_status' => 'pendiente',
+            'fb_res_total'  => '0',
+        ];
+        foreach ($res_fields as $key => $val) {
+            update_post_meta($post_id, $key, $val);
+        }
+
+        // Email de confirmación
+        $subject = '¡Reserva confirmada! — FreshBite';
+        $body    = "Hola {$name},\n\nTu reserva ha sido confirmada:\n\n"
+                 . "Tipo: " . ($type === 'pickup' ? 'Pickup' : 'Delivery') . "\n"
+                 . "Vendedor: {$vendor}\n"
+                 . "Fecha: {$date}\n"
+                 . "Hora: {$time}\n\n"
+                 . "¡Gracias por elegir FreshBite! 🥬";
+
+        wp_mail($email, $subject, $body);
+
+        wp_send_json_success([
+            'message'        => '¡Reserva confirmada! Revisa tu correo. 🎉',
+            'reservation_id' => $post_id,
+        ]);
+    } else {
+        wp_send_json_error(['message' => 'No se pudo crear la reserva. Intenta de nuevo.']);
+    }
+}
+
+/* ============================================================
+   12. HELPERS
    ============================================================ */
 
-/**
- * Get featured vendors
- */
 function freshbite_get_vendors($limit = 4) {
     return new WP_Query([
         'post_type'      => 'fb_vendor',
@@ -370,9 +487,6 @@ function freshbite_get_vendors($limit = 4) {
     ]);
 }
 
-/**
- * Get testimonials
- */
 function freshbite_get_testimonials($limit = 3) {
     return new WP_Query([
         'post_type'      => 'fb_testimonial',
@@ -381,9 +495,6 @@ function freshbite_get_testimonials($limit = 3) {
     ]);
 }
 
-/**
- * Get featured WooCommerce products
- */
 function freshbite_get_featured_products($limit = 8) {
     return new WP_Query([
         'post_type'      => 'product',
@@ -393,30 +504,11 @@ function freshbite_get_featured_products($limit = 8) {
             'field'    => 'name',
             'terms'    => 'featured',
         ]],
-        'orderby'        => 'date',
-        'order'          => 'DESC',
+        'orderby' => 'date',
+        'order'   => 'DESC',
     ]);
 }
 
-/**
- * Get products on sale
- */
-function freshbite_get_sale_products($limit = 4) {
-    return new WP_Query([
-        'post_type'      => 'product',
-        'posts_per_page' => $limit,
-        'meta_query'     => [[
-            'key'     => '_sale_price',
-            'value'   => 0,
-            'compare' => '>',
-            'type'    => 'NUMERIC',
-        ]],
-    ]);
-}
-
-/**
- * Get newest products
- */
 function freshbite_get_new_products($limit = 8) {
     return new WP_Query([
         'post_type'      => 'product',
@@ -426,9 +518,6 @@ function freshbite_get_new_products($limit = 8) {
     ]);
 }
 
-/**
- * Render star rating
- */
 function freshbite_stars($rating = 5) {
     $rating  = floatval($rating);
     $full    = floor($rating);
@@ -442,51 +531,31 @@ function freshbite_stars($rating = 5) {
     return $output;
 }
 
-/**
- * Vendor meta shortcut
- */
 function freshbite_vendor_meta($post_id, $key) {
     return esc_html(get_post_meta($post_id, $key, true));
 }
 
-/**
- * Product price formatted
- */
-function freshbite_price($product) {
-    if (!$product) return '';
-    return $product->get_price_html();
-}
-
-/**
- * Truncate text
- */
 function freshbite_truncate($text, $limit = 120) {
     $text = strip_tags($text);
     if (mb_strlen($text) <= $limit) return $text;
     return mb_substr($text, 0, $limit) . '...';
 }
 
-/**
- * Get product badge
- */
 function freshbite_product_badge($product) {
     if (!$product) return '';
     if ($product->is_on_sale()) {
-        return '<span class="fb-product-badge fb-badge-sale">Sale</span>';
+        return '<span class="fb-product-badge fb-badge-sale">Oferta</span>';
     }
     if ($product->is_featured()) {
-        return '<span class="fb-product-badge fb-badge-organic">Featured</span>';
+        return '<span class="fb-product-badge fb-badge-organic">Destacado</span>';
     }
-    $days_old = (time() - strtotime($product->get_date_created())) / DAY_IN_SECONDS;
-    if ($days_old < 30) {
-        return '<span class="fb-product-badge fb-badge-new">New</span>';
+    $days = (time() - strtotime($product->get_date_created())) / DAY_IN_SECONDS;
+    if ($days < 30) {
+        return '<span class="fb-product-badge fb-badge-new">Nuevo</span>';
     }
     return '';
 }
 
-/**
- * WooCommerce product categories
- */
 function freshbite_get_product_categories() {
     return get_terms([
         'taxonomy'   => 'product_cat',
@@ -497,36 +566,39 @@ function freshbite_get_product_categories() {
     ]);
 }
 
-/**
- * Category emojis map
- */
 function freshbite_category_emoji($slug) {
     $map = [
-        'fruits'       => '🍎',
-        'vegetables'   => '🥦',
-        'dairy'        => '🥛',
-        'meat'         => '🥩',
-        'seafood'      => '🐟',
-        'bakery'       => '🍞',
-        'beverages'    => '🧃',
-        'snacks'       => '🍿',
-        'organic'      => '🌿',
-        'frozen'       => '❄️',
-        'pantry'       => '🫙',
-        'herbs'        => '🌱',
-        'default'      => '🛒',
+        'frutas'      => '🍎',
+        'fruits'      => '🍎',
+        'verduras'    => '🥦',
+        'vegetables'  => '🥦',
+        'lacteos'     => '🥛',
+        'dairy'       => '🥛',
+        'carnes'      => '🥩',
+        'meat'        => '🥩',
+        'mariscos'    => '🐟',
+        'seafood'     => '🐟',
+        'panaderia'   => '🍞',
+        'bakery'      => '🍞',
+        'bebidas'     => '🧃',
+        'beverages'   => '🧃',
+        'snacks'      => '🍿',
+        'organico'    => '🌿',
+        'organic'     => '🌿',
+        'congelados'  => '❄️',
+        'frozen'      => '❄️',
+        'despensa'    => '🫙',
+        'pantry'      => '🫙',
+        'hierbas'     => '🌱',
+        'herbs'       => '🌱',
+        'default'     => '🛒',
     ];
     foreach ($map as $key => $emoji) {
-        if (str_contains(strtolower($slug), $key)) {
-            return $emoji;
-        }
+        if (str_contains(strtolower($slug), $key)) return $emoji;
     }
     return $map['default'];
 }
 
-/**
- * Category background colors
- */
 function freshbite_category_color($index) {
     $colors = [
         'rgba(249,115,22,0.1)',
@@ -542,50 +614,47 @@ function freshbite_category_color($index) {
 }
 
 /* ============================================================
-   11. BODY CLASSES
+   13. BODY CLASSES
    ============================================================ */
 add_filter('body_class', 'freshbite_body_classes');
 function freshbite_body_classes($classes) {
-    if (is_woocommerce())        $classes[] = 'fb-woo-page';
-    if (is_shop())               $classes[] = 'fb-shop-page';
-    if (is_product())            $classes[] = 'fb-product-page';
-    if (is_cart())               $classes[] = 'fb-cart-page';
-    if (is_checkout())           $classes[] = 'fb-checkout-page';
+    if (is_woocommerce())         $classes[] = 'fb-woo-page';
+    if (is_shop())                $classes[] = 'fb-shop-page';
+    if (is_product())             $classes[] = 'fb-product-page';
+    if (is_cart())                $classes[] = 'fb-cart-page';
+    if (is_checkout())            $classes[] = 'fb-checkout-page';
     if (is_singular('fb_vendor')) $classes[] = 'fb-vendor-page';
     return $classes;
 }
 
 /* ============================================================
-   12. DISABLE ASTRA ELEMENTS
+   14. LIMPIAR WP_HEAD
    ============================================================ */
-// Quitar admin bar en frontend para visitantes
 add_action('after_setup_theme', function() {
     if (!current_user_can('administrator')) {
         add_filter('show_admin_bar', '__return_false');
     }
 });
 
-// Limpiar wp_head
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link');
 
 /* ============================================================
-   13. WIDGETS
+   15. WIDGETS
    ============================================================ */
 add_action('widgets_init', 'freshbite_widgets_init');
 function freshbite_widgets_init() {
     register_sidebar([
-        'name'          => 'Shop Sidebar',
+        'name'          => 'Barra lateral — Tienda',
         'id'            => 'freshbite-shop-sidebar',
         'before_widget' => '<div class="fb-filter-card">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="fb-filter-title">',
         'after_title'   => '</h4>',
     ]);
-
     register_sidebar([
-        'name'          => 'Blog Sidebar',
+        'name'          => 'Barra lateral — Blog',
         'id'            => 'freshbite-blog-sidebar',
         'before_widget' => '<div class="fb-widget-card">',
         'after_widget'  => '</div>',
@@ -595,7 +664,7 @@ function freshbite_widgets_init() {
 }
 
 /* ============================================================
-   14. FLUSH REWRITE RULES (solo primera vez)
+   16. FLUSH REWRITE RULES
    ============================================================ */
 add_action('after_switch_theme', function() {
     freshbite_register_cpts();
