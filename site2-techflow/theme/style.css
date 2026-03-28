@@ -562,3 +562,48 @@ ul, ol { list-style: none; }
 @media (max-width: 480px) {
     :root { --tf-px: 1.25rem; }
 }
+
+/* ============================================================
+   FIXES CRÍTICOS
+============================================================ */
+
+/* 1. Ocultar admin bar */
+#wpadminbar { display: none !important; }
+html { margin-top: 0 !important; }
+
+/* 2. Fix loader — forzar visible después de 3s */
+.tf-loader {
+    animation: tf-loader-hide 0s 3s forwards;
+}
+@keyframes tf-loader-hide {
+    to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* 3. Ocultar cursor custom — usar cursor nativo */
+.tf-cursor,
+.tf-cursor-trail { display: none !important; }
+
+/* 4. Asegurar que el hero content sea visible */
+.tf-hero-content,
+.tf-hero-inner { opacity: 1 !important; }
+
+/* 5. Header top fix con admin bar oculta */
+.tf-header { top: 0 !important; }
+
+/* ============================================================
+   FIX — Forzar visibilidad reveal elements
+============================================================ */
+.tf-reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Fix hero padding top */
+.tf-hero {
+    padding-top: 7rem !important;
+}
+
+/* Fix loader desaparece inmediatamente */
+#tf-loader {
+    display: none !important;
+}
