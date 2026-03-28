@@ -123,4 +123,96 @@
         document.querySelectorAll('.fb-observe').forEach(el => observer.observe(el));
     }
 
+        /* ── Reservation form AJAX ───────────────────────── */
+    $(document).on('submit', '#fb-reservation-form', function(e) {
+        e.preventDefault();
+        const $form = $(this);
+        const $btn  = $('#fb-res-submit');
+        const $msg  = $('#fb-reservation-msg');
+
+        $btn.prop('disabled', true).text('Enviando...');
+        $msg.removeClass('success error').text('');
+
+        $.ajax({
+            url:  freshbite_ajax.url,
+            type: 'POST',
+            data: {
+                action:  'freshbite_reservation',
+                nonce:   freshbite_ajax.nonce,
+                name:    $form.find('[name="name"]').val(),
+                email:   $form.find('[name="email"]').val(),
+                phone:   $form.find('[name="phone"]').val(),
+                vendor:  $form.find('[name="vendor"]').val(),
+                type:    $form.find('[name="type"]:checked').val(),
+                date:    $form.find('[name="date"]').val(),
+                time:    $form.find('[name="time"]').val(),
+                items:   $form.find('[name="items"]').val(),
+                notes:   $form.find('[name="notes"]').val(),
+            },
+            success(res) {
+                if (res.success) {
+                    $msg.addClass('success').text(res.data.message);
+                    $form[0].reset();
+                } else {
+                    $msg.addClass('error').text(res.data.message);
+                }
+            },
+            error() {
+                $msg.addClass('error').text('Algo salió mal. Por favor intenta de nuevo.');
+            },
+            complete() {
+                $btn.prop('disabled', false).text('📅 Confirmar Reserva');
+            }
+        });
+    });
+
+        /* ── Shop: sort select ───────────────────────────── */
+    document.getElementById('fb-sort-select')?.addEventListener('change', function() {
+        const url = new URL(window.location.href);
+        url.searchParams.set('orderby', this.value);
+        window.location.href = url.toString();
+    });
+
+    /* ── Shop: view toggle ───────────────────────────── */
+    document.querySelectorAll('.fb-view-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.fb-view-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const grid = document.getElementById('fb-products-grid');
+            if (this.dataset.view === 'list') {
+                grid?.classList.add('list-view');
+            } else {
+                grid?.classList.remove('list-view');
+            }
+        });
+    });
+
+    /* ── Shop: price range ───────────────────────────── */
+    const priceRange = document.getElementById('fb-price-range');
+    const priceVal   = document.getElementById('fb-price-val');
+
+    priceRange?.addEventListener('input', function() {
+        priceVal.textContent = '$' + this.value;
+    });
+
+    document.getElementById('fb-apply-price')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        const url = new URL(window.location.href);
+        url.searchParams.set('max_price', priceRange.value);
+        window.location.href = url.toString();
+    });
+
+    /* ── Shop: category checkboxes ───────────────────── */
+    document.querySelectorAll('.fb-cat-filter').forEach(cb => {
+        cb.addEventListener('change', function() {
+            const url = new URL(window.location.href);
+            if (this.checked) {
+                url.searchParams.set('product_cat', this.dataset.slug);
+            } else {
+                url.searchParams.delete('product_cat');
+            }
+            window.location.href = url.toString();
+        });
+    });
+
 })(jQuery);
