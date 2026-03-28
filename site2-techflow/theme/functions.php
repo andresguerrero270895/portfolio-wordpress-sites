@@ -104,7 +104,7 @@ function techflow_register_cpt_projects() {
         'public'       => true,
         'show_in_rest' => true,
         'has_archive'  => true,
-        'rewrite'      => [ 'slug' => 'work' ],
+        'rewrite' => [ 'slug' => 'projects' ],
         'menu_icon'    => 'dashicons-portfolio',
         'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
         'taxonomies'   => [ 'tf_category', 'tf_tech' ],
@@ -126,7 +126,7 @@ function techflow_register_cpt_services() {
         'public'       => true,
         'show_in_rest' => true,
         'has_archive'  => false,
-        'rewrite'      => [ 'slug' => 'services' ],
+        'rewrite' => ['slug' => 'projects'],
         'menu_icon'    => 'dashicons-admin-tools',
         'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
     ]);
@@ -724,3 +724,12 @@ function techflow_flush_rewrites() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'techflow_flush_rewrites' );
+
+
+// DEBUG — borrar después
+add_action('wp_footer', function() {
+    if ( is_page() ) {
+        echo '<!-- Template: ' . get_page_template() . ' -->';
+        echo '<!-- Page: ' . get_queried_object()->post_name . ' -->';
+    }
+});
