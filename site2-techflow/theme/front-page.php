@@ -711,8 +711,6 @@ get_header();
 
 </main><!-- /#tf-main -->
 
-<?php get_footer(); ?>
-
 <style>
 /* ============================================================
    HERO
@@ -1756,3 +1754,5 @@ if(ctaForm){
 
 })();
 </script>
+
+<?php get_footer(); ?>
