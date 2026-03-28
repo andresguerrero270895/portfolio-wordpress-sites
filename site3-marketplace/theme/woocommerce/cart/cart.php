@@ -2,23 +2,22 @@
 /**
  * woocommerce/cart/cart.php — FreshBite Marketplace
  * Override del template de carrito de WooCommerce.
+ * ⚠️ Este archivo NO lleva get_header()/get_footer()
+ * WooCommerce lo inyecta dentro del template de página.
  * Idioma visual: Español
  *
  * @package FreshBite
- * @see     https://woocommerce.com/document/template-structure/
  */
 
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_cart' );
-
-get_header();
 ?>
 
-<main id="fb-main" class="fb-main-content fb-cart-page" role="main">
+<div class="fb-cart-page">
 
   <!-- ═══ CABECERA ════════════════════════════════════════ -->
-  <section class="fb-page-header fb-page-header--cart">
+  <div class="fb-page-header fb-page-header--cart">
     <div class="fb-container">
 
       <!-- Migas de pan -->
@@ -60,11 +59,11 @@ get_header();
       </div>
 
     </div>
-  </section>
+  </div><!-- .fb-page-header -->
 
 
   <!-- ═══ CONTENIDO DEL CARRITO ════════════════════════════ -->
-  <section class="fb-cart-main">
+  <div class="fb-cart-main">
     <div class="fb-container">
 
       <?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -117,26 +116,24 @@ get_header();
           if ( $suggested ) :
           ?>
             <div class="fb-cart-suggested">
-              <h3 class="fb-cart-suggested__title">
-                Quizás te interese…
-              </h3>
+              <h3 class="fb-cart-suggested__title">Quizás te interese…</h3>
               <div class="fb-cart-suggested__grid">
-                <?php foreach ( $suggested as $suggested_product ) : ?>
+                <?php foreach ( $suggested as $sp ) : ?>
                   <div class="fb-suggested-card">
-                    <a href="<?php echo esc_url( $suggested_product->get_permalink() ); ?>"
+                    <a href="<?php echo esc_url( $sp->get_permalink() ); ?>"
                        class="fb-suggested-card__thumb">
-                      <?php echo $suggested_product->get_image( 'medium', [
+                      <?php echo $sp->get_image( 'medium', [
                         'class'   => 'fb-suggested-card__img',
                         'loading' => 'lazy',
                       ] ); ?>
                     </a>
                     <div class="fb-suggested-card__body">
-                      <a href="<?php echo esc_url( $suggested_product->get_permalink() ); ?>"
+                      <a href="<?php echo esc_url( $sp->get_permalink() ); ?>"
                          class="fb-suggested-card__name">
-                        <?php echo esc_html( $suggested_product->get_name() ); ?>
+                        <?php echo esc_html( $sp->get_name() ); ?>
                       </a>
                       <span class="fb-suggested-card__price">
-                        <?php echo wp_kses_post( $suggested_product->get_price_html() ); ?>
+                        <?php echo wp_kses_post( $sp->get_price_html() ); ?>
                       </span>
                     </div>
                   </div>
@@ -152,62 +149,34 @@ get_header();
         <!-- ── CARRITO CON PRODUCTOS ──────────────────── -->
         <div class="fb-cart-layout">
 
-          <!-- COLUMNA IZQUIERDA: tabla de productos -->
+          <!-- COLUMNA IZQUIERDA -->
           <div class="fb-cart-items-col">
 
-            <!-- Notificaciones de WooCommerce -->
             <?php wc_print_notices(); ?>
 
             <div class="fb-cart-table-wrapper">
-
               <form class="woocommerce-cart-form fb-cart-form"
                     action="<?php echo esc_url( wc_get_cart_url() ); ?>"
                     method="post">
 
                 <?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
-                <!-- Cabecera de la tabla -->
-                <div class="fb-cart-table-head" role="row" aria-label="Encabezados">
-                  <div class="fb-cart-head-cell fb-cart-head-cell--product">
-                    Producto
-                  </div>
-                  <div class="fb-cart-head-cell fb-cart-head-cell--price">
-                    Precio
-                  </div>
-                  <div class="fb-cart-head-cell fb-cart-head-cell--qty">
-                    Cantidad
-                  </div>
-                  <div class="fb-cart-head-cell fb-cart-head-cell--subtotal">
-                    Subtotal
-                  </div>
-                  <div class="fb-cart-head-cell fb-cart-head-cell--remove"
-                       aria-hidden="true">
-                  </div>
-                </div><!-- .fb-cart-table-head -->
+                <!-- Cabecera tabla -->
+                <div class="fb-cart-table-head">
+                  <div class="fb-cart-head-cell fb-cart-head-cell--product">Producto</div>
+                  <div class="fb-cart-head-cell fb-cart-head-cell--price">Precio</div>
+                  <div class="fb-cart-head-cell fb-cart-head-cell--qty">Cantidad</div>
+                  <div class="fb-cart-head-cell fb-cart-head-cell--subtotal">Subtotal</div>
+                  <div class="fb-cart-head-cell fb-cart-head-cell--remove" aria-hidden="true"></div>
+                </div>
 
-                <!-- Filas de productos -->
+                <!-- Items -->
                 <div class="fb-cart-items" id="fb-cart-items">
-
                   <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) :
 
-                    $_product   = apply_filters(
-                      'woocommerce_cart_item_product',
-                      $cart_item['data'],
-                      $cart_item,
-                      $cart_item_key
-                    );
-                    $product_id = apply_filters(
-                      'woocommerce_cart_item_product_id',
-                      $cart_item['product_id'],
-                      $cart_item,
-                      $cart_item_key
-                    );
-                    $product_name = apply_filters(
-                      'woocommerce_cart_item_name',
-                      $_product->get_name(),
-                      $cart_item,
-                      $cart_item_key
-                    );
+                    $_product      = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                    $product_id    = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+                    $product_name  = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
 
                     if ( $_product && $_product->exists() && $cart_item['quantity'] > 0
                       && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key )
@@ -216,28 +185,20 @@ get_header();
                       $product_permalink = apply_filters(
                         'woocommerce_cart_item_permalink',
                         $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '',
-                        $cart_item,
-                        $cart_item_key
+                        $cart_item, $cart_item_key
                       );
-
                       $thumbnail = apply_filters(
                         'woocommerce_cart_item_thumbnail',
                         $_product->get_image( 'woocommerce_thumbnail', [ 'loading' => 'lazy' ] ),
-                        $cart_item,
-                        $cart_item_key
+                        $cart_item, $cart_item_key
                       );
                   ?>
 
                     <div class="fb-cart-item
-                      <?php echo esc_attr( apply_filters(
-                        'woocommerce_cart_item_class',
-                        'cart_item',
-                        $cart_item,
-                        $cart_item_key
-                      ) ); ?>"
+                      <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>"
                       data-key="<?php echo esc_attr( $cart_item_key ); ?>">
 
-                      <!-- Imagen del producto -->
+                      <!-- Imagen -->
                       <div class="fb-cart-item__thumb">
                         <?php if ( $product_permalink ) : ?>
                           <a href="<?php echo esc_url( $product_permalink ); ?>"
@@ -249,7 +210,7 @@ get_header();
                         <?php endif; ?>
                       </div>
 
-                      <!-- Nombre + variación -->
+                      <!-- Nombre -->
                       <div class="fb-cart-item__info">
                         <div class="fb-cart-item__name">
                           <?php if ( $product_permalink ) : ?>
@@ -260,21 +221,7 @@ get_header();
                             <?php echo esc_html( $product_name ); ?>
                           <?php endif; ?>
                         </div>
-
-                        <?php
-                        /* Atributos de variación */
-                        echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore
-                        ?>
-
-                        <?php
-                        /* Precio en móvil (visible solo en < 768px) */
-                        echo apply_filters(
-                          'woocommerce_cart_item_price',
-                          WC()->cart->get_product_price( $_product ),
-                          $cart_item,
-                          $cart_item_key
-                        );
-                        ?>
+                        <?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore ?>
                       </div>
 
                       <!-- Precio unitario -->
@@ -283,25 +230,23 @@ get_header();
                         echo apply_filters(
                           'woocommerce_cart_item_price',
                           WC()->cart->get_product_price( $_product ),
-                          $cart_item,
-                          $cart_item_key
+                          $cart_item, $cart_item_key
                         ); // phpcs:ignore
                         ?>
                       </div>
 
-                      <!-- Control de cantidad -->
+                      <!-- Cantidad -->
                       <div class="fb-cart-item__qty" data-label="Cantidad">
-                        <?php
-                        if ( $_product->is_sold_individually() ) :
-                          echo sprintf(
-                            '<div class="fb-cart-item__qty-single">1 <input type="hidden" name="cart[%s][qty]" value="1"/></div>',
-                            esc_attr( $cart_item_key )
-                          );
-                        else :
-                        ?>
+                        <?php if ( $_product->is_sold_individually() ) : ?>
+                          <div class="fb-cart-item__qty-single">
+                            1
+                            <input type="hidden"
+                                   name="cart[<?php echo esc_attr( $cart_item_key ); ?>][qty]"
+                                   value="1"/>
+                          </div>
+                        <?php else : ?>
                           <div class="fb-qty-wrapper">
-                            <button type="button"
-                                    class="fb-qty-btn"
+                            <button type="button" class="fb-qty-btn"
                                     data-action="minus"
                                     aria-label="Reducir cantidad">
                               <svg width="14" height="14" viewBox="0 0 24 24"
@@ -309,7 +254,6 @@ get_header();
                                 <line x1="5" y1="12" x2="19" y2="12"/>
                               </svg>
                             </button>
-
                             <?php
                             $product_quantity = woocommerce_quantity_input(
                               [
@@ -330,9 +274,7 @@ get_header();
                               $cart_item
                             ); // phpcs:ignore
                             ?>
-
-                            <button type="button"
-                                    class="fb-qty-btn"
+                            <button type="button" class="fb-qty-btn"
                                     data-action="plus"
                                     aria-label="Aumentar cantidad">
                               <svg width="14" height="14" viewBox="0 0 24 24"
@@ -341,9 +283,9 @@ get_header();
                                 <line x1="5"  y1="12" x2="19" y2="12"/>
                               </svg>
                             </button>
-                          </div><!-- .fb-qty-wrapper -->
+                          </div>
                         <?php endif; ?>
-                      </div><!-- .fb-cart-item__qty -->
+                      </div>
 
                       <!-- Subtotal -->
                       <div class="fb-cart-item__subtotal" data-label="Subtotal">
@@ -351,13 +293,12 @@ get_header();
                         echo apply_filters(
                           'woocommerce_cart_item_subtotal',
                           WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ),
-                          $cart_item,
-                          $cart_item_key
+                          $cart_item, $cart_item_key
                         ); // phpcs:ignore
                         ?>
                       </div>
 
-                      <!-- Botón eliminar -->
+                      <!-- Eliminar -->
                       <div class="fb-cart-item__remove">
                         <?php
                         echo apply_filters(
@@ -372,14 +313,12 @@ get_header();
                                <svg width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2.5">
                                  <polyline points="3 6 5 6 21 6"/>
-                                 <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0
-                                          01-2-2L5 6"/>
+                                 <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
                                  <path d="M10 11v6M14 11v6"/>
                                  <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
                                </svg>
                              </a>',
                             esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                            /* translators: %s product name */
                             esc_attr( sprintf( 'Eliminar %s del carrito', $product_name ) ),
                             esc_attr( $product_id ),
                             esc_attr( $_product->get_sku() ),
@@ -396,15 +335,13 @@ get_header();
                     endif;
                   endforeach;
                   ?>
-
                 </div><!-- .fb-cart-items -->
 
                 <?php do_action( 'woocommerce_cart_contents' ); ?>
 
-                <!-- Acciones del carrito -->
+                <!-- Acciones -->
                 <div class="fb-cart-actions">
 
-                  <!-- Cupón de descuento -->
                   <?php if ( wc_coupons_enabled() ) : ?>
                     <div class="fb-cart-coupon">
                       <div class="fb-cart-coupon__toggle" id="fb-coupon-toggle">
@@ -421,7 +358,6 @@ get_header();
                           <polyline points="6 9 12 15 18 9"/>
                         </svg>
                       </div>
-
                       <div class="fb-cart-coupon__form" id="fb-coupon-form">
                         <label for="coupon_code" class="screen-reader-text">
                           Código de cupón:
@@ -437,17 +373,16 @@ get_header();
                           <button type="submit"
                                   class="fb-btn fb-btn--outline fb-btn--md"
                                   name="apply_coupon"
-                                  value="<?php esc_attr_e( 'Aplicar cupón', 'freshbite' ); ?>">
+                                  value="Aplicar cupón">
                             Aplicar
                           </button>
                         </div>
                       </div>
-                    </div><!-- .fb-cart-coupon -->
+                    </div>
                   <?php endif; ?>
 
                   <?php do_action( 'woocommerce_cart_actions' ); ?>
 
-                  <!-- Actualizar carrito -->
                   <button type="submit"
                           class="fb-btn fb-btn--ghost fb-btn--md fb-cart-update-btn"
                           name="update_cart"
@@ -458,8 +393,7 @@ get_header();
                          aria-hidden="true">
                       <polyline points="23 4 23 10 17 10"/>
                       <polyline points="1 20 1 14 7 14"/>
-                      <path d="M3.51 9a9 9 0 0114.85-3.36L23 10
-                               M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                      <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
                     </svg>
                     Actualizar carrito
                   </button>
@@ -470,11 +404,9 @@ get_header();
 
                 <?php do_action( 'woocommerce_after_cart_contents' ); ?>
 
-              </form><!-- .fb-cart-form -->
-
+              </form>
             </div><!-- .fb-cart-table-wrapper -->
 
-            <!-- Continuar comprando -->
             <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
                class="fb-cart-continue-link">
               <svg width="16" height="16" viewBox="0 0 24 24"
@@ -488,21 +420,16 @@ get_header();
           </div><!-- .fb-cart-items-col -->
 
 
-          <!-- COLUMNA DERECHA: resumen del pedido -->
+          <!-- COLUMNA DERECHA: resumen -->
           <div class="fb-cart-summary-col">
-
             <div class="fb-cart-summary" id="fb-cart-summary">
-
-              <h2 class="fb-cart-summary__title">
-                Resumen del pedido
-              </h2>
 
               <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-              <!-- Totales de WooCommerce -->
+              <h2 class="fb-cart-summary__title">Resumen del pedido</h2>
+
               <div class="fb-cart-totals">
 
-                <!-- Subtotal -->
                 <div class="fb-cart-totals__row">
                   <span class="fb-cart-totals__label">Subtotal</span>
                   <span class="fb-cart-totals__value">
@@ -510,22 +437,22 @@ get_header();
                   </span>
                 </div>
 
-                <!-- Cupones aplicados -->
                 <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
                   <div class="fb-cart-totals__row fb-cart-totals__row--coupon">
                     <span class="fb-cart-totals__label">
                       <svg width="13" height="13" viewBox="0 0 24 24"
                            fill="none" stroke="currentColor" stroke-width="2"
                            aria-hidden="true">
-                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0
-                                 L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
                         <line x1="7" y1="7" x2="7.01" y2="7"/>
                       </svg>
                       Cupón:
                       <span class="fb-cart-totals__coupon-code">
                         <?php echo esc_html( strtoupper( $code ) ); ?>
                       </span>
-                      <a href="<?php echo esc_url( add_query_arg( 'remove_coupon', rawurlencode( $code ), wc_get_cart_url() ) ); ?>"
+                      <a href="<?php echo esc_url( add_query_arg(
+                        'remove_coupon', rawurlencode( $code ), wc_get_cart_url()
+                      ) ); ?>"
                          class="fb-cart-totals__remove-coupon"
                          aria-label="Eliminar cupón <?php echo esc_attr( $code ); ?>">
                         ✕
@@ -537,7 +464,6 @@ get_header();
                   </div>
                 <?php endforeach; ?>
 
-                <!-- Envío -->
                 <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
                   <div class="fb-cart-totals__row fb-cart-totals__row--shipping">
                     <span class="fb-cart-totals__label">
@@ -552,38 +478,15 @@ get_header();
                       Envío
                     </span>
                     <span class="fb-cart-totals__value">
-                      <div class="fb-cart-shipping">
-                        <?php woocommerce_shipping_calculator(); ?>
-                      </div>
+                      <?php woocommerce_shipping_calculator(); ?>
                     </span>
                   </div>
                 <?php endif; ?>
 
-                <!-- Impuestos -->
-                <?php foreach ( WC()->cart->get_taxes_total( false, false ) as $tax_rate_id => $tax_total ) :
-                  if ( $tax_total > 0 ) :
-                ?>
-                  <div class="fb-cart-totals__row fb-cart-totals__row--tax">
-                    <span class="fb-cart-totals__label">
-                      <?php echo esc_html( WC_Tax::get_rate_label( $tax_rate_id ) ?: 'Impuesto' ); ?>
-                    </span>
-                    <span class="fb-cart-totals__value">
-                      <?php echo wp_kses_post( wc_price( $tax_total ) ); ?>
-                    </span>
-                  </div>
-                <?php
-                  endif;
-                endforeach;
-                ?>
-
-                <!-- Separador -->
                 <div class="fb-cart-totals__separator" aria-hidden="true"></div>
 
-                <!-- Total -->
                 <div class="fb-cart-totals__row fb-cart-totals__row--total">
-                  <span class="fb-cart-totals__label fb-cart-totals__label--total">
-                    Total
-                  </span>
+                  <span class="fb-cart-totals__label fb-cart-totals__label--total">Total</span>
                   <span class="fb-cart-totals__value fb-cart-totals__value--total">
                     <?php wc_cart_totals_order_total_html(); ?>
                   </span>
@@ -623,7 +526,6 @@ get_header();
                 </div>
               </div>
 
-              <!-- Botón de checkout -->
               <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 
               <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
@@ -636,35 +538,28 @@ get_header();
                 Finalizar pedido
               </a>
 
-              <!-- Métodos de pago aceptados -->
-              <div class="fb-cart-payment-icons" aria-label="Métodos de pago aceptados">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/payment/visa.svg"
-                     alt="Visa" class="fb-payment-icon" loading="lazy" width="38" height="24">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/payment/mastercard.svg"
-                     alt="Mastercard" class="fb-payment-icon" loading="lazy" width="38" height="24">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/payment/paypal.svg"
-                     alt="PayPal" class="fb-payment-icon" loading="lazy" width="38" height="24">
-                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/payment/amex.svg"
-                     alt="American Express" class="fb-payment-icon" loading="lazy" width="38" height="24">
+              <!-- Métodos de pago -->
+              <div class="fb-cart-payment-icons"
+                   aria-label="Métodos de pago aceptados">
+                <span class="fb-payment-icon-text">💳 Visa</span>
+                <span class="fb-payment-icon-text">💳 Mastercard</span>
+                <span class="fb-payment-icon-text">🅿️ PayPal</span>
               </div>
 
+              <?php do_action( 'woocommerce_cart_collaterals' ); ?>
+
             </div><!-- .fb-cart-summary -->
-
-            <?php do_action( 'woocommerce_cart_collaterals' ); ?>
-
           </div><!-- .fb-cart-summary-col -->
 
         </div><!-- .fb-cart-layout -->
 
         <?php do_action( 'woocommerce_after_cart_table' ); ?>
 
-
-        <!-- ═══ PRODUCTOS RELACIONADOS (upsells) ══════════ -->
+        <!-- Upsells -->
         <?php
         $upsell_ids = [];
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-          $product    = $cart_item['data'];
-          $upsell_ids = array_merge( $upsell_ids, $product->get_upsell_ids() );
+          $upsell_ids = array_merge( $upsell_ids, $cart_item['data']->get_upsell_ids() );
         }
         $upsell_ids = array_unique( array_filter( $upsell_ids ) );
 
@@ -674,47 +569,34 @@ get_header();
             'limit'   => 4,
             'status'  => 'publish',
           ] );
-
           if ( $upsells ) :
         ?>
-          <section class="fb-cart-upsells">
+          <div class="fb-cart-upsells">
             <div class="fb-cart-upsells__header">
-              <h3 class="fb-cart-upsells__title">
-                <svg width="20" height="20" viewBox="0 0 24 24"
-                     fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14
-                                   18.18 21.02 12 17.77 5.82 21.02
-                                   7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-                También te puede gustar
-              </h3>
+              <h3 class="fb-cart-upsells__title">También te puede gustar</h3>
             </div>
             <div class="fb-cart-upsells__grid">
-              <?php foreach ( $upsells as $upsell_product ) : ?>
+              <?php foreach ( $upsells as $up ) : ?>
                 <div class="fb-upsell-card">
-                  <a href="<?php echo esc_url( $upsell_product->get_permalink() ); ?>"
+                  <a href="<?php echo esc_url( $up->get_permalink() ); ?>"
                      class="fb-upsell-card__thumb">
-                    <?php echo $upsell_product->get_image( 'medium', [
-                      'class'   => 'fb-upsell-card__img',
-                      'loading' => 'lazy',
+                    <?php echo $up->get_image( 'medium', [
+                      'class' => 'fb-upsell-card__img', 'loading' => 'lazy',
                     ] ); ?>
                   </a>
                   <div class="fb-upsell-card__body">
-                    <a href="<?php echo esc_url( $upsell_product->get_permalink() ); ?>"
+                    <a href="<?php echo esc_url( $up->get_permalink() ); ?>"
                        class="fb-upsell-card__name">
-                      <?php echo esc_html( $upsell_product->get_name() ); ?>
+                      <?php echo esc_html( $up->get_name() ); ?>
                     </a>
                     <span class="fb-upsell-card__price">
-                      <?php echo wp_kses_post( $upsell_product->get_price_html() ); ?>
+                      <?php echo wp_kses_post( $up->get_price_html() ); ?>
                     </span>
-                    <?php if ( $upsell_product->is_in_stock() ) : ?>
-                      <a href="<?php echo esc_url(
-                        add_query_arg(
-                          [ 'add-to-cart' => $upsell_product->get_id() ],
-                          wc_get_cart_url()
-                        ) ); ?>"
-                         class="fb-btn fb-btn--outline fb-btn--sm fb-upsell-card__btn"
-                         aria-label="Agregar <?php echo esc_attr( $upsell_product->get_name() ); ?> al carrito">
+                    <?php if ( $up->is_in_stock() ) : ?>
+                      <a href="<?php echo esc_url( add_query_arg(
+                        [ 'add-to-cart' => $up->get_id() ], wc_get_cart_url()
+                      ) ); ?>"
+                         class="fb-btn fb-btn--outline fb-btn--sm fb-upsell-card__btn">
                         + Agregar
                       </a>
                     <?php else : ?>
@@ -724,20 +606,17 @@ get_header();
                 </div>
               <?php endforeach; ?>
             </div>
-          </section>
+          </div>
         <?php
           endif;
         endif;
         ?>
 
-      <?php endif; /* end cart is not empty */ ?>
+      <?php endif; /* cart not empty */ ?>
 
     </div><!-- .fb-container -->
-  </section><!-- .fb-cart-main -->
+  </div><!-- .fb-cart-main -->
 
-</main><!-- #fb-main -->
+</div><!-- .fb-cart-page -->
 
-<?php
-do_action( 'woocommerce_after_cart' );
-get_footer();
-?>
+<?php do_action( 'woocommerce_after_cart' ); ?>
