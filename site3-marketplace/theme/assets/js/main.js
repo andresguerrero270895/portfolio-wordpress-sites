@@ -237,4 +237,64 @@
         }
     });
 
+        /* ── Contact form — show order field conditionally ── */
+    const contactType  = document.getElementById('contact-type');
+    const orderGroup   = document.getElementById('order-number-group');
+
+    contactType?.addEventListener('change', function() {
+        const show = this.value === 'Consulta sobre pedido'
+                  || this.value === 'Problema con producto';
+        if (orderGroup) {
+            orderGroup.style.display = show ? 'block' : 'none';
+        }
+    });
+
+    /* ── Contact form submit button text ─────────────── */
+    $(document).on('submit', '#fb-contact-form', function() {
+        $('#fb-contact-submit').text('Enviando...');
+    });
+
+    /* ── FAQ accordion ───────────────────────────────── */
+    document.querySelectorAll('.fb-faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const item    = this.closest('.fb-faq-item');
+            const isOpen  = item.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.fb-faq-item').forEach(i => {
+                i.classList.remove('open');
+            });
+
+            // Open clicked if was closed
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        });
+    });
+
+    /* ── File upload drag & drop visual ──────────────── */
+    const fileUpload = document.getElementById('fb-file-upload');
+
+    fileUpload?.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.borderColor = 'var(--fb-primary)';
+        this.style.background  = 'rgba(249,115,22,0.04)';
+    });
+
+    fileUpload?.addEventListener('dragleave', function() {
+        this.style.borderColor = '';
+        this.style.background  = '';
+    });
+
+    fileUpload?.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.borderColor = '';
+        this.style.background  = '';
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            const p = this.querySelector('p');
+            if (p) p.textContent = '✅ ' + file.name;
+        }
+    });
+
 })(jQuery);
