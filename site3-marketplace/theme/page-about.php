@@ -1,10 +1,13 @@
-<?php
+<<?php
 /**
+ * Template Name: Nosotros — FreshBite
+ *
  * FreshBite Theme — page-about.php
- * Template: Quiénes Somos
+ * Página: Quiénes Somos
+ *
+ * @package FreshBite
  */
 defined('ABSPATH') || exit;
-
 get_header();
 ?>
 
