@@ -1,0 +1,387 @@
+<?php
+/**
+ * MedPractice USA - Front Page Template
+ * @package MedPractice
+ */
+if (!defined('ABSPATH')) { exit; }
+get_header();
+?>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════ -->
+<section class="mp-hero" id="hero" aria-label="Hero">
+
+  <!-- Decoración fondo -->
+  <div class="mp-hero__grid-pattern" aria-hidden="true"></div>
+  <div class="mp-hero__float mp-hero__float--1" aria-hidden="true"></div>
+  <div class="mp-hero__float mp-hero__float--2" aria-hidden="true"></div>
+
+  <!-- Contenido centrado con container -->
+  <div class="mp-hero__content">
+    <div class="mp-container">
+
+      <!-- Badge -->
+      <div class="mp-hero__badge">
+        <span class="mp-hero__badge__dot"></span>
+        Trusted by 2,500+ Physicians Nationwide
+      </div>
+
+      <!-- Título -->
+      <h1 class="mp-hero__title">
+        Find Your Perfect<br>
+        <span>Medical Practice</span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="mp-hero__subtitle">
+        The nation's premier marketplace connecting physicians with verified
+        medical practice opportunities across 30+ states. Expert guidance
+        from search to closing.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mp-hero__cta">
+        <a href="#locations" class="mp-btn mp-btn--accent mp-btn--large">
+          Browse Practices
+        </a>
+        <a href="#process" class="mp-btn mp-btn--outline mp-btn--large">
+          How It Works
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mp-hero__stats">
+        <div class="mp-hero__stat">
+          <span class="mp-hero__stat-number">
+            <span class="mp-counter" data-count="2500">2,500</span>+
+          </span>
+          <span class="mp-hero__stat-label">Practices Sold</span>
+        </div>
+        <div class="mp-hero__stat-divider" aria-hidden="true"></div>
+        <div class="mp-hero__stat">
+          <span class="mp-hero__stat-number">
+            <span class="mp-counter" data-count="30">30</span>+
+          </span>
+          <span class="mp-hero__stat-label">States Covered</span>
+        </div>
+        <div class="mp-hero__stat-divider" aria-hidden="true"></div>
+        <div class="mp-hero__stat">
+          <span class="mp-hero__stat-number">
+            <span class="mp-counter" data-count="98">98</span>%
+          </span>
+          <span class="mp-hero__stat-label">Success Rate</span>
+        </div>
+      </div>
+
+    </div><!-- /.mp-container -->
+  </div><!-- /.mp-hero__content -->
+
+</section><!-- /#hero -->
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES SECTION
+════════════════════════════════════════════ -->
+<section class="mp-section mp-services" id="services" aria-label="Services">
+  <div class="mp-container">
+
+    <div class="mp-section-header">
+      <span class="mp-section-label">What We Offer</span>
+      <h2 class="mp-section-title">Comprehensive Practice<br>Acquisition Services</h2>
+      <p class="mp-section-desc">
+        From initial consultation to closing day, we provide end-to-end support
+        for physicians looking to buy or sell medical practices.
+      </p>
+    </div>
+
+    <div class="mp-services__grid">
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">🔍</div>
+        <h3 class="mp-service-card__title">Practice Search</h3>
+        <p class="mp-service-card__desc">
+          Access our exclusive database of verified medical practices for sale
+          across 30+ states. Filter by specialty, location, and price range.
+        </p>
+      </div>
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">📊</div>
+        <h3 class="mp-service-card__title">Valuation &amp; Analysis</h3>
+        <p class="mp-service-card__desc">
+          Get accurate practice valuations backed by comprehensive financial
+          analysis, patient demographics, and market comparisons.
+        </p>
+      </div>
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">📋</div>
+        <h3 class="mp-service-card__title">Due Diligence</h3>
+        <p class="mp-service-card__desc">
+          Our team conducts thorough operational, financial, and legal reviews
+          to ensure you make an informed investment decision.
+        </p>
+      </div>
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">🤝</div>
+        <h3 class="mp-service-card__title">Negotiation Support</h3>
+        <p class="mp-service-card__desc">
+          Expert negotiators work on your behalf to secure the best possible
+          terms, price, and transition arrangements.
+        </p>
+      </div>
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">💰</div>
+        <h3 class="mp-service-card__title">Financing Guidance</h3>
+        <p class="mp-service-card__desc">
+          We connect you with healthcare-specialized lenders and guide you
+          through SBA loans, conventional financing, and seller financing.
+        </p>
+      </div>
+
+      <div class="mp-service-card">
+        <div class="mp-service-card__icon">🔄</div>
+        <h3 class="mp-service-card__title">Transition Planning</h3>
+        <p class="mp-service-card__desc">
+          Seamless ownership transition with patient retention strategies,
+          staff management, and operational continuity planning.
+        </p>
+      </div>
+
+    </div><!-- /.mp-services__grid -->
+  </div><!-- /.mp-container -->
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROCESS SECTION
+════════════════════════════════════════════ -->
+<section class="mp-section mp-process-section" id="process" aria-label="Process">
+  <div class="mp-container">
+
+    <div class="mp-section-header">
+      <span class="mp-section-label">How It Works</span>
+      <h2 class="mp-section-title">Your Path to Practice Ownership</h2>
+      <p class="mp-section-desc">
+        A proven 5-step process that has helped thousands of physicians find
+        and acquire their ideal medical practice.
+      </p>
+    </div>
+
+    <div class="mp-process-grid">
+
+      <div class="mp-process-card">
+        <h4 class="mp-process-card__title">Consultation</h4>
+        <p class="mp-process-card__desc">
+          Free 30-minute call to understand your goals, budget, preferred
+          location, and specialty requirements.
+        </p>
+      </div>
+
+      <div class="mp-process-card">
+        <h4 class="mp-process-card__title">Search &amp; Match</h4>
+        <p class="mp-process-card__desc">
+          We identify practices matching your criteria from our database of
+          3,000+ active listings nationwide.
+        </p>
+      </div>
+
+      <div class="mp-process-card">
+        <h4 class="mp-process-card__title">Due Diligence</h4>
+        <p class="mp-process-card__desc">
+          Comprehensive review of financials, operations, patient base,
+          equipment, and lease agreements.
+        </p>
+      </div>
+
+      <div class="mp-process-card">
+        <h4 class="mp-process-card__title">Negotiation</h4>
+        <p class="mp-process-card__desc">
+          Our experts negotiate purchase price, terms, non-compete clauses,
+          and transition timelines on your behalf.
+        </p>
+      </div>
+
+      <div class="mp-process-card">
+        <h4 class="mp-process-card__title">Closing &amp; Transition</h4>
+        <p class="mp-process-card__desc">
+          We manage the closing process and provide 90-day transition support
+          for a seamless handover.
+        </p>
+      </div>
+
+    </div><!-- /.mp-process-grid -->
+  </div><!-- /.mp-container -->
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     LOCATIONS / STATES SECTION
+════════════════════════════════════════════ -->
+<section class="mp-section mp-locations-section" id="locations" aria-label="Locations">
+  <div class="mp-container">
+
+    <div class="mp-section-header">
+      <span class="mp-section-label">Our Locations</span>
+      <h2 class="mp-section-title">Medical Practices Across<br>30+ States</h2>
+      <p class="mp-section-desc">
+        Browse verified medical practice opportunities in your preferred state.
+        Each listing is thoroughly vetted by our team.
+      </p>
+    </div>
+
+    <!-- Search -->
+    <div class="mp-search-bar">
+      <span class="mp-search-bar__icon">🔍</span>
+      <input
+        type="text"
+        id="mp-state-search"
+        class="mp-search-bar__input"
+        placeholder="Search states… e.g. California, Texas, Florida"
+        aria-label="Search states"
+      >
+    </div>
+
+    <!-- States Grid -->
+    <div class="mp-states-grid" id="mp-states-grid">
+      <?php
+      $states_query = new WP_Query( array(
+        'post_type'      => 'state_landing',
+        'posts_per_page' => 30,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'post_status'    => 'publish',
+      ) );
+
+      if ( $states_query->have_posts() ) :
+        while ( $states_query->have_posts() ) :
+          $states_query->the_post();
+          $state_code  = get_post_meta( get_the_ID(), '_mp_state_code', true );
+          $practice_ct = get_post_meta( get_the_ID(), '_mp_practices_count', true );
+      ?>
+        <a
+          href="<?php the_permalink(); ?>"
+          class="mp-state-card"
+          aria-label="View practices in <?php the_title_attribute(); ?>"
+          data-state="<?php echo esc_attr( strtolower( get_the_title() ) ); ?>"
+        >
+          <span class="mp-state-card__code"><?php echo esc_html( $state_code ?: substr( get_the_title(), 0, 2 ) ); ?></span>
+          <span class="mp-state-card__name"><?php the_title(); ?></span>
+          <span class="mp-state-card__count"><?php echo esc_html( $practice_ct ?: '50+' ); ?> practices</span>
+        </a>
+      <?php
+        endwhile;
+        wp_reset_postdata();
+      else :
+      ?>
+        <div class="mp-states-empty">
+          <p>State pages are being generated. Please <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=state_landing' ) ); ?>">check the admin</a> or refresh in a moment.</p>
+        </div>
+      <?php endif; ?>
+    </div><!-- /.mp-states-grid -->
+
+  </div><!-- /.mp-container -->
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS SECTION
+════════════════════════════════════════════ -->
+<section class="mp-section mp-testimonials" id="testimonials" aria-label="Testimonials">
+  <div class="mp-container">
+
+    <div class="mp-section-header">
+      <span class="mp-section-label">Testimonials</span>
+      <h2 class="mp-section-title">What Our Clients Say</h2>
+      <p class="mp-section-desc">
+        Hear from physicians who found their perfect practice through
+        MedPractice USA.
+      </p>
+    </div>
+
+    <div class="mp-testimonials-grid">
+
+      <div class="mp-testimonial-card">
+        <div class="mp-testimonial-card__stars">★★★★★</div>
+        <p class="mp-testimonial-card__text">
+          "MedPractice USA made finding and acquiring my family practice in
+          California incredibly smooth. Their team handled everything from
+          valuation to closing."
+        </p>
+        <div class="mp-testimonial-card__author">
+          <div class="mp-testimonial-card__avatar">DR</div>
+          <div>
+            <div class="mp-testimonial-card__name">Dr. Robert Chen</div>
+            <div class="mp-testimonial-card__role">Family Medicine — California</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mp-testimonial-card">
+        <div class="mp-testimonial-card__stars">★★★★★</div>
+        <p class="mp-testimonial-card__text">
+          "I was overwhelmed by the process of buying a practice until I found
+          MedPractice. They matched me with the perfect dental practice in
+          Texas within 3 months."
+        </p>
+        <div class="mp-testimonial-card__author">
+          <div class="mp-testimonial-card__avatar">SM</div>
+          <div>
+            <div class="mp-testimonial-card__name">Dr. Sarah Mitchell</div>
+            <div class="mp-testimonial-card__role">Dental Practice — Texas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mp-testimonial-card">
+        <div class="mp-testimonial-card__stars">★★★★★</div>
+        <p class="mp-testimonial-card__text">
+          "The due diligence process saved me from a bad investment. Their team
+          identified issues I never would have found on my own. Ended up finding
+          an even better practice."
+        </p>
+        <div class="mp-testimonial-card__author">
+          <div class="mp-testimonial-card__avatar">JW</div>
+          <div>
+            <div class="mp-testimonial-card__name">Dr. James Wilson</div>
+            <div class="mp-testimonial-card__role">Cardiology — New York</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.mp-testimonials-grid -->
+  </div><!-- /.mp-container -->
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+════════════════════════════════════════════ -->
+<section class="mp-section mp-cta" id="cta" aria-label="Call to action">
+  <div class="mp-container">
+    <div class="mp-cta__box">
+
+      <span class="mp-section-label" style="color:rgba(255,255,255,0.6);">Get Started Today</span>
+      <h2>Ready to Find<br>Your Perfect Practice?</h2>
+      <p>
+        Schedule a free 30-minute consultation with our practice acquisition
+        experts. No obligation — just expert guidance tailored to your goals.
+      </p>
+
+      <div class="mp-cta__buttons">
+        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="mp-btn mp-btn--accent mp-btn--large">
+          Schedule Free Consultation
+        </a>
+        <a href="tel:+18005551234" class="mp-btn mp-btn--outline-white mp-btn--large">
+          📞 (800) 555-1234
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<?php get_footer(); ?>
