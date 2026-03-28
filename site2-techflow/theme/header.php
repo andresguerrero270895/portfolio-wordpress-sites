@@ -55,7 +55,7 @@
         <nav class="tf-nav" aria-label="Primary navigation">
             <ul class="tf-nav-list">
                 <li class="tf-nav-item tf-has-dropdown">
-                    href="<?php echo esc_url(home_url('/services/')); ?>"
+                    <a href="<?php echo esc_url(home_url('/services/')); ?>" class="tf-nav-link">
                         Services
                         <svg class="tf-nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
