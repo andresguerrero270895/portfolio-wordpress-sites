@@ -1,10 +1,13 @@
 <?php
 /**
+ * Template Name: Contacto — FreshBite
+ *
  * FreshBite Theme — page-contact.php
- * Template: Página de Contacto
+ * Página: Contacto
+ *
+ * @package FreshBite
  */
 defined('ABSPATH') || exit;
-
 get_header();
 ?>
 
