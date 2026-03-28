@@ -1,0 +1,46 @@
+/* MedPractice USA - Landing Page Specific Styles */
+
+/* State landing 2-column layout responsive */
+@media(max-width:968px) {
+    .mp-section > .mp-container > div[style*="grid-template-columns:2fr 1fr"] {
+        display:block !important;
+    }
+    .mp-section > .mp-container > div[style*="grid-template-columns:2fr 1fr"] > aside {
+        margin-top:var(--mp-space-2xl);
+    }
+}
+
+/* State hero adjustments */
+.mp-hero + .mp-container { margin-top:0; }
+
+/* Sidebar sticky on desktop */
+@media(min-width:969px) {
+    .mp-section > .mp-container > div[style*="grid-template-columns:2fr 1fr"] > aside {
+        position:sticky;
+        top:100px;
+        align-self:start;
+    }
+}
+
+/* Practice type cards hover */
+.mp-section div[style*="grid-template-columns:repeat(auto-fit"] > div:hover {
+    transform:translateY(-3px);
+    box-shadow:var(--mp-shadow-md);
+    border-color:var(--mp-secondary) !important;
+}
+
+/* Form inside landing page */
+#contact-form .mp-form__input:focus,
+#contact-form .mp-form__textarea:focus {
+    border-color:var(--mp-accent);
+    box-shadow:0 0 0 3px rgba(46,196,182,0.15);
+}
+
+/* Quick stats card animation */
+@keyframes slideInRight {
+    from { opacity:0; transform:translateX(30px); }
+    to { opacity:1; transform:translateX(0); }
+}
+.mp-fade-in-left--visible {
+    animation:slideInRight 0.6s ease forwards;
+}
