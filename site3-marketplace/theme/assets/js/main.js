@@ -215,4 +215,26 @@
         });
     });
 
+        /* ── Vendor search filter ────────────────────────── */
+    const vendorSearch = document.getElementById('fb-vendor-search');
+    const vendorCards  = document.querySelectorAll('.fb-vendor-card-full');
+    const noVendors    = document.getElementById('fb-no-vendors');
+
+    vendorSearch?.addEventListener('input', function() {
+        const term    = this.value.toLowerCase().trim();
+        let   visible = 0;
+
+        vendorCards.forEach(card => {
+            const name = card.dataset.name?.toLowerCase() || '';
+            const text = card.textContent.toLowerCase();
+            const match = !term || name.includes(term) || text.includes(term);
+            card.style.display = match ? '' : 'none';
+            if (match) visible++;
+        });
+
+        if (noVendors) {
+            noVendors.style.display = visible === 0 ? 'block' : 'none';
+        }
+    });
+
 })(jQuery);
