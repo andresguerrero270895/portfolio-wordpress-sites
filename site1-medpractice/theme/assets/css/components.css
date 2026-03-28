@@ -1,0 +1,64 @@
+/* MedPractice USA - Components CSS */
+
+/* BREADCRUMBS */
+.mp-breadcrumbs { padding:var(--mp-space-md) 0;margin-bottom:var(--mp-space-lg); }
+.mp-breadcrumbs__list { display:flex;align-items:center;flex-wrap:wrap;gap:var(--mp-space-sm);list-style:none;padding:0;margin:0;font-size:var(--mp-text-sm); }
+.mp-breadcrumbs__item { display:flex;align-items:center;gap:var(--mp-space-sm);color:var(--mp-medium-gray); }
+.mp-breadcrumbs__item::after { content:'/';color:var(--mp-light-gray);margin-left:var(--mp-space-xs); }
+.mp-breadcrumbs__item:last-child::after { display:none; }
+.mp-breadcrumbs__item a { color:var(--mp-secondary);transition:color var(--mp-transition-fast); }
+.mp-breadcrumbs__item a:hover { color:var(--mp-primary); }
+.mp-breadcrumbs__item--active { color:var(--mp-dark-gray);font-weight:600; }
+
+/* CONTACT FORM */
+.mp-form { max-width:600px;margin:0 auto; }
+.mp-form__row { display:grid;grid-template-columns:1fr 1fr;gap:var(--mp-space-md);margin-bottom:var(--mp-space-md); }
+.mp-form__group { margin-bottom:var(--mp-space-md); }
+.mp-form__label { display:block;font-size:var(--mp-text-sm);font-weight:600;color:var(--mp-dark-gray);margin-bottom:var(--mp-space-xs); }
+.mp-form__input,.mp-form__textarea,.mp-form__select {
+    width:100%;padding:0.75rem 1rem;font-family:var(--mp-font-primary);font-size:var(--mp-text-base);
+    color:var(--mp-dark-gray);background:var(--mp-white);border:2px solid var(--mp-light-gray);
+    border-radius:var(--mp-radius-md);transition:border-color var(--mp-transition-fast),box-shadow var(--mp-transition-fast);outline:none;
+}
+.mp-form__input:focus,.mp-form__textarea:focus,.mp-form__select:focus { border-color:var(--mp-secondary);box-shadow:0 0 0 3px rgba(62,146,204,0.15); }
+.mp-form__input::placeholder,.mp-form__textarea::placeholder { color:#ADB5BD; }
+.mp-form__textarea { min-height:120px;resize:vertical; }
+.mp-form-message { display:none;padding:var(--mp-space-md);border-radius:var(--mp-radius-md);margin-bottom:var(--mp-space-md);font-size:var(--mp-text-sm);font-weight:500; }
+.mp-form-message--success { background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7; }
+.mp-form-message--error { background:#FEE2E2;color:#991B1B;border:1px solid #FCA5A5; }
+
+/* SEARCH BAR */
+.mp-search-bar { position:relative;max-width:500px;margin:0 auto var(--mp-space-2xl); }
+.mp-search-bar__input {
+    width:100%;padding:1rem 1.5rem 1rem 3rem;font-size:var(--mp-text-base);
+    border:2px solid var(--mp-light-gray);border-radius:var(--mp-radius-full);
+    outline:none;transition:all var(--mp-transition-base);background:var(--mp-white);
+}
+.mp-search-bar__input:focus { border-color:var(--mp-secondary);box-shadow:var(--mp-shadow-lg),0 0 0 3px rgba(62,146,204,0.1); }
+.mp-search-bar__icon { position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);color:var(--mp-medium-gray);pointer-events:none; }
+
+/* PROCESS CARDS */
+.mp-process-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--mp-space-xl);counter-reset:process-step; }
+.mp-process-card { position:relative;text-align:center;padding:var(--mp-space-2xl) var(--mp-space-lg);counter-increment:process-step; }
+.mp-process-card::before {
+    content:counter(process-step, decimal-leading-zero);display:block;font-family:var(--mp-font-heading);
+    font-size:var(--mp-text-4xl);font-weight:800;color:rgba(62,146,204,0.1);margin-bottom:var(--mp-space-md);line-height:1;
+}
+.mp-process-card__title { font-size:var(--mp-text-lg);margin-bottom:var(--mp-space-sm); }
+.mp-process-card__desc { font-size:var(--mp-text-sm);color:var(--mp-medium-gray); }
+
+/* STATE CONTENT STYLES */
+.mp-state-content h2 { margin-top:var(--mp-space-2xl);margin-bottom:var(--mp-space-md);font-size:var(--mp-text-2xl); }
+.mp-state-content h3 { margin-top:var(--mp-space-xl);margin-bottom:var(--mp-space-sm);font-size:var(--mp-text-xl); }
+.mp-state-content ul,.mp-state-content ol { margin:var(--mp-space-md) 0;padding-left:var(--mp-space-xl); }
+.mp-state-content li { margin-bottom:var(--mp-space-sm);color:var(--mp-medium-gray); }
+.mp-state-content strong { color:var(--mp-dark-gray); }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+    .mp-form__row { grid-template-columns:1fr; }
+    .mp-process-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px) {
+    .mp-process-grid { grid-template-columns:1fr; }
+}
