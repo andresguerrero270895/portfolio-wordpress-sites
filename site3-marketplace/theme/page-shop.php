@@ -1,10 +1,13 @@
 <?php
 /**
+ * Template Name: Tienda — FreshBite
+ *
  * FreshBite Theme — page-shop.php
- * Template: Tienda principal con filtros y grid de productos
+ * Página: Tienda
+ *
+ * @package FreshBite
  */
 defined('ABSPATH') || exit;
-
 get_header();
 ?>
 
