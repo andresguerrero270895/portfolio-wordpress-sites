@@ -2178,3 +2178,120 @@ p {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* ============================================================
+   MOBILE MENU STYLES
+   ============================================================ */
+.fb-mobile-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--fb-white);
+    border-bottom: 2px solid var(--fb-border-gray);
+    box-shadow: var(--fb-shadow-lg);
+    z-index: 999;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--fb-transition);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+}
+
+.fb-mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.fb-mobile-menu-inner {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.fb-mobile-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--fb-bg);
+    border: 1.5px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius-full);
+}
+
+.fb-mobile-search-wrap input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: var(--fb-font);
+    font-size: 0.9rem;
+    color: var(--fb-dark);
+    outline: none;
+}
+
+.fb-mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fb-mobile-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    color: var(--fb-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--fb-font);
+    border-radius: var(--fb-radius-sm);
+    transition: var(--fb-transition);
+    text-decoration: none;
+}
+
+.fb-mobile-nav a:hover {
+    background: var(--fb-bg-2);
+    color: var(--fb-primary);
+}
+
+.fb-mobile-nav a span {
+    font-size: 1.2rem;
+}
+
+.fb-mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--fb-border-gray);
+}
+
+.fb-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--fb-transition);
+}
+
+.fb-mobile-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Hamburger animation */
+.fb-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.fb-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.fb-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
