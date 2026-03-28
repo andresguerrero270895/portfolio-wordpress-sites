@@ -4382,3 +4382,850 @@ p {
         gap: 12px;
     }
 }
+
+/* ============================================================
+   SINGLE PRODUCT PAGE STYLES
+   ============================================================ */
+
+/* Product category link */
+.fb-product-cat-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fb-primary);
+    text-decoration: none;
+    font-family: var(--fb-font);
+    margin-bottom: 8px;
+    transition: var(--fb-transition);
+}
+
+.fb-product-cat-link:hover {
+    color: var(--fb-primary-dark);
+}
+
+/* Product meta row */
+.fb-product-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.fb-meta-divider {
+    color: var(--fb-border-gray);
+    font-size: 0.9rem;
+}
+
+/* Price block */
+.fb-product-price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.fb-discount-badge {
+    background: var(--fb-red);
+    color: white;
+    padding: 3px 10px;
+    border-radius: var(--fb-radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--fb-font);
+}
+
+/* Stock badges */
+.fb-stock-status {
+    margin: 4px 0;
+}
+
+.fb-stock-available {
+    font-size: 0.85rem;
+    color: var(--fb-secondary);
+    font-weight: 600;
+    font-family: var(--fb-font);
+}
+
+.fb-stock-low-badge {
+    font-size: 0.85rem;
+    color: var(--fb-accent);
+    font-weight: 600;
+    font-family: var(--fb-font);
+}
+
+.fb-stock-out {
+    font-size: 0.85rem;
+    color: var(--fb-red);
+    font-weight: 600;
+    font-family: var(--fb-font);
+}
+
+/* Short description */
+.fb-product-short-desc {
+    font-family: var(--fb-font);
+    color: var(--fb-gray-400);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: 16px;
+    background: var(--fb-bg);
+    border-radius: var(--fb-radius-sm);
+    border-left: 3px solid var(--fb-primary);
+}
+
+.fb-product-short-desc p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Cart row */
+.fb-cart-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fb-product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.fb-product-actions .fb-btn {
+    flex: 1;
+    justify-content: center;
+}
+
+.fb-wishlist-btn {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius);
+    background: var(--fb-white);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: var(--fb-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--fb-gray-400);
+}
+
+.fb-wishlist-btn:hover {
+    border-color: var(--fb-red);
+    color: var(--fb-red);
+    transform: scale(1.05);
+}
+
+.fb-wishlist-btn.active {
+    border-color: var(--fb-red);
+    color: var(--fb-red);
+    background: rgba(239,68,68,0.05);
+}
+
+/* Delivery estimate */
+.fb-delivery-estimate {
+    background: var(--fb-bg);
+    border: 1.5px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fb-delivery-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fb-delivery-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+}
+
+.fb-delivery-item strong {
+    display: block;
+    font-family: var(--fb-font);
+    font-size: 0.85rem;
+    color: var(--fb-dark);
+    font-weight: 600;
+}
+
+.fb-delivery-item span {
+    display: block;
+    font-family: var(--fb-font);
+    font-size: 0.78rem;
+    color: var(--fb-gray-400);
+}
+
+/* Accordion */
+.fb-product-details-accordion {
+    border: 1.5px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius);
+    overflow: hidden;
+}
+
+.fb-accordion-item {
+    border-bottom: 1px solid var(--fb-border-gray);
+}
+
+.fb-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.fb-accordion-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    background: var(--fb-white);
+    border: none;
+    cursor: pointer;
+    font-family: var(--fb-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--fb-dark);
+    text-align: left;
+    transition: var(--fb-transition);
+    gap: 8px;
+}
+
+.fb-accordion-btn:hover {
+    background: var(--fb-bg);
+    color: var(--fb-primary);
+}
+
+.fb-accordion-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    color: var(--fb-gray-300);
+}
+
+.fb-accordion-item.open .fb-accordion-arrow {
+    transform: rotate(90deg);
+}
+
+.fb-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: var(--fb-bg);
+}
+
+.fb-accordion-item.open .fb-accordion-content {
+    max-height: 600px;
+}
+
+.fb-accordion-content > * {
+    padding: 16px 18px;
+}
+
+.fb-product-description p {
+    font-family: var(--fb-font);
+    font-size: 0.9rem;
+    color: var(--fb-gray-400);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+/* Nutrition grid */
+.fb-nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.fb-nutrition-item {
+    background: var(--fb-white);
+    border: 1px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius-sm);
+    padding: 10px;
+    text-align: center;
+}
+
+.fb-nutrition-name {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--fb-gray-300);
+    font-family: var(--fb-font);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.fb-nutrition-val {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--fb-primary);
+    font-family: var(--fb-font);
+}
+
+/* Share row */
+.fb-share-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.fb-share-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--fb-radius-sm);
+    background: var(--fb-bg);
+    border: 1.5px solid var(--fb-border-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--fb-transition);
+    text-decoration: none;
+}
+
+.fb-share-btn:hover {
+    border-color: var(--fb-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--fb-shadow-sm);
+}
+
+/* Gallery badges */
+.fb-product-gallery-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Zoom hint */
+.fb-zoom-hint {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 4px 10px;
+    border-radius: var(--fb-radius-full);
+    font-size: 0.72rem;
+    font-family: var(--fb-font);
+    opacity: 0;
+    transition: var(--fb-transition);
+}
+
+.fb-product-main-image:hover .fb-zoom-hint {
+    opacity: 1;
+}
+
+/* Product trust badges */
+.fb-product-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.fb-trust-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--fb-bg);
+    border: 1px solid var(--fb-border-gray);
+    border-radius: var(--fb-radius-sm);
+    font-size: 0.78rem;
+    color: var(--fb-gray-400);
+    font-family: var(--fb-font);
+}
+
+/* Responsive single product */
+@media (max-width: 768px) {
+    .fb-product-single-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fb-product-gallery {
+        position: static;
+    }
+
+    .fb-product-trust-badges {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fb-nutrition-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fb-product-actions {
+        flex-direction: column;
+    }
+
+    .fb-wishlist-btn {
+        width: 100%;
+        height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fb-product-trust-badges {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .fb-product-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .fb-meta-divider {
+        display: none;
+    }
+
+    .fb-product-thumbs {
+        gap: 6px;
+    }
+
+    .fb-product-thumb {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* ============================================================
+   PAGE VENDORS — FreshBite
+   ============================================================ */
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.fb-vendors-hero {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  padding: 60px 0 48px;
+  border-bottom: 1px solid #FDE68A;
+}
+
+.fb-vendors-hero__inner {
+  max-width: 720px;
+}
+
+.fb-vendors-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #D97706;
+  margin-bottom: 16px;
+}
+
+.fb-vendors-hero__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1C1917;
+  margin: 0 0 16px;
+}
+
+.fb-vendors-hero__accent {
+  color: #F97316;
+}
+
+.fb-vendors-hero__desc {
+  font-size: 1.05rem;
+  color: #57534E;
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 560px;
+}
+
+/* Stats */
+.fb-vendors-hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.fb-vendors-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fb-vendors-stat__num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #F97316;
+  line-height: 1;
+}
+
+.fb-vendors-stat__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #78716C;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.fb-vendors-stat__sep {
+  width: 1px;
+  height: 36px;
+  background: #D6D3D1;
+  flex-shrink: 0;
+}
+
+
+/* ── Filtros ──────────────────────────────────────────────── */
+.fb-vendors-filters {
+  background: #fff;
+  border-bottom: 1px solid #E7E5E4;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.fb-vendors-filters__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Buscador */
+.fb-vendors-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F5F5F4;
+  border: 1px solid #E7E5E4;
+  border-radius: 50px;
+  padding: 8px 18px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 320px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.fb-vendors-search:focus-within {
+  border-color: #F97316;
+  box-shadow: 0 0 0 3px rgba(249,115,22,.12);
+}
+
+.fb-vendors-search svg {
+  flex-shrink: 0;
+  color: #A8A29E;
+  display: block; /* Fix: evita que el SVG sea inline */
+}
+
+.fb-vendors-search__input {
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  font-size: 14px;
+  color: #1C1917;
+  width: 100%;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.fb-vendors-search__input::placeholder {
+  color: #A8A29E;
+}
+
+/* Tabs de filtro */
+.fb-vendors-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.fb-vendors-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  border: 1.5px solid #E7E5E4;
+  background: #fff;
+  color: #57534E;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.fb-vendors-filter-btn:hover {
+  border-color: #F97316;
+  color: #F97316;
+  background: #FFF7ED;
+}
+
+.fb-vendors-filter-btn.active {
+  background: #F97316 !important;
+  border-color: #F97316 !important;
+  color: #fff !important;
+}
+
+/* Select ordenar */
+.fb-vendors-sort {
+  margin-left: auto;
+}
+
+.fb-vendors-sort .fb-field-select {
+  padding: 8px 36px 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #E7E5E4;
+  background: #fff;
+  font-size: 13px;
+  color: #1C1917;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A8A29E' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+
+/* ── Grid de vendedores ───────────────────────────────────── */
+.fb-vendors-main {
+  padding: 48px 0 80px;
+  background: #FAFAF9;
+}
+
+.fb-vendors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .fb-vendors-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .fb-vendors-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── Vendor Card ──────────────────────────────────────────── */
+.fb-vendor-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #E7E5E4;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.fb-vendor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.1);
+}
+
+/* Cover */
+.fb-vendor-card__cover {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+}
+
+.fb-vendor-card__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.fb-vendor-card:hover .fb-vendor-card__cover-img {
+  transform: scale(1.05);
+}
+
+.fb-vendor-card__cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 3.5rem;
+}
+
+.fb-vendor-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(4px);
+  color: #92400E;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(249,115,22,.2);
+}
+
+/* Body */
+.fb-vendor-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+}
+
+.fb-vendor-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fb-vendor-card__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.fb-vendor-card__name a {
+  color: #1C1917;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.fb-vendor-card__name a:hover {
+  color: #F97316;
+}
+
+.fb-vendor-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #78716C;
+}
+
+.fb-vendor-card__desc {
+  font-size: 13.5px;
+  color: #57534E;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tags */
+.fb-vendor-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Rating */
+.fb-vendor-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fb-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.fb-star {
+  color: #D6D3D1;
+  transition: color .15s;
+}
+
+.fb-star--filled {
+  color: #F59E0B;
+}
+
+.fb-vendor-card__rating-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1C1917;
+}
+
+/* Footer */
+.fb-vendor-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #F5F5F4;
+}
+
+.fb-vendor-card__prods {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #78716C;
+  font-weight: 500;
+}
+
+
+/* ── CTA Únete ───────────────────────────────────────────── */
+.fb-vendors-join {
+  margin-top: 60px;
+}
+
+.fb-vendors-join__inner {
+  background: linear-gradient(135deg, #FFF7ED, #FEF3C7);
+  border: 1px solid #FDE68A;
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.fb-vendors-join__eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #D97706;
+  margin-bottom: 12px;
+}
+
+.fb-vendors-join__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1C1917;
+  margin: 0 0 12px;
+}
+
+.fb-vendors-join__desc {
+  color: #57534E;
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+
+
+/* ── Tag pills verdes (para vendors) ─────────────────────── */
+.fb-tag-pill--green {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.fb-tag-pill--green:hover {
+  background: #D1FAE5;
+}
