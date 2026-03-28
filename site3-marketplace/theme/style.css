@@ -4278,3 +4278,107 @@ p {
         padding: 20px 16px;
     }
 }
+
+/* ============================================================
+   WOOCOMMERCE ARCHIVE STYLES
+   ============================================================ */
+
+/* Category link hover in sidebar */
+.fb-shop-sidebar .fb-filter-list a:hover {
+    color: var(--fb-primary) !important;
+    padding-left: 4px;
+}
+
+/* Product card category label */
+.fb-product-body a[style*="letter-spacing"]:hover {
+    color: var(--fb-primary) !important;
+}
+
+/* WooCommerce notices override */
+.woocommerce-info,
+.woocommerce-message,
+.woocommerce-error {
+    background: var(--fb-white) !important;
+    border-top-color: var(--fb-primary) !important;
+    font-family: var(--fb-font) !important;
+    border-radius: var(--fb-radius-sm) !important;
+    margin-bottom: 24px !important;
+    padding: 16px 20px !important;
+}
+
+.woocommerce-info::before,
+.woocommerce-message::before {
+    color: var(--fb-primary) !important;
+}
+
+/* WooCommerce breadcrumb hide (using ours) */
+.woocommerce-breadcrumb {
+    display: none !important;
+}
+
+/* WooCommerce result count hide (using ours) */
+.woocommerce-result-count {
+    display: none !important;
+}
+
+/* WooCommerce ordering hide (using ours) */
+.woocommerce-ordering {
+    display: none !important;
+}
+
+/* Archive product grid override */
+.woocommerce ul.products {
+    display: none !important;
+}
+
+/* Add to cart AJAX feedback */
+.fb-add-to-cart.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.fb-add-to-cart.added {
+    background: var(--fb-secondary) !important;
+}
+
+/* Stock indicator */
+.fb-stock-low {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: var(--fb-accent);
+    font-family: var(--fb-font);
+    font-weight: 600;
+}
+
+/* Subcategory cards */
+.fb-subcategory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+/* Responsive archive */
+@media (max-width: 1024px) {
+    .fb-shop-layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .fb-shop-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fb-shop-sidebar {
+        display: none;
+    }
+
+    .fb-shop-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
