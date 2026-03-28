@@ -94,7 +94,7 @@ function freshbite_register_cpts() {
         ],
         'public'       => true,
         'has_archive'  => true,
-        'rewrite'      => ['slug' => 'vendedores'],
+        'rewrite'      => ['slug' => 'productores'],
         'supports'     => ['title', 'editor', 'thumbnail', 'excerpt'],
         'show_in_rest' => true,
         'menu_icon'    => 'dashicons-store',
@@ -670,3 +670,11 @@ add_action('after_switch_theme', function() {
     freshbite_register_cpts();
     flush_rewrite_rules();
 });
+
+add_filter( 'theme_page_templates', function( $templates ) {
+  $templates['page-about.php']    = 'Nosotros — FreshBite';
+  $templates['page-contact.php']  = 'Contacto — FreshBite';
+  $templates['page-vendors.php']  = 'Vendedores — FreshBite';
+  $templates['page-shop.php']     = 'Tienda — FreshBite';
+  return $templates;
+} );
