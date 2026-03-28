@@ -607,3 +607,545 @@ html { margin-top: 0 !important; }
 #tf-loader {
     display: none !important;
 }
+
+/* ============================================
+   EMERGENCY VISIBILITY FIXES — SCROLL SECTIONS
+   Añadir al FINAL de style.css si hay problemas
+   ============================================ */
+
+/* Forzar visibilidad de todas las secciones */
+.tf-metrics-strip,
+.tf-services-section,
+.tf-work-section,
+.tf-stack-section,
+.tf-process-section,
+.tf-testimonials-section,
+.tf-cta-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Cards visibles */
+.tf-service-card,
+.tf-project-card,
+.tf-testimonial-card,
+.tf-process-step {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Texto legible en todas las secciones */
+.tf-section-title,
+.tf-section-subtitle,
+.tf-section-eyebrow {
+    opacity: 1 !important;
+    color: var(--tf-white) !important;
+}
+
+/* ============================================================
+   PAGE-SERVICES.PHP — STYLES
+   ============================================================ */
+
+/* --- Services Hero --- */
+.tf-services-hero {
+    position: relative;
+    padding: 8rem 0 5rem;
+    overflow: hidden;
+}
+.tf-services-hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+.tf-services-hero .tf-container { position: relative; z-index: 1; }
+
+.tf-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.875rem;
+    color: var(--tf-gray-400);
+}
+.tf-breadcrumb a {
+    color: var(--tf-gray-400);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.tf-breadcrumb a:hover { color: var(--tf-primary-light); }
+.tf-breadcrumb__sep    { color: var(--tf-gray-500); }
+.tf-breadcrumb__current{ color: var(--tf-white); }
+
+.tf-services-hero__content { max-width: 680px; }
+
+.tf-services-hero__title {
+    font-family: var(--tf-font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--tf-white);
+    margin: 1rem 0 1.5rem;
+}
+.tf-services-hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--tf-gray-400);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+}
+.tf-services-hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+/* Stat Pills Row */
+.tf-services-hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    border-radius: 1rem;
+    width: fit-content;
+}
+.tf-stat-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+}
+.tf-stat-pill__number {
+    font-family: var(--tf-font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--tf-white);
+    line-height: 1;
+}
+.tf-stat-pill__label {
+    font-size: 0.75rem;
+    color: var(--tf-gray-400);
+    margin-top: 0.25rem;
+    white-space: nowrap;
+}
+.tf-stat-pill__divider {
+    width: 1px;
+    height: 40px;
+    background: var(--tf-border);
+    flex-shrink: 0;
+}
+
+/* --- Services Grid Section --- */
+.tf-services-grid-section {
+    padding: 6rem 0;
+    background: var(--tf-bg-2);
+}
+
+.tf-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Service Detail Card */
+.tf-service-detail-card {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.tf-service-detail-card:hover { transform: translateY(-6px); }
+
+.tf-service-detail-card__glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.tf-service-detail-card:hover .tf-service-detail-card__glow { opacity: 1; }
+
+.tf-service-detail-card__inner {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    border-radius: 1.25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s;
+}
+.tf-service-detail-card:hover .tf-service-detail-card__inner {
+    border-color: rgba(124,58,237,0.4);
+}
+.tf-service-detail-card--featured .tf-service-detail-card__inner {
+    border-color: rgba(124,58,237,0.5);
+    background: linear-gradient(135deg, var(--tf-bg-card), #1a1040);
+}
+
+.tf-service-detail-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+/* Service Icons */
+.tf-service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.tf-service-icon--violet {
+    background: rgba(124,58,237,0.15);
+    color: var(--tf-primary-light);
+}
+.tf-service-icon--cyan {
+    background: rgba(6,182,212,0.15);
+    color: var(--tf-accent);
+}
+.tf-service-icon--amber {
+    background: rgba(245,158,11,0.15);
+    color: var(--tf-accent-2);
+}
+.tf-service-icon--green {
+    background: rgba(16,185,129,0.15);
+    color: var(--tf-green);
+}
+
+/* Service Badge */
+.tf-service-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    background: rgba(124,58,237,0.2);
+    color: var(--tf-primary-light);
+    border: 1px solid rgba(124,58,237,0.3);
+}
+.tf-service-badge--new {
+    background: rgba(6,182,212,0.15);
+    color: var(--tf-accent);
+    border-color: rgba(6,182,212,0.3);
+}
+
+.tf-service-detail-card__title {
+    font-family: var(--tf-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--tf-white);
+    margin-bottom: 0.75rem;
+}
+.tf-service-detail-card__desc {
+    font-size: 0.9rem;
+    color: var(--tf-gray-400);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+/* Service Features List */
+.tf-service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+}
+.tf-service-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--tf-gray-400);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.tf-service-features li:last-child { border-bottom: none; }
+.tf-check {
+    color: var(--tf-green);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Service Card Footer */
+.tf-service-detail-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--tf-border);
+    margin-top: auto;
+}
+.tf-service-starting {
+    font-size: 0.75rem;
+    color: var(--tf-gray-500);
+    white-space: nowrap;
+}
+.tf-service-price {
+    font-family: var(--tf-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--tf-white);
+}
+.tf-service-cta {
+    margin-left: auto;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--tf-primary-light);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s, gap 0.2s;
+}
+.tf-service-cta:hover { color: var(--tf-accent); }
+
+/* --- PRICING SECTION --- */
+.tf-pricing-section {
+    position: relative;
+    padding: 6rem 0;
+    background: var(--tf-bg);
+    overflow: hidden;
+}
+.tf-pricing-section__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Pricing Toggle */
+.tf-pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+}
+.tf-pricing-toggle__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--tf-gray-500);
+    transition: color 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.tf-pricing-toggle__label--active { color: var(--tf-white); }
+
+.tf-pricing-toggle__save {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2rem;
+    background: rgba(16,185,129,0.15);
+    color: var(--tf-green);
+    border: 1px solid rgba(16,185,129,0.3);
+}
+
+.tf-pricing-toggle__btn {
+    width: 48px;
+    height: 26px;
+    border-radius: 2rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    padding: 0;
+}
+.tf-pricing-toggle__btn--active {
+    background: var(--tf-primary);
+    border-color: var(--tf-primary);
+}
+.tf-pricing-toggle__knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--tf-white);
+    transition: transform 0.3s;
+    display: block;
+}
+.tf-pricing-toggle__btn--active .tf-pricing-toggle__knob {
+    transform: translateX(22px);
+}
+
+/* Pricing Grid */
+.tf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+
+.tf-pricing-card {
+    position: relative;
+    border-radius: 1.25rem;
+}
+.tf-pricing-card__badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    background: var(--tf-primary);
+    color: var(--tf-white);
+    border-radius: 2rem;
+    white-space: nowrap;
+    z-index: 2;
+}
+.tf-pricing-card__inner {
+    padding: 2rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    border-radius: 1.25rem;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.tf-pricing-card:hover .tf-pricing-card__inner {
+    border-color: rgba(124,58,237,0.4);
+    transform: translateY(-4px);
+}
+.tf-pricing-card--featured .tf-pricing-card__inner {
+    border-color: rgba(124,58,237,0.6);
+    background: linear-gradient(145deg, #0F1629, #14103a);
+    box-shadow: 0 0 40px rgba(124,58,237,0.2);
+}
+
+.tf-pricing-plan-name {
+    font-family: var(--tf-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--tf-white);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.tf-pricing-plan-desc {
+    font-size: 0.875rem;
+    color: var(--tf-gray-400);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+.tf-pricing-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--tf-border);
+}
+.tf-price-currency {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--tf-gray-400);
+    line-height: 1;
+}
+.tf-price-amount {
+    font-family: var(--tf-font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--tf-white);
+    line-height: 1;
+    transition: all 0.3s;
+}
+.tf-price-amount--custom {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--tf-primary-light), var(--tf-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.tf-price-period {
+    font-size: 0.875rem;
+    color: var(--tf-gray-500);
+    margin-left: 0.25rem;
+}
+
+/* Pricing Features */
+.tf-pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+.tf-pricing-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.tf-pricing-feature:last-child { border-bottom: none; }
+.tf-pricing-feature--yes {
+    color: var(--tf-gray-400);
+}
+.tf-pricing-feature--yes svg { color: var(--tf-green); flex-shrink: 0; }
+.tf-pricing-feature--no {
+    color: var(--tf-gray-500);
+}
+.tf-pricing-feature--no svg { color: var(--tf-gray-500); flex-shrink: 0; }
+
+.tf-btn--full { width: 100%; justify-content: center; }
+
+.tf-pricing-note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--tf-gray-500);
+    margin-top: 2rem;
+}
+.tf-pricing-note a {
+    color: var(--tf-primary-light);
+    text-decoration: none;
+}
+.tf-pricing-note a:hover { color: var(--tf-accent); }
+
+/* --- SERVICES PROCESS --- */
+.tf-services-process {
+    padding: 6rem 0;
+    background: var(--tf-bg-2);
+}
+.tf-services-process__grid {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 3rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+.tf-process-mini-step {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.5rem;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    border-radius: 1rem;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.tf-process-mini-step:hover {
+    border-color: rgba(124,58,237,0.4);
+    transform: translateY(-4px);
+}
+.tf-process-mini-step__number {
+    font-family: var(--tf-font-mono);
+    font-size: 2rem;
+    font-weight
