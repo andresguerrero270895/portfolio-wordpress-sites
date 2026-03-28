@@ -1,0 +1,564 @@
+/*
+ Theme Name:   TechFlow Theme
+ Theme URI:    https://techflowagency.com
+ Description:  Premium Software Agency WordPress Theme
+ Author:       TechFlow Agency
+ Version:      1.0.0
+ Text Domain:  techflow-theme
+*/
+
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+:root {
+    /* Background */
+    --tf-bg:              #05070F;
+    --tf-bg-2:            #0A0E1A;
+    --tf-bg-card:         #0F1629;
+    --tf-bg-card-hover:   #141D35;
+
+    /* Brand */
+    --tf-primary:         #7C3AED;
+    --tf-primary-light:   #8B5CF6;
+    --tf-primary-glow:    rgba(124,58,237,0.35);
+    --tf-accent:          #06B6D4;
+    --tf-accent-glow:     rgba(6,182,212,0.35);
+    --tf-accent-2:        #F59E0B;
+    --tf-green:           #10B981;
+    --tf-red:             #EF4444;
+
+    /* Text */
+    --tf-white:           #FFFFFF;
+    --tf-gray-50:         #F8FAFC;
+    --tf-gray-200:        #E2E8F0;
+    --tf-gray-400:        #94A3B8;
+    --tf-gray-500:        #64748B;
+    --tf-gray-600:        #475569;
+
+    /* UI */
+    --tf-border:          rgba(124,58,237,0.2);
+    --tf-border-subtle:   rgba(255,255,255,0.06);
+    --tf-border-hover:    rgba(124,58,237,0.5);
+
+    /* Typography */
+    --tf-font:            'Inter', sans-serif;
+    --tf-font-display:    'Sora', 'Inter', sans-serif;
+    --tf-font-mono:       'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Spacing */
+    --tf-px:              clamp(1.5rem, 5vw, 5rem);
+    --tf-section-py:      clamp(4rem, 8vw, 7rem);
+    --tf-container:       1280px;
+    --tf-radius:          16px;
+    --tf-radius-sm:       10px;
+    --tf-radius-lg:       24px;
+    --tf-radius-xl:       32px;
+
+    /* Transitions */
+    --tf-ease:            cubic-bezier(0.4, 0, 0.2, 1);
+    --tf-ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+    --tf-duration:        0.3s;
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--tf-font) !important;
+    background: var(--tf-bg) !important;
+    color: var(--tf-gray-200) !important;
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin: 0 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ============================================================
+   ASTRA OVERRIDES
+============================================================ */
+#masthead,
+.site-header,
+.ast-desktop-header,
+.ast-mobile-header-wrap    { display: none !important; }
+
+#colophon,
+.site-footer               { display: none !important; }
+
+#primary,
+#content,
+.entry-content,
+.ast-container             { padding: 0 !important; max-width: none !important; }
+
+.ast-grid-common-col       { max-width: none !important; }
+
+/* ============================================================
+   LAYOUT UTILITIES
+============================================================ */
+.tf-container {
+    width: 100%;
+    max-width: var(--tf-container);
+    margin-inline: auto;
+    padding-inline: var(--tf-px);
+}
+
+.tf-section {
+    padding-block: var(--tf-section-py);
+}
+
+.tf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.tf-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.tf-grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+
+.tf-flex         { display: flex; }
+.tf-flex-center  { display: flex; align-items: center; justify-content: center; }
+.tf-flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+.tf-display {
+    font-family: var(--tf-font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--tf-white);
+}
+
+.tf-h1 {
+    font-family: var(--tf-font-display);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--tf-white);
+}
+
+.tf-h2 {
+    font-family: var(--tf-font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--tf-white);
+}
+
+.tf-h3 {
+    font-family: var(--tf-font-display);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--tf-white);
+}
+
+.tf-body-lg { font-size: 1.125rem; line-height: 1.75; color: var(--tf-gray-400); }
+.tf-body    { font-size: 1rem;     line-height: 1.7;  color: var(--tf-gray-400); }
+.tf-body-sm { font-size: .875rem;  line-height: 1.6;  color: var(--tf-gray-500); }
+.tf-mono    { font-family: var(--tf-font-mono); }
+
+/* Gradient text */
+.tf-gradient-text {
+    background: linear-gradient(135deg, var(--tf-primary-light) 0%, var(--tf-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.tf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .875rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: all var(--tf-duration) var(--tf-ease);
+    text-decoration: none;
+    border: none;
+    font-family: var(--tf-font);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary */
+.tf-btn-primary {
+    background: linear-gradient(135deg, var(--tf-primary) 0%, var(--tf-primary-light) 100%);
+    color: var(--tf-white);
+    box-shadow: 0 0 0 0 var(--tf-primary-glow);
+}
+.tf-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--tf-primary-light) 0%, var(--tf-accent) 100%);
+    opacity: 0;
+    transition: opacity var(--tf-duration) var(--tf-ease);
+}
+.tf-btn-primary:hover::before  { opacity: 1; }
+.tf-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--tf-primary-glow);
+}
+.tf-btn-primary span { position: relative; z-index: 1; }
+
+/* Ghost */
+.tf-btn-ghost {
+    background: transparent;
+    color: var(--tf-white);
+    border: 1px solid var(--tf-border-subtle);
+}
+.tf-btn-ghost:hover {
+    border-color: var(--tf-border-hover);
+    background: rgba(124,58,237,0.08);
+    transform: translateY(-2px);
+}
+
+/* Accent */
+.tf-btn-accent {
+    background: linear-gradient(135deg, var(--tf-accent) 0%, #0EA5E9 100%);
+    color: var(--tf-bg);
+    font-weight: 700;
+}
+.tf-btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--tf-accent-glow);
+}
+
+/* Icon only */
+.tf-btn-icon {
+    width: 44px; height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border-subtle);
+    color: var(--tf-gray-400);
+}
+.tf-btn-icon:hover {
+    border-color: var(--tf-border-hover);
+    color: var(--tf-white);
+}
+
+/* ============================================================
+   BADGES & TAGS
+============================================================ */
+.tf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem 1rem;
+    border-radius: 50px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.tf-badge-primary {
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.3);
+    color: var(--tf-primary-light);
+}
+
+.tf-badge-accent {
+    background: rgba(6,182,212,0.12);
+    border: 1px solid rgba(6,182,212,0.3);
+    color: var(--tf-accent);
+}
+
+.tf-badge-green {
+    background: rgba(16,185,129,0.12);
+    border: 1px solid rgba(16,185,129,0.3);
+    color: var(--tf-green);
+}
+
+.tf-badge-dot::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: tf-pulse 2s infinite;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+.tf-card {
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border-subtle);
+    border-radius: var(--tf-radius);
+    padding: 1.75rem;
+    transition: all var(--tf-duration) var(--tf-ease);
+    position: relative;
+    overflow: hidden;
+}
+
+.tf-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--tf-duration) var(--tf-ease);
+}
+
+.tf-card:hover {
+    border-color: var(--tf-border-hover);
+    background: var(--tf-bg-card-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+                0 0 0 1px var(--tf-border-hover),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.tf-card:hover::before { opacity: 1; }
+
+/* Glass card */
+.tf-card-glass {
+    background: rgba(15,22,41,0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--tf-border-subtle);
+    border-radius: var(--tf-radius-lg);
+}
+
+/* ============================================================
+   SECTION HEADERS
+============================================================ */
+.tf-section-header {
+    margin-bottom: 3.5rem;
+}
+.tf-section-header.center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tf-section-header .tf-badge {
+    margin-bottom: 1rem;
+}
+.tf-section-header .tf-h2 {
+    margin-bottom: .75rem;
+}
+.tf-section-header .tf-body-lg {
+    max-width: 560px;
+}
+
+/* ============================================================
+   DIVIDER LINES
+============================================================ */
+.tf-divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--tf-border-subtle) 30%,
+        var(--tf-border) 50%,
+        var(--tf-border-subtle) 70%,
+        transparent 100%
+    );
+    margin-block: 1px;
+}
+
+/* ============================================================
+   FORM ELEMENTS
+============================================================ */
+.tf-input {
+    width: 100%;
+    padding: .85rem 1.25rem;
+    background: var(--tf-bg-card);
+    border: 1.5px solid var(--tf-border-subtle);
+    border-radius: var(--tf-radius-sm);
+    color: var(--tf-white);
+    font-family: var(--tf-font);
+    font-size: .95rem;
+    transition: border-color var(--tf-duration), box-shadow var(--tf-duration);
+}
+.tf-input::placeholder { color: var(--tf-gray-500); }
+.tf-input:focus {
+    outline: none;
+    border-color: var(--tf-primary);
+    box-shadow: 0 0 0 3px var(--tf-primary-glow);
+}
+
+.tf-label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--tf-gray-400);
+    margin-bottom: .5rem;
+    letter-spacing: .02em;
+}
+
+/* ============================================================
+   NOISE OVERLAY — hero texture
+============================================================ */
+.tf-noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: .4;
+}
+
+/* ============================================================
+   GRID LINES — decorativo tipo Linear
+============================================================ */
+.tf-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+}
+
+/* ============================================================
+   GLOW ORBS — decorativos
+============================================================ */
+.tf-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+.tf-orb-purple {
+    background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
+}
+.tf-orb-cyan {
+    background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+}
+.tf-orb-amber {
+    background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+@keyframes tf-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .6; transform: scale(1.2); }
+}
+
+@keyframes tf-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+
+@keyframes tf-glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px var(--tf-primary-glow); }
+    50%       { box-shadow: 0 0 40px var(--tf-primary-glow), 0 0 80px var(--tf-primary-glow); }
+}
+
+@keyframes tf-shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes tf-fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tf-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes tf-slide-right {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tf-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes tf-typing-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+@keyframes tf-gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes tf-count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll animations */
+.tf-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity .7s var(--tf-ease), transform .7s var(--tf-ease);
+}
+.tf-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tf-reveal-delay-1 { transition-delay: .1s; }
+.tf-reveal-delay-2 { transition-delay: .2s; }
+.tf-reveal-delay-3 { transition-delay: .3s; }
+.tf-reveal-delay-4 { transition-delay: .4s; }
+.tf-reveal-delay-5 { transition-delay: .5s; }
+
+/* ============================================================
+   SCROLLBAR CUSTOM
+============================================================ */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--tf-bg); }
+::-webkit-scrollbar-thumb {
+    background: var(--tf-primary);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--tf-primary-light); }
+
+/* ============================================================
+   SELECTION
+============================================================ */
+::selection {
+    background: rgba(124,58,237,0.3);
+    color: var(--tf-white);
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES
+============================================================ */
+@media (max-width: 1024px) {
+    .tf-grid-4 { grid-template-columns: repeat(2,1fr); }
+    .tf-grid-3 { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+    .tf-grid-2 { grid-template-columns: 1fr; }
+    .tf-grid-3 { grid-template-columns: 1fr; }
+    .tf-grid-4 { grid-template-columns: 1fr; }
+    .tf-section-header.center .tf-body-lg { max-width: 100%; }
+}
+@media (max-width: 480px) {
+    :root { --tf-px: 1.25rem; }
+}
