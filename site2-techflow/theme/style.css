@@ -643,8 +643,9 @@ html { margin-top: 0 !important; }
     color: var(--tf-white) !important;
 }
 
+
 /* ============================================================
-   PAGE-SERVICES.PHP — STYLES
+   PAGE-SERVICES — COMPLETE STYLES FIX
    ============================================================ */
 
 /* --- Services Hero --- */
@@ -679,7 +680,6 @@ html { margin-top: 0 !important; }
 .tf-breadcrumb__current{ color: var(--tf-white); }
 
 .tf-services-hero__content { max-width: 680px; }
-
 .tf-services-hero__title {
     font-family: var(--tf-font-display);
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -702,11 +702,10 @@ html { margin-top: 0 !important; }
     margin-bottom: 4rem;
 }
 
-/* Stat Pills Row */
+/* Stat Pills */
 .tf-services-hero__stats {
     display: flex;
     align-items: center;
-    gap: 0;
     flex-wrap: wrap;
     padding: 1.5rem 2rem;
     background: var(--tf-bg-card);
@@ -740,12 +739,11 @@ html { margin-top: 0 !important; }
     flex-shrink: 0;
 }
 
-/* --- Services Grid Section --- */
+/* --- Services Grid --- */
 .tf-services-grid-section {
     padding: 6rem 0;
     background: var(--tf-bg-2);
 }
-
 .tf-services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -753,7 +751,6 @@ html { margin-top: 0 !important; }
     margin-top: 3rem;
 }
 
-/* Service Detail Card */
 .tf-service-detail-card {
     position: relative;
     border-radius: 1.25rem;
@@ -761,18 +758,16 @@ html { margin-top: 0 !important; }
     transition: transform 0.3s ease;
 }
 .tf-service-detail-card:hover { transform: translateY(-6px); }
-
 .tf-service-detail-card__glow {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent 60%);
     pointer-events: none;
     z-index: 0;
-    transition: opacity 0.3s;
     opacity: 0;
+    transition: opacity 0.3s;
 }
 .tf-service-detail-card:hover .tf-service-detail-card__glow { opacity: 1; }
-
 .tf-service-detail-card__inner {
     position: relative;
     z-index: 1;
@@ -792,7 +787,6 @@ html { margin-top: 0 !important; }
     border-color: rgba(124,58,237,0.5);
     background: linear-gradient(135deg, var(--tf-bg-card), #1a1040);
 }
-
 .tf-service-detail-card__header {
     display: flex;
     align-items: flex-start;
@@ -810,24 +804,11 @@ html { margin-top: 0 !important; }
     justify-content: center;
     flex-shrink: 0;
 }
-.tf-service-icon--violet {
-    background: rgba(124,58,237,0.15);
-    color: var(--tf-primary-light);
-}
-.tf-service-icon--cyan {
-    background: rgba(6,182,212,0.15);
-    color: var(--tf-accent);
-}
-.tf-service-icon--amber {
-    background: rgba(245,158,11,0.15);
-    color: var(--tf-accent-2);
-}
-.tf-service-icon--green {
-    background: rgba(16,185,129,0.15);
-    color: var(--tf-green);
-}
+.tf-service-icon--violet { background: rgba(124,58,237,0.15); color: var(--tf-primary-light); }
+.tf-service-icon--cyan   { background: rgba(6,182,212,0.15);  color: var(--tf-accent); }
+.tf-service-icon--amber  { background: rgba(245,158,11,0.15); color: var(--tf-accent-2); }
+.tf-service-icon--green  { background: rgba(16,185,129,0.15); color: var(--tf-green); }
 
-/* Service Badge */
 .tf-service-badge {
     font-size: 0.7rem;
     font-weight: 700;
@@ -859,7 +840,6 @@ html { margin-top: 0 !important; }
     margin-bottom: 1.5rem;
 }
 
-/* Service Features List */
 .tf-service-features {
     list-style: none;
     padding: 0;
@@ -876,13 +856,8 @@ html { margin-top: 0 !important; }
     border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .tf-service-features li:last-child { border-bottom: none; }
-.tf-check {
-    color: var(--tf-green);
-    font-size: 0.9rem;
-    flex-shrink: 0;
-}
+.tf-check { color: var(--tf-green); font-size: 0.9rem; flex-shrink: 0; }
 
-/* Service Card Footer */
 .tf-service-detail-card__footer {
     display: flex;
     align-items: center;
@@ -891,11 +866,7 @@ html { margin-top: 0 !important; }
     border-top: 1px solid var(--tf-border);
     margin-top: auto;
 }
-.tf-service-starting {
-    font-size: 0.75rem;
-    color: var(--tf-gray-500);
-    white-space: nowrap;
-}
+.tf-service-starting { font-size: 0.75rem; color: var(--tf-gray-500); white-space: nowrap; }
 .tf-service-price {
     font-family: var(--tf-font-display);
     font-size: 1.25rem;
@@ -909,11 +880,11 @@ html { margin-top: 0 !important; }
     color: var(--tf-primary-light);
     text-decoration: none;
     white-space: nowrap;
-    transition: color 0.2s, gap 0.2s;
+    transition: color 0.2s;
 }
 .tf-service-cta:hover { color: var(--tf-accent); }
 
-/* --- PRICING SECTION --- */
+/* --- PRICING --- */
 .tf-pricing-section {
     position: relative;
     padding: 6rem 0;
@@ -925,8 +896,6 @@ html { margin-top: 0 !important; }
     inset: 0;
     pointer-events: none;
 }
-
-/* Pricing Toggle */
 .tf-pricing-toggle {
     display: flex;
     align-items: center;
@@ -945,7 +914,6 @@ html { margin-top: 0 !important; }
     gap: 0.5rem;
 }
 .tf-pricing-toggle__label--active { color: var(--tf-white); }
-
 .tf-pricing-toggle__save {
     font-size: 0.7rem;
     font-weight: 700;
@@ -955,7 +923,6 @@ html { margin-top: 0 !important; }
     color: var(--tf-green);
     border: 1px solid rgba(16,185,129,0.3);
 }
-
 .tf-pricing-toggle__btn {
     width: 48px;
     height: 26px;
@@ -986,7 +953,6 @@ html { margin-top: 0 !important; }
     transform: translateX(22px);
 }
 
-/* Pricing Grid */
 .tf-pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -994,7 +960,6 @@ html { margin-top: 0 !important; }
     margin-top: 3rem;
     align-items: start;
 }
-
 .tf-pricing-card {
     position: relative;
     border-radius: 1.25rem;
@@ -1031,7 +996,6 @@ html { margin-top: 0 !important; }
     background: linear-gradient(145deg, #0F1629, #14103a);
     box-shadow: 0 0 40px rgba(124,58,237,0.2);
 }
-
 .tf-pricing-plan-name {
     font-family: var(--tf-font-display);
     font-size: 1.25rem;
@@ -1080,8 +1044,6 @@ html { margin-top: 0 !important; }
     color: var(--tf-gray-500);
     margin-left: 0.25rem;
 }
-
-/* Pricing Features */
 .tf-pricing-features {
     list-style: none;
     padding: 0;
@@ -1096,14 +1058,10 @@ html { margin-top: 0 !important; }
     border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .tf-pricing-feature:last-child { border-bottom: none; }
-.tf-pricing-feature--yes {
-    color: var(--tf-gray-400);
-}
+.tf-pricing-feature--yes { color: var(--tf-gray-400); }
 .tf-pricing-feature--yes svg { color: var(--tf-green); flex-shrink: 0; }
-.tf-pricing-feature--no {
-    color: var(--tf-gray-500);
-}
-.tf-pricing-feature--no svg { color: var(--tf-gray-500); flex-shrink: 0; }
+.tf-pricing-feature--no  { color: var(--tf-gray-500); }
+.tf-pricing-feature--no  svg { color: var(--tf-gray-500); flex-shrink: 0; }
 
 .tf-btn--full { width: 100%; justify-content: center; }
 
@@ -1113,13 +1071,10 @@ html { margin-top: 0 !important; }
     color: var(--tf-gray-500);
     margin-top: 2rem;
 }
-.tf-pricing-note a {
-    color: var(--tf-primary-light);
-    text-decoration: none;
-}
+.tf-pricing-note a { color: var(--tf-primary-light); text-decoration: none; }
 .tf-pricing-note a:hover { color: var(--tf-accent); }
 
-/* --- SERVICES PROCESS --- */
+/* --- PROCESS MINI --- */
 .tf-services-process {
     padding: 6rem 0;
     background: var(--tf-bg-2);
@@ -1148,4 +1103,168 @@ html { margin-top: 0 !important; }
 .tf-process-mini-step__number {
     font-family: var(--tf-font-mono);
     font-size: 2rem;
-    font-weight
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--tf-primary-light), var(--tf-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+.tf-process-mini-step__content h3 {
+    font-family: var(--tf-font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--tf-white);
+    margin-bottom: 0.5rem;
+}
+.tf-process-mini-step__content p {
+    font-size: 0.875rem;
+    color: var(--tf-gray-400);
+    line-height: 1.6;
+    margin: 0;
+}
+.tf-process-mini-connector {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--tf-primary), var(--tf-accent));
+    flex-shrink: 0;
+    opacity: 0.4;
+}
+
+/* --- FAQ --- */
+.tf-faq-section {
+    padding: 6rem 0;
+    background: var(--tf-bg);
+}
+.tf-faq-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+}
+.tf-faq-header .tf-section-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+.tf-faq-header .tf-section-subtitle a {
+    color: var(--tf-primary-light);
+    text-decoration: none;
+}
+.tf-faq-header .tf-section-subtitle a:hover { color: var(--tf-accent); }
+
+.tf-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.tf-faq-item {
+    border-bottom: 1px solid var(--tf-border);
+    overflow: hidden;
+}
+.tf-faq-item:first-child { border-top: 1px solid var(--tf-border); }
+
+.tf-faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--tf-white);
+    font-family: var(--tf-font);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.tf-faq-question:hover { color: var(--tf-primary-light); }
+.tf-faq-question span:first-child { flex: 1; }
+
+.tf-faq-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.tf-faq-item--open .tf-faq-icon {
+    background: var(--tf-primary);
+    border-color: var(--tf-primary);
+    transform: rotate(180deg);
+}
+
+.tf-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.tf-faq-answer p {
+    padding: 0 0 1.25rem;
+    font-size: 0.9rem;
+    color: var(--tf-gray-400);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- CTA STRIP --- */
+.tf-services-cta {
+    padding: 5rem 0;
+    background: var(--tf-bg-2);
+}
+.tf-services-cta__inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(124,58,237,0.3);
+    background: linear-gradient(135deg, #0d1030, #120d2e);
+    padding: 4rem;
+    text-align: center;
+}
+.tf-services-cta__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.tf-services-cta__content { position: relative; z-index: 1; }
+.tf-services-cta__title {
+    font-family: var(--tf-font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--tf-white);
+    margin-bottom: 1rem;
+}
+.tf-services-cta__desc {
+    font-size: 1.125rem;
+    color: var(--tf-gray-400);
+    margin-bottom: 2.5rem;
+}
+.tf-services-cta__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .tf-services-grid    { grid-template-columns: repeat(2, 1fr); }
+    .tf-pricing-grid     { grid-template-columns: repeat(2, 1fr); }
+    .tf-faq-inner        { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+    .tf-services-grid    { grid-template-columns: 1fr; }
+    .tf-pricing-grid     { grid-template-columns: 1fr; }
+    .tf-services-hero__stats { width: 100%; justify-content: center; }
+    .tf-stat-pill        { padding: 0 1rem; }
+    .tf-services-cta__inner { padding: 2rem 1.5rem; }
+    .tf-services-process__grid { flex-direction: column; }
+    .tf-process-mini-connector { width: 2px; height: 40px; }
+}
