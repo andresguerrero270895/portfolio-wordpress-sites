@@ -1,7 +1,7 @@
 <?php
 /**
  * TechFlow Agency — functions.php
- * Premium WordPress Theme Functions
+ * Developer: Andres Esteban Guerrero Rios
  */
 
 // ============================================================
@@ -23,7 +23,6 @@ function techflow_setup() {
         'services' => __( 'Services Menu',      'techflow-theme' ),
     ]);
 
-    // Image sizes
     add_image_size( 'tf-project-thumb',  800, 540,  true );
     add_image_size( 'tf-project-hero',   1400, 700, true );
     add_image_size( 'tf-team-avatar',    400,  400,  true );
@@ -60,6 +59,19 @@ function techflow_enqueue_assets() {
         $full = get_stylesheet_directory() . $path;
         if ( file_exists( $full ) ) {
             wp_enqueue_style( $handle, get_stylesheet_directory_uri() . $path, ['techflow-style'], filemtime($full) );
+        }
+    }
+
+    // ✅ Front page CSS — AQUÍ, en el lugar correcto
+    if ( is_front_page() ) {
+        $fp_css = get_stylesheet_directory() . '/assets/css/front-page.css';
+        if ( file_exists( $fp_css ) ) {
+            wp_enqueue_style(
+                'tf-front-page',
+                get_stylesheet_directory_uri() . '/assets/css/front-page.css',
+                ['techflow-style'],
+                filemtime( $fp_css )
+            );
         }
     }
 
@@ -104,7 +116,7 @@ function techflow_register_cpt_projects() {
         'public'       => true,
         'show_in_rest' => true,
         'has_archive'  => true,
-        'rewrite' => [ 'slug' => 'projects' ],
+        'rewrite'      => [ 'slug' => 'projects' ],
         'menu_icon'    => 'dashicons-portfolio',
         'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
         'taxonomies'   => [ 'tf_category', 'tf_tech' ],
@@ -126,7 +138,7 @@ function techflow_register_cpt_services() {
         'public'       => true,
         'show_in_rest' => true,
         'has_archive'  => false,
-        'rewrite' => ['slug' => 'our-services'],
+        'rewrite'      => ['slug' => 'our-services'],
         'menu_icon'    => 'dashicons-admin-tools',
         'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
     ]);
@@ -175,7 +187,6 @@ add_action( 'init', 'techflow_register_cpt_team' );
 // TAXONOMIES
 // ============================================================
 function techflow_register_taxonomies() {
-    // Project Category
     register_taxonomy( 'tf_category', 'tf_project', [
         'labels'       => [
             'name'          => 'Project Categories',
@@ -187,7 +198,6 @@ function techflow_register_taxonomies() {
         'rewrite'      => [ 'slug' => 'project-category' ],
     ]);
 
-    // Tech Stack
     register_taxonomy( 'tf_tech', 'tf_project', [
         'labels'       => [
             'name'          => 'Technologies',
@@ -205,60 +215,34 @@ add_action( 'init', 'techflow_register_taxonomies' );
 // META BOXES — PROJECTS
 // ============================================================
 function techflow_add_meta_boxes() {
-    add_meta_box(
-        'tf_project_details',
-        'Project Details',
-        'techflow_project_meta_callback',
-        'tf_project',
-        'normal',
-        'high'
-    );
-    add_meta_box(
-        'tf_testimonial_details',
-        'Testimonial Details',
-        'techflow_testimonial_meta_callback',
-        'tf_testimonial',
-        'normal',
-        'high'
-    );
-    add_meta_box(
-        'tf_team_details',
-        'Team Member Details',
-        'techflow_team_meta_callback',
-        'tf_team',
-        'normal',
-        'high'
-    );
+    add_meta_box( 'tf_project_details',     'Project Details',      'techflow_project_meta_callback',     'tf_project',     'normal', 'high' );
+    add_meta_box( 'tf_testimonial_details', 'Testimonial Details',  'techflow_testimonial_meta_callback', 'tf_testimonial', 'normal', 'high' );
+    add_meta_box( 'tf_team_details',        'Team Member Details',  'techflow_team_meta_callback',        'tf_team',        'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'techflow_add_meta_boxes' );
 
-// Project meta callback
 function techflow_project_meta_callback( $post ) {
     wp_nonce_field( 'tf_project_nonce', 'tf_project_nonce_field' );
     $fields = [
-        '_tf_project_url'      => [ 'label' => 'Live URL',           'type' => 'url',    'placeholder' => 'https://...' ],
-        '_tf_project_github'   => [ 'label' => 'GitHub URL',         'type' => 'url',    'placeholder' => 'https://github.com/...' ],
-        '_tf_project_client'   => [ 'label' => 'Client Name',        'type' => 'text',   'placeholder' => 'Acme Corp' ],
-        '_tf_project_year'     => [ 'label' => 'Year',               'type' => 'text',   'placeholder' => '2024' ],
-        '_tf_project_duration' => [ 'label' => 'Duration',           'type' => 'text',   'placeholder' => '3 months' ],
-        '_tf_project_result'   => [ 'label' => 'Key Result',         'type' => 'text',   'placeholder' => '+340% conversion' ],
-        '_tf_project_stack'    => [ 'label' => 'Tech Stack (comma)', 'type' => 'text',   'placeholder' => 'WordPress, React, Node.js' ],
-        '_tf_project_featured' => [ 'label' => 'Featured (1=yes)',   'type' => 'text',   'placeholder' => '1' ],
-        '_tf_project_color'    => [ 'label' => 'Accent Color (hex)', 'type' => 'color',  'placeholder' => '#7C3AED' ],
+        '_tf_project_url'      => [ 'label' => 'Live URL',           'type' => 'url',   'placeholder' => 'https://...' ],
+        '_tf_project_github'   => [ 'label' => 'GitHub URL',         'type' => 'url',   'placeholder' => 'https://github.com/...' ],
+        '_tf_project_client'   => [ 'label' => 'Client Name',        'type' => 'text',  'placeholder' => 'Acme Corp' ],
+        '_tf_project_year'     => [ 'label' => 'Year',               'type' => 'text',  'placeholder' => '2024' ],
+        '_tf_project_duration' => [ 'label' => 'Duration',           'type' => 'text',  'placeholder' => '3 months' ],
+        '_tf_project_result'   => [ 'label' => 'Key Result',         'type' => 'text',  'placeholder' => '+340% conversion' ],
+        '_tf_project_stack'    => [ 'label' => 'Tech Stack (comma)', 'type' => 'text',  'placeholder' => 'WordPress, React, Node.js' ],
+        '_tf_project_featured' => [ 'label' => 'Featured (1=yes)',   'type' => 'text',  'placeholder' => '1' ],
+        '_tf_project_color'    => [ 'label' => 'Accent Color (hex)', 'type' => 'color', 'placeholder' => '#7C3AED' ],
     ];
     echo '<table class="form-table">';
     foreach ( $fields as $key => $field ) {
         $value = get_post_meta( $post->ID, $key, true );
         echo '<tr><th><label for="' . esc_attr($key) . '">' . esc_html($field['label']) . '</label></th>';
-        echo '<td><input type="' . esc_attr($field['type']) . '" id="' . esc_attr($key) . '"
-            name="' . esc_attr($key) . '" value="' . esc_attr($value) . '"
-            placeholder="' . esc_attr($field['placeholder']) . '"
-            style="width:100%;max-width:400px"></td></tr>';
+        echo '<td><input type="' . esc_attr($field['type']) . '" id="' . esc_attr($key) . '" name="' . esc_attr($key) . '" value="' . esc_attr($value) . '" placeholder="' . esc_attr($field['placeholder']) . '" style="width:100%;max-width:400px"></td></tr>';
     }
     echo '</table>';
 }
 
-// Testimonial meta callback
 function techflow_testimonial_meta_callback( $post ) {
     wp_nonce_field( 'tf_testimonial_nonce', 'tf_testimonial_nonce_field' );
     $fields = [
@@ -271,33 +255,26 @@ function techflow_testimonial_meta_callback( $post ) {
     foreach ( $fields as $key => $field ) {
         $value = get_post_meta( $post->ID, $key, true );
         echo '<tr><th><label for="' . esc_attr($key) . '">' . esc_html($field['label']) . '</label></th>';
-        echo '<td><input type="text" id="' . esc_attr($key) . '"
-            name="' . esc_attr($key) . '" value="' . esc_attr($value) . '"
-            placeholder="' . esc_attr($field['placeholder']) . '"
-            style="width:100%;max-width:400px"></td></tr>';
+        echo '<td><input type="text" id="' . esc_attr($key) . '" name="' . esc_attr($key) . '" value="' . esc_attr($value) . '" placeholder="' . esc_attr($field['placeholder']) . '" style="width:100%;max-width:400px"></td></tr>';
     }
     echo '</table>';
 }
 
-// Team meta callback
 function techflow_team_meta_callback( $post ) {
     wp_nonce_field( 'tf_team_nonce', 'tf_team_nonce_field' );
     $fields = [
-        '_tf_team_role'      => [ 'label' => 'Role',          'placeholder' => 'Lead Developer' ],
-        '_tf_team_linkedin'  => [ 'label' => 'LinkedIn URL',  'placeholder' => 'https://linkedin.com/in/...' ],
-        '_tf_team_github'    => [ 'label' => 'GitHub URL',    'placeholder' => 'https://github.com/...' ],
-        '_tf_team_twitter'   => [ 'label' => 'Twitter/X URL', 'placeholder' => 'https://twitter.com/...' ],
-        '_tf_team_skills'    => [ 'label' => 'Skills (comma)','placeholder' => 'WordPress, PHP, React' ],
-        '_tf_team_order'     => [ 'label' => 'Display Order', 'placeholder' => '1' ],
+        '_tf_team_role'     => [ 'label' => 'Role',           'placeholder' => 'Lead Developer' ],
+        '_tf_team_linkedin' => [ 'label' => 'LinkedIn URL',   'placeholder' => 'https://linkedin.com/in/...' ],
+        '_tf_team_github'   => [ 'label' => 'GitHub URL',     'placeholder' => 'https://github.com/...' ],
+        '_tf_team_twitter'  => [ 'label' => 'Twitter/X URL',  'placeholder' => 'https://twitter.com/...' ],
+        '_tf_team_skills'   => [ 'label' => 'Skills (comma)', 'placeholder' => 'WordPress, PHP, React' ],
+        '_tf_team_order'    => [ 'label' => 'Display Order',  'placeholder' => '1' ],
     ];
     echo '<table class="form-table">';
     foreach ( $fields as $key => $field ) {
         $value = get_post_meta( $post->ID, $key, true );
         echo '<tr><th><label for="' . esc_attr($key) . '">' . esc_html($field['label']) . '</label></th>';
-        echo '<td><input type="text" id="' . esc_attr($key) . '"
-            name="' . esc_attr($key) . '" value="' . esc_attr($value) . '"
-            placeholder="' . esc_attr($field['placeholder']) . '"
-            style="width:100%;max-width:400px"></td></tr>';
+        echo '<td><input type="text" id="' . esc_attr($key) . '" name="' . esc_attr($key) . '" value="' . esc_attr($value) . '" placeholder="' . esc_attr($field['placeholder']) . '" style="width:100%;max-width:400px"></td></tr>';
     }
     echo '</table>';
 }
@@ -309,7 +286,6 @@ function techflow_save_meta_boxes( $post_id ) {
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return;
     if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
-    // Project fields
     if ( isset($_POST['tf_project_nonce_field']) &&
          wp_verify_nonce($_POST['tf_project_nonce_field'], 'tf_project_nonce') ) {
         $project_fields = [
@@ -324,7 +300,6 @@ function techflow_save_meta_boxes( $post_id ) {
         }
     }
 
-    // Testimonial fields
     if ( isset($_POST['tf_testimonial_nonce_field']) &&
          wp_verify_nonce($_POST['tf_testimonial_nonce_field'], 'tf_testimonial_nonce') ) {
         $t_fields = [
@@ -338,7 +313,6 @@ function techflow_save_meta_boxes( $post_id ) {
         }
     }
 
-    // Team fields
     if ( isset($_POST['tf_team_nonce_field']) &&
          wp_verify_nonce($_POST['tf_team_nonce_field'], 'tf_team_nonce') ) {
         $team_fields = [
@@ -360,19 +334,19 @@ add_action( 'save_post', 'techflow_save_meta_boxes' );
 function techflow_handle_contact() {
     check_ajax_referer( 'tf_nonce', 'nonce' );
 
-    $name    = sanitize_text_field( $_POST['name']    ?? '' );
-    $email   = sanitize_email(      $_POST['email']   ?? '' );
-    $company = sanitize_text_field( $_POST['company'] ?? '' );
-    $budget  = sanitize_text_field( $_POST['budget']  ?? '' );
-    $service = sanitize_text_field( $_POST['service'] ?? '' );
-    $message = sanitize_textarea_field( $_POST['message'] ?? '' );
+    $name    = sanitize_text_field(    $_POST['name']    ?? '' );
+    $email   = sanitize_email(         $_POST['email']   ?? '' );
+    $company = sanitize_text_field(    $_POST['company'] ?? '' );
+    $budget  = sanitize_text_field(    $_POST['budget']  ?? '' );
+    $service = sanitize_text_field(    $_POST['service'] ?? '' );
+    $message = sanitize_textarea_field($_POST['message'] ?? '' );
 
     if ( ! $name || ! $email || ! is_email($email) ) {
         wp_send_json_error( 'Please fill in all required fields.' );
     }
 
-    $to      = get_option('admin_email');
-    $subject = "New Project Inquiry from {$name} — TechFlow";
+    $to      = 'guerrero9510@hotmail.com';
+    $subject = "New Project Inquiry from {$name}";
     $body    = "Name: {$name}\nEmail: {$email}\nCompany: {$company}\n";
     $body   .= "Budget: {$budget}\nService: {$service}\n\nMessage:\n{$message}";
     $headers = [ 'Content-Type: text/plain; charset=UTF-8', "Reply-To: {$email}" ];
@@ -417,15 +391,15 @@ function techflow_filter_projects() {
         while ( $projects->have_posts() ) {
             $projects->the_post();
             $output[] = [
-                'id'       => get_the_ID(),
-                'title'    => get_the_title(),
-                'excerpt'  => get_the_excerpt(),
-                'url'      => get_permalink(),
-                'thumb'    => get_the_post_thumbnail_url( get_the_ID(), 'tf-project-thumb' ),
-                'result'   => get_post_meta( get_the_ID(), '_tf_project_result', true ),
-                'stack'    => get_post_meta( get_the_ID(), '_tf_project_stack',  true ),
-                'color'    => get_post_meta( get_the_ID(), '_tf_project_color',  true ) ?: '#7C3AED',
-                'year'     => get_post_meta( get_the_ID(), '_tf_project_year',   true ),
+                'id'      => get_the_ID(),
+                'title'   => get_the_title(),
+                'excerpt' => get_the_excerpt(),
+                'url'     => get_permalink(),
+                'thumb'   => get_the_post_thumbnail_url( get_the_ID(), 'tf-project-thumb' ),
+                'result'  => get_post_meta( get_the_ID(), '_tf_project_result', true ),
+                'stack'   => get_post_meta( get_the_ID(), '_tf_project_stack',  true ),
+                'color'   => get_post_meta( get_the_ID(), '_tf_project_color',  true ) ?: '#7C3AED',
+                'year'    => get_post_meta( get_the_ID(), '_tf_project_year',   true ),
             ];
         }
         wp_reset_postdata();
@@ -437,7 +411,7 @@ add_action( 'wp_ajax_tf_filter_projects',        'techflow_filter_projects' );
 add_action( 'wp_ajax_nopriv_tf_filter_projects', 'techflow_filter_projects' );
 
 // ============================================================
-// SEO — META TAGS
+// SEO — META TAGS ✅ CORREGIDO
 // ============================================================
 function techflow_seo_meta() {
     global $post;
@@ -446,19 +420,26 @@ function techflow_seo_meta() {
     $tagline     = get_bloginfo('description');
     $current_url = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-    // Title
+    // ✅ Inicializar variables ANTES de los condicionales
+    $title       = $site_name;
+    $description = $tagline;
+    $og_type     = 'website';
+
     if ( is_front_page() ) {
-        $title       = "{$site_name} — Premium WordPress & Software Agency";
-        $description = "TechFlow builds high-performance digital products. Custom WordPress development, web apps, e-commerce and API integrations for ambitious brands.";
+        $title       = 'Andres Guerrero — Full Stack Developer | Medellín, Colombia';
+        $description = 'Full Stack Developer with 5+ years of experience. WordPress, React, Node.js, AI Automation & Agents. Based in Medellín, Colombia.';
         $og_type     = 'website';
+
     } elseif ( is_singular('tf_project') ) {
         $title       = get_the_title() . " | Work — {$site_name}";
         $description = get_the_excerpt() ?: "Case study: " . get_the_title();
         $og_type     = 'article';
+
     } elseif ( is_singular() ) {
         $title       = get_the_title() . " | {$site_name}";
         $description = get_the_excerpt() ?: $tagline;
         $og_type     = 'article';
+
     } else {
         $title       = "{$site_name} | {$tagline}";
         $description = $tagline;
@@ -475,7 +456,6 @@ function techflow_seo_meta() {
     echo '<meta name="robots" content="index,follow">' . "\n";
     echo '<link rel="canonical" href="' . esc_url($current_url) . '">' . "\n";
 
-    // Open Graph
     echo '<meta property="og:type"        content="' . esc_attr($og_type)    . '">' . "\n";
     echo '<meta property="og:title"       content="' . esc_attr($title)       . '">' . "\n";
     echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
@@ -483,7 +463,6 @@ function techflow_seo_meta() {
     echo '<meta property="og:image"       content="' . esc_url($og_image)     . '">' . "\n";
     echo '<meta property="og:site_name"   content="' . esc_attr($site_name)   . '">' . "\n";
 
-    // Twitter Card
     echo '<meta name="twitter:card"        content="summary_large_image">'            . "\n";
     echo '<meta name="twitter:title"       content="' . esc_attr($title)       . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
@@ -493,26 +472,25 @@ function techflow_seo_meta() {
     if ( is_front_page() ) {
         $schema = [
             '@context'    => 'https://schema.org',
-            '@type'       => 'Organization',
-            'name'        => $site_name,
+            '@type'       => 'Person',
+            'name'        => 'Andres Esteban Guerrero Rios',
             'url'         => home_url('/'),
             'description' => $description,
-            'logo'        => get_template_directory_uri() . '/assets/images/logo.svg',
-            'contactPoint' => [
-                '@type'       => 'ContactPoint',
-                'contactType' => 'customer service',
-                'email'       => get_option('admin_email'),
+            'jobTitle'    => 'Full Stack Developer',
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'addressLocality' => 'Medellín',
+                'addressRegion'   => 'Antioquia',
+                'addressCountry'  => 'CO',
             ],
             'sameAs' => [
-                'https://github.com/techflow',
-                'https://linkedin.com/company/techflow',
-                'https://twitter.com/techflow',
+                'https://github.com/andresguerrero270895',
+                'https://www.linkedin.com/in/andres-guerrero-00862a217/',
             ],
         ];
-        echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
     }
 
-    // Schema — Project (Case Study)
     if ( is_singular('tf_project') ) {
         $schema = [
             '@context'    => 'https://schema.org',
@@ -520,10 +498,10 @@ function techflow_seo_meta() {
             'name'        => get_the_title(),
             'description' => get_the_excerpt(),
             'url'         => get_permalink(),
-            'author'      => [ '@type' => 'Organization', 'name' => $site_name ],
+            'author'      => [ '@type' => 'Person', 'name' => 'Andres Esteban Guerrero Rios' ],
             'dateCreated' => get_the_date('Y-m-d'),
         ];
-        echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
     }
 }
 add_action( 'wp_head', 'techflow_seo_meta', 1 );
@@ -531,8 +509,6 @@ add_action( 'wp_head', 'techflow_seo_meta', 1 );
 // ============================================================
 // PERFORMANCE
 // ============================================================
-
-// Remove emoji scripts
 remove_action( 'wp_head',             'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script'    );
 remove_action( 'wp_print_styles',     'print_emoji_styles'              );
@@ -541,17 +517,14 @@ remove_filter( 'the_content_feed',    'wp_staticize_emoji'              );
 remove_filter( 'comment_text_rss',    'wp_staticize_emoji'              );
 remove_filter( 'wp_mail',             'wp_staticize_emoji_for_email'    );
 
-// Remove unnecessary head tags
 remove_action( 'wp_head', 'wp_generator'                        );
 remove_action( 'wp_head', 'wlwmanifest_link'                    );
 remove_action( 'wp_head', 'rsd_link'                            );
 remove_action( 'wp_head', 'wp_shortlink_wp_head'                );
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
 
-// Disable XML-RPC
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
-// Defer non-critical JS
 function techflow_defer_scripts( $tag, $handle, $src ) {
     $defer_scripts = [ 'tf-cursor', 'tf-animations', 'tf-typewriter' ];
     if ( in_array( $handle, $defer_scripts ) ) {
@@ -561,7 +534,6 @@ function techflow_defer_scripts( $tag, $handle, $src ) {
 }
 add_filter( 'script_loader_tag', 'techflow_defer_scripts', 10, 3 );
 
-// Preconnect Google Fonts
 function techflow_preconnect_fonts() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
@@ -571,10 +543,6 @@ add_action( 'wp_head', 'techflow_preconnect_fonts', 0 );
 // ============================================================
 // HELPER FUNCTIONS
 // ============================================================
-
-/**
- * Get featured projects
- */
 function techflow_get_featured_projects( $limit = 3 ) {
     return new WP_Query([
         'post_type'      => 'tf_project',
@@ -590,9 +558,6 @@ function techflow_get_featured_projects( $limit = 3 ) {
     ]);
 }
 
-/**
- * Get testimonials
- */
 function techflow_get_testimonials( $limit = 6 ) {
     return new WP_Query([
         'post_type'      => 'tf_testimonial',
@@ -602,9 +567,6 @@ function techflow_get_testimonials( $limit = 6 ) {
     ]);
 }
 
-/**
- * Get team members
- */
 function techflow_get_team( $limit = 8 ) {
     return new WP_Query([
         'post_type'      => 'tf_team',
@@ -616,9 +578,6 @@ function techflow_get_team( $limit = 8 ) {
     ]);
 }
 
-/**
- * Render star rating
- */
 function techflow_stars( $rating = 5 ) {
     $rating = intval($rating);
     $html   = '<div class="tf-stars" aria-label="' . $rating . ' out of 5 stars">';
@@ -630,9 +589,6 @@ function techflow_stars( $rating = 5 ) {
     return $html;
 }
 
-/**
- * Render tech stack pills
- */
 function techflow_stack_pills( $stack_string, $color = '#7C3AED' ) {
     if ( ! $stack_string ) return '';
     $techs = array_map( 'trim', explode( ',', $stack_string ) );
@@ -644,17 +600,11 @@ function techflow_stack_pills( $stack_string, $color = '#7C3AED' ) {
     return $html;
 }
 
-/**
- * Truncate text
- */
 function techflow_truncate( $text, $limit = 120 ) {
     if ( strlen($text) <= $limit ) return $text;
     return substr( $text, 0, strrpos( substr($text, 0, $limit), ' ' ) ) . '…';
 }
 
-/**
- * Get project categories for filter
- */
 function techflow_get_project_categories() {
     return get_terms([
         'taxonomy'   => 'tf_category',
@@ -666,18 +616,16 @@ function techflow_get_project_categories() {
 // ============================================================
 // ADMIN CUSTOMIZATION
 // ============================================================
-
-// Custom admin columns for projects
 function techflow_project_columns( $columns ) {
     return [
-        'cb'               => $columns['cb'],
-        'title'            => 'Project',
-        'tf_client'        => 'Client',
-        'tf_result'        => 'Key Result',
-        'tf_stack'         => 'Tech Stack',
-        'tf_featured'      => 'Featured',
-        'tf_year'          => 'Year',
-        'date'             => 'Date',
+        'cb'          => $columns['cb'],
+        'title'       => 'Project',
+        'tf_client'   => 'Client',
+        'tf_result'   => 'Key Result',
+        'tf_stack'    => 'Tech Stack',
+        'tf_featured' => 'Featured',
+        'tf_year'     => 'Year',
+        'date'        => 'Date',
     ];
 }
 add_filter( 'manage_tf_project_posts_columns', 'techflow_project_columns' );
@@ -696,8 +644,7 @@ function techflow_project_column_content( $column, $post_id ) {
             echo $stack ? '<small>' . esc_html($stack) . '</small>' : '—';
             break;
         case 'tf_featured':
-            $featured = get_post_meta( $post_id, '_tf_project_featured', true );
-            echo $featured === '1' ? '⭐ Yes' : '—';
+            echo get_post_meta( $post_id, '_tf_project_featured', true ) === '1' ? '⭐ Yes' : '—';
             break;
         case 'tf_year':
             echo esc_html( get_post_meta( $post_id, '_tf_project_year', true ) ?: '—' );
@@ -706,9 +653,8 @@ function techflow_project_column_content( $column, $post_id ) {
 }
 add_action( 'manage_tf_project_posts_custom_column', 'techflow_project_column_content', 10, 2 );
 
-// Admin footer branding
 function techflow_admin_footer() {
-    echo '<span>TechFlow Theme — Built with ❤️ for the portfolio</span>';
+    echo '<span>Andres Guerrero — Full Stack Developer Portfolio</span>';
 }
 add_filter( 'admin_footer_text', 'techflow_admin_footer' );
 
@@ -724,12 +670,3 @@ function techflow_flush_rewrites() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'techflow_flush_rewrites' );
-
-
-// DEBUG — borrar después
-add_action('wp_footer', function() {
-    if ( is_page() ) {
-        echo '<!-- Template: ' . get_page_template() . ' -->';
-        echo '<!-- Page: ' . get_queried_object()->post_name . ' -->';
-    }
-});
