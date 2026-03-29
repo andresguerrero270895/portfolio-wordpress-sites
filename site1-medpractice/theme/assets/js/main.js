@@ -214,3 +214,159 @@
   });
 
 })();
+
+/* ============================================================
+   CHAT POPUP — Bottom Left Corner
+   ============================================================ */
+(function() {
+  'use strict';
+
+  // Inject HTML
+  const chatHTML = `
+    <div id="mp-chat-popup" class="mp-chat-popup">
+      <!-- Trigger Button -->
+      <button class="mp-chat-trigger" id="mpChatTrigger" aria-label="Open chat">
+        <span class="mp-chat-trigger__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+          </svg>
+        </span>
+        <span class="mp-chat-trigger__close" id="mpChatClose">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Popup Card -->
+      <div class="mp-chat-card" id="mpChatCard">
+        <!-- Header -->
+        <div class="mp-chat-header">
+          <div class="mp-chat-header__avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="mp-chat-header__info">
+            <span class="mp-chat-header__name">MedPractice USA</span>
+            <span class="mp-chat-header__status">
+              <span class="mp-chat-status-dot"></span>
+              We're Online!
+            </span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="mp-chat-body">
+          <div class="mp-chat-message">
+            <div class="mp-chat-message__avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1a6db5">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+              </svg>
+            </div>
+            <div class="mp-chat-message__bubble">
+              <p>👋 Hi there! How can we help you today?</p>
+              <p>We specialize in <strong>medical practice sales</strong> across the USA.</p>
+            </div>
+          </div>
+          <span class="mp-chat-message__time">Just now</span>
+        </div>
+
+        <!-- Options -->
+        <div class="mp-chat-options">
+          <button class="mp-chat-option" data-action="valuation">
+            💰 Get a Free Valuation
+          </button>
+          <button class="mp-chat-option" data-action="consultation">
+            📅 Schedule Consultation
+          </button>
+          <button class="mp-chat-option" data-action="listings">
+            🏥 Browse Listings
+          </button>
+        </div>
+
+        <!-- Input -->
+        <div class="mp-chat-input-wrap">
+          <input
+            type="text"
+            class="mp-chat-input"
+            id="mpChatInput"
+            placeholder="Type a message..."
+            autocomplete="off"
+          />
+          <button class="mp-chat-send" id="mpChatSend" aria-label="Send">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1a6db5">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Notification Badge -->
+      <span class="mp-chat-badge" id="mpChatBadge">1</span>
+    </div>
+  `;
+
+  // Inject into DOM
+  document.body.insertAdjacentHTML('beforeend', chatHTML);
+
+  // Elements
+  const trigger   = document.getElementById('mpChatTrigger');
+  const card      = document.getElementById('mpChatCard');
+  const badge     = document.getElementById('mpChatBadge');
+  const input     = document.getElementById('mpChatInput');
+  const sendBtn   = document.getElementById('mpChatSend');
+  const options   = document.querySelectorAll('.mp-chat-option');
+
+  let isOpen = false;
+
+  // Toggle popup
+  function toggleChat() {
+    isOpen = !isOpen;
+    card.classList.toggle('mp-chat-card--open', isOpen);
+    trigger.classList.toggle('mp-chat-trigger--open', isOpen);
+    badge.style.display = 'none';
+
+    if (isOpen) {
+      setTimeout(() => input.focus(), 300);
+    }
+  }
+
+  trigger.addEventListener('click', toggleChat);
+
+  // Quick option buttons
+  options.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const action = this.dataset.action;
+      const contactUrl = '/contact/';
+      if (action === 'valuation' || action === 'consultation') {
+        window.location.href = contactUrl;
+      } else if (action === 'listings') {
+        window.location.href = '/';
+      }
+    });
+  });
+
+  // Send message — redirect to contact
+  function sendMessage() {
+    const msg = input.value.trim();
+    if (msg.length > 0) {
+      window.location.href = '/contact/?msg=' + encodeURIComponent(msg);
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  // Auto show badge after 3 seconds
+  setTimeout(function() {
+    if (!isOpen) {
+      badge.style.display = 'flex';
+      trigger.classList.add('mp-chat-trigger--pulse');
+    }
+  }, 3000);
+
+})();
