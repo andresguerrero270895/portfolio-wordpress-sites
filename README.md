@@ -23,7 +23,7 @@
 
 ![MedPractice Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Home.png)
 
-![MedPractice Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site1-medpractice/MedPractices.gif)
+![MedPractice Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site1-medpractice/MedPractices_small.gif)
 
 <details>
 <summary>📸 More Screenshots — click to expand</summary>
@@ -93,7 +93,7 @@ text
 
 ![TechFlow Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_Home.png)
 
-![TechFlow Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/techflow.gif)
+![TechFlow Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/techflow_small.gif)
 
 <details>
 <summary>📸 More Screenshots — click to expand</summary>
@@ -118,7 +118,7 @@ text
 
 **Animated 404 Terminal**
 
-![404 Animation](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/404.gif)
+![404 Animation](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/404_small.gif)
 
 **Features:**
 - ✅ Dark design system with CSS Custom Properties
@@ -177,13 +177,13 @@ text
 
 ---
 
-### 3. �� FreshBite Marketplace
+### 3. 🛒 FreshBite Marketplace
 
 > Artisanal food e-commerce marketplace with WooCommerce.
 
 ![FreshBite Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Home.png)
 
-![FreshBite Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site3-freshbite/FreshBite.gif)
+![FreshBite Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site3-freshbite/FreshBite_small.gif)
 
 <details>
 <summary>📸 More Screenshots — click to expand</summary>
@@ -283,6 +283,133 @@ text
 git clone https://github.com/andresguerrero270895/portfolio-wordpress-sites.git
 cd portfolio-wordpress-sites
 npm install
+
+text
+
+### Symlinks
+ln -s 
+(
+p
+w
+d
+)
+/
+s
+i
+t
+e
+1
+−
+m
+e
+d
+p
+r
+a
+c
+t
+i
+c
+e
+/
+t
+h
+e
+m
+e
+ 
+/
+L
+o
+c
+a
+l
+ 
+S
+i
+t
+e
+s
+/
+m
+e
+d
+−
+p
+r
+a
+c
+t
+i
+c
+e
+−
+u
+s
+a
+/
+a
+p
+p
+/
+p
+u
+b
+l
+i
+c
+/
+w
+p
+−
+c
+o
+n
+t
+e
+n
+t
+/
+t
+h
+e
+m
+e
+s
+/
+m
+e
+d
+p
+r
+a
+c
+t
+i
+c
+e
+−
+t
+h
+e
+m
+e
+l
+n
+−
+s
+(pwd)/site1−medpractice/theme /Local Sites/med−practice−usa/app/public/wp−content/themes/medpractice−themeln−s(pwd)/site2-techflow/theme ~/Local\ Sites/techflow-agency/app/public/wp-content/themes/techflow-theme
+ln -s $(pwd)/site3-marketplace/theme ~/Local\ Sites/freshbite-marketplace/app/public/wp-content/themes/freshbite-theme
+
+text
+
+### Local URLs
+
+| Site | URL | Admin |
+|------|-----|-------|
+| MedPractice USA | http://med-practice-usa.local/ | http://med-practice-usa.local/wp-admin/ |
+| TechFlow Agency | http://techflow-agency.local/ | http://techflow-agency.local/wp-admin/ |
+| FreshBite Marketplace | http://freshbite-marketplace.local/ | http://freshbite-marketplace.local/wp-admin/ |
 
 ---
 
