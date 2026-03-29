@@ -216,7 +216,7 @@
 })();
 
 /* ============================================================
-   CHAT POPUP — Bottom Left Corner
+   CHAT POPUP — Bottom Right Corner
    ============================================================ */
 (function() {
   'use strict';
@@ -224,23 +224,22 @@
   // Inject HTML
   const chatHTML = `
     <div id="mp-chat-popup" class="mp-chat-popup">
-      <!-- Trigger Button -->
+
       <button class="mp-chat-trigger" id="mpChatTrigger" aria-label="Open chat">
         <span class="mp-chat-trigger__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
           </svg>
         </span>
-        <span class="mp-chat-trigger__close" id="mpChatClose">
+        <span class="mp-chat-trigger__close">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </span>
       </button>
 
-      <!-- Popup Card -->
       <div class="mp-chat-card" id="mpChatCard">
-        <!-- Header -->
+
         <div class="mp-chat-header">
           <div class="mp-chat-header__avatar">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
@@ -256,24 +255,20 @@
           </div>
         </div>
 
-        <!-- Body -->
-        <div class="mp-chat-body">
-          <div class="mp-chat-message">
-            <div class="mp-chat-message__avatar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1a6db5">
-                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-              </svg>
-            </div>
-            <div class="mp-chat-message__bubble">
-              <p>👋 Hi there! How can we help you today?</p>
-              <p>We specialize in <strong>medical practice sales</strong> across the USA.</p>
+        <div class="mp-chat-messages" id="mpChatMessages">
+          <div class="mp-chat-msg mp-chat-msg--bot">
+            <div class="mp-chat-msg__bubble">
+              👋 Hi there! How can we help you today?
             </div>
           </div>
-          <span class="mp-chat-message__time">Just now</span>
+          <div class="mp-chat-msg mp-chat-msg--bot">
+            <div class="mp-chat-msg__bubble">
+              We specialize in <strong>medical practice sales</strong> across the USA. Choose an option below or type your question.
+            </div>
+          </div>
         </div>
 
-        <!-- Options -->
-        <div class="mp-chat-options">
+        <div class="mp-chat-options" id="mpChatOptions">
           <button class="mp-chat-option" data-action="valuation">
             💰 Get a Free Valuation
           </button>
@@ -283,9 +278,11 @@
           <button class="mp-chat-option" data-action="listings">
             🏥 Browse Listings
           </button>
+          <button class="mp-chat-option" data-action="contact">
+            ✉️ Contact Us
+          </button>
         </div>
 
-        <!-- Input -->
         <div class="mp-chat-input-wrap">
           <input
             type="text"
@@ -300,68 +297,152 @@
             </svg>
           </button>
         </div>
+
       </div>
 
-      <!-- Notification Badge -->
       <span class="mp-chat-badge" id="mpChatBadge">1</span>
     </div>
   `;
 
-  // Inject into DOM
   document.body.insertAdjacentHTML('beforeend', chatHTML);
 
   // Elements
-  const trigger   = document.getElementById('mpChatTrigger');
-  const card      = document.getElementById('mpChatCard');
-  const badge     = document.getElementById('mpChatBadge');
-  const input     = document.getElementById('mpChatInput');
-  const sendBtn   = document.getElementById('mpChatSend');
-  const options   = document.querySelectorAll('.mp-chat-option');
+  const trigger  = document.getElementById('mpChatTrigger');
+  const card     = document.getElementById('mpChatCard');
+  const badge    = document.getElementById('mpChatBadge');
+  const input    = document.getElementById('mpChatInput');
+  const sendBtn  = document.getElementById('mpChatSend');
+  const messages = document.getElementById('mpChatMessages');
+  const options  = document.getElementById('mpChatOptions');
 
   let isOpen = false;
 
-  // Toggle popup
+  // Bot responses
+  const botResponses = {
+    valuation: [
+      "Great! We offer <strong>free practice valuations</strong> with no obligation.",
+      "Our experts analyze patient volume, revenue, location and market data.",
+      "Please fill out our contact form and we will get back to you within 24 hours! 📋"
+    ],
+    consultation: [
+      "We'd love to schedule a <strong>free consultation</strong> with you!",
+      "Our brokers are available Monday–Friday 9am–6pm EST.",
+      "Please leave your name and phone number and we'll call you back shortly! 📞"
+    ],
+    listings: [
+      "We have <strong>medical practices available</strong> across 30+ states!",
+      "Specialties include: Primary Care, Dental, Pediatrics, Dermatology and more.",
+      "Browse our current listings or tell us what specialty you're looking for! 🏥"
+    ],
+    contact: [
+      "You can reach us at <strong>info@medpracticeusa.com</strong>",
+      "Or call us at <strong>1-800-MED-SALE</strong> Monday–Friday 9am–6pm EST.",
+      "We typically respond within <strong>2 business hours</strong>! ✅"
+    ],
+    default: [
+      "Thanks for your message! 😊",
+      "One of our specialists will review your inquiry and get back to you shortly.",
+      "In the meantime, feel free to browse our listings or call us directly! 🏥"
+    ]
+  };
+
+  // Toggle chat open/close
   function toggleChat() {
     isOpen = !isOpen;
     card.classList.toggle('mp-chat-card--open', isOpen);
     trigger.classList.toggle('mp-chat-trigger--open', isOpen);
     badge.style.display = 'none';
-
-    if (isOpen) {
-      setTimeout(() => input.focus(), 300);
-    }
+    if (isOpen) setTimeout(function() { input.focus(); }, 300);
   }
 
   trigger.addEventListener('click', toggleChat);
 
-  // Quick option buttons
-  options.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const action = this.dataset.action;
-      const contactUrl = '/contact/';
-      if (action === 'valuation' || action === 'consultation') {
-        window.location.href = contactUrl;
-      } else if (action === 'listings') {
-        window.location.href = '/';
-      }
+  // Add message to chat
+  function addMessage(text, type) {
+    var div = document.createElement('div');
+    div.className = 'mp-chat-msg mp-chat-msg--' + type;
+    div.innerHTML = '<div class="mp-chat-msg__bubble">' + text + '</div>';
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // Bot typing animation then reply
+  function botReply(responses) {
+    var delay = 600;
+    responses.forEach(function(text) {
+      setTimeout(function() {
+        // Show typing indicator
+        var typing = document.createElement('div');
+        typing.className = 'mp-chat-msg mp-chat-msg--bot mp-chat-msg--typing';
+        typing.innerHTML = '<div class="mp-chat-msg__bubble"><span></span><span></span><span></span></div>';
+        messages.appendChild(typing);
+        messages.scrollTop = messages.scrollHeight;
+
+        // Replace typing with real message
+        setTimeout(function() {
+          typing.remove();
+          addMessage(text, 'bot');
+        }, 800);
+      }, delay);
+      delay += 1600;
     });
+  }
+
+  // Handle quick option buttons
+  options.addEventListener('click', function(e) {
+    var btn = e.target.closest('.mp-chat-option');
+    if (!btn) return;
+
+    var action = btn.dataset.action;
+    var labels = {
+      valuation:    '💰 Get a Free Valuation',
+      consultation: '📅 Schedule Consultation',
+      listings:     '🏥 Browse Listings',
+      contact:      '✉️ Contact Us'
+    };
+
+    // Add user message
+    addMessage(labels[action] || action, 'user');
+
+    // Hide options after selection
+    options.style.display = 'none';
+
+    // Bot replies
+    botReply(botResponses[action] || botResponses.default);
   });
 
-  // Send message — redirect to contact
+  // Handle text input
   function sendMessage() {
-    const msg = input.value.trim();
-    if (msg.length > 0) {
-      window.location.href = '/contact/?msg=' + encodeURIComponent(msg);
+    var msg = input.value.trim();
+    if (!msg) return;
+
+    addMessage(msg, 'user');
+    input.value = '';
+    options.style.display = 'none';
+
+    // Simple keyword detection
+    var lower = msg.toLowerCase();
+    var response = botResponses.default;
+
+    if (lower.includes('valuat') || lower.includes('price') || lower.includes('worth')) {
+      response = botResponses.valuation;
+    } else if (lower.includes('consult') || lower.includes('call') || lower.includes('talk')) {
+      response = botResponses.consultation;
+    } else if (lower.includes('list') || lower.includes('browse') || lower.includes('buy') || lower.includes('practice')) {
+      response = botResponses.listings;
+    } else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone')) {
+      response = botResponses.contact;
     }
+
+    botReply(response);
   }
 
   sendBtn.addEventListener('click', sendMessage);
-
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') sendMessage();
   });
 
-  // Auto show badge after 3 seconds
+  // Show badge after 3 seconds
   setTimeout(function() {
     if (!isOpen) {
       badge.style.display = 'flex';
