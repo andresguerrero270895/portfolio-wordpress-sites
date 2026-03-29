@@ -21,34 +21,34 @@
 
 > Medical practice sales platform with 30+ state-specific landing pages.
 
-![MedPractice Homepage](documentation/screenshots/site1-medpractice/MedPractice_Home.png)
+![MedPractice Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Home.png)
 
-![MedPractice Demo](documentation/gifs/site1-medpractice/MedPractices.gif)
+![MedPractice Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site1-medpractice/MedPractices.gif)
 
 <details>
 <summary>📸 More Screenshots — click to expand</summary>
 
 **Landing Page**
 
-![Landing](documentation/screenshots/site1-medpractice/MedPractice_Landing.png)
+![Landing](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Landing.png)
 
 **Services**
 
-![Services](documentation/screenshots/site1-medpractice/MedPractice_Services.png)
+![Services](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Services.png)
 
 **Location**
 
-![Location](documentation/screenshots/site1-medpractice/MedPractice_Location.png)
+![Location](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Location.png)
 
-![Location 2](documentation/screenshots/site1-medpractice/MedPractice_Location_2.png)
+![Location 2](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Location_2.png)
 
 **Card Component**
 
-![Card](documentation/screenshots/site1-medpractice/MedPractice_Card.png)
+![Card](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Card.png)
 
 **Contact Form**
 
-![Form](documentation/screenshots/site1-medpractice/MedPractice_Form%20.png)
+![Form](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site1-medpractice/MedPractice_Form%20.png)
 
 </details>
 
@@ -91,156 +91,352 @@ text
 
 > Software development agency with animated dark UI and filterable portfolio.
 
-![TechFlow Homepage](documentation/screenshots/site2-techflow/Tech_Flow_Home.png)
+![TechFlow Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_Home.png)
 
-![TechFlow Demo](documentation/gifs/site2-techflow/techflow.gif)
+![TechFlow Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/techflow.gif)
 
 <details>
 <summary>📸 More Screenshots — click to expand</summary>
 
 **Services Page**
 
-![Services](documentation/screenshots/site2-techflow/Tech_Flow_Services.png)
+![Services](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_Services.png)
 
 **About Page**
 
-![About](documentation/screenshots/site2-techflow/Tech_Flow_About.png)
+![About](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_About.png)
 
 **Blog**
 
-![Blog](documentation/screenshots/site2-techflow/Tech_Flow_Blog.png)
+![Blog](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_Blog.png)
 
 **404 Page**
 
-![404](documentation/screenshots/site2-techflow/Tech_Flow_404.png)
+![404 Screenshot](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site2-techflow/Tech_Flow_404.png)
 
 </details>
 
 **Animated 404 Terminal**
 
-![404 Animation](documentation/gifs/site2-techflow/404.gif)
+![404 Animation](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site2-techflow/404.gif)
 
 **Features:**
 - ✅ Dark design system with CSS Custom Properties
 - ✅ Filterable portfolio grid by category & technology
 - ✅ Animated terminal-style 404 page
-- ✅ Full case study pages via `tf_project` CPT
+- ✅ Full case study pages via tf_project CPT
 - ✅ AJAX contact form with validation
 - ✅ Blog with custom single post layout
 - ✅ Service pages with pricing tables & FAQ accordion
 - ✅ 5-column footer with newsletter CTA
 
 **Design System:**
-```css
---tf-bg: #05070F        /* Deep dark background */
---tf-primary: #7C3AED   /* Purple */
---tf-accent: #06B6D4    /* Cyan */
---tf-green: #10B981     /* Success */
-Custom Post Types:
 
-CPTSlugDescription
-tf_project/projects/Portfolio case studies
-tf_service/our-services/Agency services
-tf_testimonial—Client testimonials
-tf_team—Team members
-Tech:
-WordPress Custom Theme · PHP 8 · CSS Custom Properties · JavaScript ES6+
-Inter · Sora · JetBrains Mono
+| Variable | Value | Use |
+|----------|-------|-----|
+| `--tf-bg` | `#05070F` | Deep dark background |
+| `--tf-primary` | `#7C3AED` | Purple accent |
+| `--tf-accent` | `#06B6D4` | Cyan accent |
+| `--tf-green` | `#10B981` | Success green |
 
-Path: /site2-techflow/theme/
+**Custom Post Types:**
 
-📂 Theme Files
-3. 🛒 FreshBite Marketplace
-Artisanal food e-commerce marketplace with WooCommerce.
+| CPT | Slug | Description |
+|-----|------|-------------|
+| `tf_project` | `/projects/` | Portfolio case studies |
+| `tf_service` | `/our-services/` | Agency services |
+| `tf_testimonial` | — | Client testimonials |
+| `tf_team` | — | Team members |
 
-FreshBite Homepage
+**Tech:**
+`WordPress Custom Theme` · `PHP 8` · `CSS Custom Properties` · `JavaScript ES6+` · `Inter` · `Sora` · `JetBrains Mono`
 
-FreshBite Demo
+**Path:** `/site2-techflow/theme/`
 
-📸 More Screenshots — click to expand
-Features:
+<details>
+<summary>📂 Theme Files</summary>
+site2-techflow/theme/
+├── style.css
+├── functions.php
+├── index.php
+├── header.php
+├── footer.php
+├── front-page.php
+├── page-services.php
+├── page-work.php
+├── page-about.php
+├── page-contact.php
+├── home.php
+├── 404.php
+├── single-tf_project.php
+└── single.php
 
-✅ WooCommerce product catalog with custom cards
-✅ Vendor/producer profiles via custom CPT
-✅ Advanced filtering by category, diet type, origin
-✅ Custom WooCommerce template overrides
-✅ AJAX add-to-cart
-✅ Custom homepage with featured products
-✅ Mobile-first responsive design
-Design System:
+text
 
-css
---fb-green: #2D6A4F        /* Primary green */
---fb-green-light: #52B788  /* Light green */
---fb-orange: #F4845F       /* Warm accent */
---fb-cream: #FEFAE0        /* Background */
-Tech:
-WordPress · Astra Child Theme · WooCommerce · PHP 8 · CSS3 · JavaScript ES6+
+</details>
 
-Path: /site3-marketplace/theme/
+---
 
-📂 Theme Files
-📊 Skills Matrix
-SkillMedPracticeTechFlowFreshBite
-Custom WordPress Theme✅✅✅
-Custom Post Types✅✅✅
-WooCommerce——✅
-Astra Child Theme——✅
-AJAX Forms✅✅✅
-CSS Design System✅✅✅
-Responsive Design✅✅✅
-SEO Architecture✅✅✅
-JavaScript Animations—✅✅
-E-commerce——✅
-Blog System—✅—
-Dark Mode Theme—✅—
-🛠 Setup
-Prerequisites
-Local by Flywheel
-Node.js 18+ & npm
-Git
-Clone
-bash
+### 3. �� FreshBite Marketplace
+
+> Artisanal food e-commerce marketplace with WooCommerce.
+
+![FreshBite Homepage](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Home.png)
+
+![FreshBite Demo](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/gifs/site3-freshbite/FreshBite.gif)
+
+<details>
+<summary>📸 More Screenshots — click to expand</summary>
+
+**Market / Shop**
+
+![Market](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Market.png)
+
+**Vendors**
+
+![Vendors](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Vendors.png)
+
+**About / Nosotros**
+
+![Nosotros](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Nosotros.png)
+
+**Contact**
+
+![Contact](https://raw.githubusercontent.com/andresguerrero270895/portfolio-wordpress-sites/main/documentation/screenshots/site3-freshbite/Fresh_Bite_Contact.png)
+
+</details>
+
+**Features:**
+- ✅ WooCommerce product catalog with custom cards
+- ✅ Vendor/producer profiles via custom CPT
+- ✅ Advanced filtering by category, diet type, origin
+- ✅ Custom WooCommerce template overrides
+- ✅ AJAX add-to-cart
+- ✅ Custom homepage with featured products
+- ✅ Mobile-first responsive design
+
+**Design System:**
+
+| Variable | Value | Use |
+|----------|-------|-----|
+| `--fb-green` | `#2D6A4F` | Primary green |
+| `--fb-green-light` | `#52B788` | Light green |
+| `--fb-orange` | `#F4845F` | Warm accent |
+| `--fb-cream` | `#FEFAE0` | Background |
+
+**Tech:**
+`WordPress` · `Astra Child Theme` · `WooCommerce` · `PHP 8` · `CSS3` · `JavaScript ES6+`
+
+**Path:** `/site3-marketplace/theme/`
+
+<details>
+<summary>📂 Theme Files</summary>
+site3-marketplace/theme/
+├── style.css
+├── functions.php
+├── header.php
+├── footer.php
+├── front-page.php
+├── page-producers.php
+├── woocommerce/
+│ ├── archive-product.php
+│ ├── single-product.php
+│ ├── cart/cart.php
+│ └── checkout/form-checkout.php
+└── assets/
+├── css/
+└── js/
+
+text
+
+</details>
+
+---
+
+## 📊 Skills Matrix
+
+| Skill | MedPractice | TechFlow | FreshBite |
+|-------|:-----------:|:--------:|:---------:|
+| Custom WordPress Theme | ✅ | ✅ | ✅ |
+| Custom Post Types | ✅ | ✅ | ✅ |
+| WooCommerce | — | — | ✅ |
+| Astra Child Theme | — | — | ✅ |
+| AJAX Forms | ✅ | ✅ | ✅ |
+| CSS Design System | ✅ | ✅ | ✅ |
+| Responsive Design | ✅ | ✅ | ✅ |
+| SEO Architecture | ✅ | ✅ | ✅ |
+| JavaScript Animations | — | ✅ | ✅ |
+| E-commerce | — | — | ✅ |
+| Blog System | — | ✅ | — |
+| Dark Mode Theme | — | ✅ | — |
+
+---
+
+## 🛠 Setup
+
+### Prerequisites
+- [Local by Flywheel](https://localwp.com/)
+- Node.js 18+ & npm
+- Git
+
+### Clone
 git clone https://github.com/andresguerrero270895/portfolio-wordpress-sites.git
 cd portfolio-wordpress-sites
 npm install
-Symlinks
-bash
-# Site 1 — MedPractice
-ln -s $(pwd)/site1-medpractice/theme \
-  ~/Local\ Sites/med-practice-usa/app/public/wp-content/themes/medpractice-theme
 
-# Site 2 — TechFlow
-ln -s $(pwd)/site2-techflow/theme \
-  ~/Local\ Sites/techflow-agency/app/public/wp-content/themes/techflow-theme
-
-# Site 3 — FreshBite
-ln -s $(pwd)/site3-marketplace/theme \
-  ~/Local\ Sites/freshbite-marketplace/app/public/wp-content/themes/freshbite-theme
-Local URLs
-SiteURLAdmin
-MedPractice USAhttp://med-practice-usa.local/http://med-practice-usa.local/wp-admin/
-TechFlow Agencyhttp://techflow-agency.local/http://techflow-agency.local/wp-admin/
-FreshBite Marketplacehttp://freshbite-marketplace.local/http://freshbite-marketplace.local/wp-admin/
-🏗 Repo Structure
 text
+
+### Symlinks
+ln -s 
+(
+p
+w
+d
+)
+/
+s
+i
+t
+e
+1
+−
+m
+e
+d
+p
+r
+a
+c
+t
+i
+c
+e
+/
+t
+h
+e
+m
+e
+ 
+/
+L
+o
+c
+a
+l
+ 
+S
+i
+t
+e
+s
+/
+m
+e
+d
+−
+p
+r
+a
+c
+t
+i
+c
+e
+−
+u
+s
+a
+/
+a
+p
+p
+/
+p
+u
+b
+l
+i
+c
+/
+w
+p
+−
+c
+o
+n
+t
+e
+n
+t
+/
+t
+h
+e
+m
+e
+s
+/
+m
+e
+d
+p
+r
+a
+c
+t
+i
+c
+e
+−
+t
+h
+e
+m
+e
+l
+n
+−
+s
+(pwd)/site1−medpractice/theme /Local Sites/med−practice−usa/app/public/wp−content/themes/medpractice−themeln−s(pwd)/site2-techflow/theme ~/Local\ Sites/techflow-agency/app/public/wp-content/themes/techflow-theme
+ln -s $(pwd)/site3-marketplace/theme ~/Local\ Sites/freshbite-marketplace/app/public/wp-content/themes/freshbite-theme
+
+text
+
+### Local URLs
+
+| Site | URL | Admin |
+|------|-----|-------|
+| MedPractice USA | http://med-practice-usa.local/ | http://med-practice-usa.local/wp-admin/ |
+| TechFlow Agency | http://techflow-agency.local/ | http://techflow-agency.local/wp-admin/ |
+| FreshBite Marketplace | http://freshbite-marketplace.local/ | http://freshbite-marketplace.local/wp-admin/ |
+
+---
+
+## 🏗 Repo Structure
 portfolio-wordpress-sites/
 ├── site1-medpractice/theme/
 ├── site2-techflow/theme/
 ├── site3-marketplace/theme/
 ├── documentation/
-│   ├── screenshots/
-│   │   ├── site1-medpractice/   # 7 screenshots
-│   │   ├── site2-techflow/      # 5 screenshots
-│   │   └── site3-freshbite/     # 5 screenshots
-│   └── gifs/
-│       ├── site1-medpractice/   # 1 GIF
-│       ├── site2-techflow/      # 2 GIFs
-│       └── site3-freshbite/     # 1 GIF
+│ ├── screenshots/
+│ │ ├── site1-medpractice/ # 7 screenshots
+│ │ ├── site2-techflow/ # 5 screenshots
+│ │ └── site3-freshbite/ # 5 screenshots
+│ └── gifs/
+│ ├── site1-medpractice/ # 1 GIF
+│ ├── site2-techflow/ # 2 GIFs
+│ └── site3-freshbite/ # 1 GIF
 ├── .gitignore
 ├── CHANGELOG.md
 ├── LICENSE
 ├── package.json
 └── README.md
-�� License
+
+text
+
+---
+
+## 📄 License
+
 MIT © 2024 Andres Esteban Guerrero Rios
