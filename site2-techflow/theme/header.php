@@ -110,21 +110,26 @@
 
         <!-- Actions -->
         <div class="tf-header-actions">
-            <a href="<?php echo esc_url(home_url('/contact/')); ?>"
-               class="tf-btn tf-btn-ghost tf-nav-contact">
-                Let's Talk
-            </a>
-            <a href="<?php echo esc_url(home_url('/contact/')); ?>"
-               class="tf-btn tf-btn-primary">
-                <span>Start Project</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <button class="tf-mobile-toggle" id="tf-mobile-toggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
+            <!-- ✅ AGREGAR ESTO -->
+             <button class="tf-theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+                <span class="tf-theme-toggle__icon tf-theme-toggle__icon--dark">🌙</span>
+                <span class="tf-theme-toggle__icon tf-theme-toggle__icon--light" style="display:none">☀️</span>
             </button>
-        </div>
+            
+            <a href="<?php echo esc_url(home_url('/contact/')); ?>"
+            class="tf-btn tf-btn-ghost tf-nav-contact">
+            Let's Talk</a>
+            <a href="<?php echo esc_url(home_url('/contact/')); ?>"
+            class="tf-btn tf-btn-primary">
+            <span>Start Project</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+    <button class="tf-mobile-toggle" id="tf-mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</div>
 
     </div>
 
@@ -154,6 +159,165 @@
 /* ============================================================
    LOADER
 ============================================================ */
+
+/* ============================================================
+   THEME TOGGLE BUTTON
+============================================================ */
+.tf-theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tf-bg-card);
+    border: 1px solid var(--tf-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .25s;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.tf-theme-toggle:hover {
+    background: rgba(124,58,237,.15);
+    border-color: var(--tf-primary);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   LIGHT THEME VARIABLES
+============================================================ */
+body.tf-light {
+    --tf-bg:             #F8FAFC;
+    --tf-bg-2:           #F1F5F9;
+    --tf-bg-card:        #FFFFFF;
+    --tf-bg-card-hover:  #F8FAFC;
+    --tf-primary:        #6D28D9;
+    --tf-primary-light:  #7C3AED;
+    --tf-primary-glow:   rgba(109,40,217,0.2);
+    --tf-accent:         #0284C7;
+    --tf-accent-2:       #D97706;
+    --tf-green:          #059669;
+    --tf-white:          #0F172A;
+    --tf-gray-400:       #475569;
+    --tf-gray-500:       #64748B;
+    --tf-border:         rgba(109,40,217,0.2);
+    --tf-border-subtle:  rgba(0,0,0,0.08);
+}
+
+/* Light theme overrides */
+body.tf-light .tf-header.scrolled {
+    background: rgba(248,250,252,0.92);
+    border-bottom-color: rgba(0,0,0,0.08);
+}
+body.tf-light .tf-hero__grid {
+    background-image:
+        linear-gradient(rgba(109,40,217,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(109,40,217,.04) 1px, transparent 1px);
+}
+body.tf-light .tf-hero__glow--1 {
+    opacity: .12;
+}
+body.tf-light .tf-hero__glow--2 {
+    opacity: .10;
+}
+body.tf-light .tf-hero__card {
+    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+}
+body.tf-light .tf-service-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.tf-light .tf-pricing-card--featured {
+    background: linear-gradient(160deg, #fff 60%, rgba(109,40,217,.05));
+}
+body.tf-light .tf-mega-menu {
+    background: rgba(255,255,255,0.97);
+    box-shadow: 0 24px 64px rgba(0,0,0,.15);
+}
+body.tf-light .tf-mega-title  { color: #0F172A; }
+body.tf-light .tf-mega-desc   { color: #64748B; }
+body.tf-light .tf-mobile-menu {
+    background: rgba(248,250,252,0.98);
+}
+body.tf-light .tf-mobile-link { color: #475569; }
+body.tf-light .tf-mobile-link:hover { color: #0F172A; }
+body.tf-light .tf-footer-main {
+    background: #F1F5F9;
+}
+body.tf-light .tf-footer-cta {
+    background: linear-gradient(135deg,
+        rgba(109,40,217,.08) 0%,
+        rgba(2,132,199,.06) 100%);
+}
+body.tf-light .tf-footer-bottom {
+    background: #E2E8F0;
+}
+body.tf-light .tf-social-link {
+    background: #fff;
+    border-color: rgba(0,0,0,.08);
+}
+body.tf-light .tf-form-group input,
+body.tf-light .tf-form-group select,
+body.tf-light .tf-form-group textarea {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+body.tf-light .tf-form-group input::placeholder,
+body.tf-light .tf-form-group textarea::placeholder {
+    color: #94A3B8;
+}
+body.tf-light .tf-contact__card {
+    background: #fff;
+}
+body.tf-light .tf-work-card,
+body.tf-light .tf-project-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.tf-light .tf-faq__item {
+    background: #fff;
+}
+body.tf-light .tf-timeline__list::before {
+    opacity: .6;
+}
+body.tf-light .tf-skills-group {
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.tf-light .tf-value-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.tf-light .tf-pricing-card {
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+}
+body.tf-light .tf-cta-section__inner {
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+}
+body.tf-light .tf-theme-toggle {
+    background: #fff;
+    border-color: #CBD5E1;
+}
+body.tf-light .tf-footer-newsletter-input {
+    background: #fff;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+body.tf-light .tf-about-intro__info-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+
+/* Smooth transition for theme switch */
+body {
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+}
+body * {
+    transition:
+        background-color .3s ease,
+        border-color .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+}
 
 /* ❌ ANTES — se cierra con scroll porque depende de :hover */
 .tf-has-dropdown:hover .tf-dropdown {
@@ -741,6 +905,44 @@ document.querySelectorAll('a[href^="#"]').forEach(link =>{
         window.scrollTo({ top, behavior: 'smooth' });
     });
 });
+
+/* ============================================================
+   THEME TOGGLE — Dark / Light
+============================================================ */
+const themeToggle   = document.getElementById('themeToggle');
+const iconDark      = document.querySelector('.tf-theme-toggle__icon--dark');
+const iconLight     = document.querySelector('.tf-theme-toggle__icon--light');
+const savedTheme    = localStorage.getItem('tf-theme') || 'dark';
+
+// Apply saved theme on load
+function applyTheme(theme) {
+    if (theme === 'light') {
+        document.body.classList.add('tf-light');
+        if (iconDark)  iconDark.style.display  = 'none';
+        if (iconLight) iconLight.style.display = 'block';
+    } else {
+        document.body.classList.remove('tf-light');
+        if (iconDark)  iconDark.style.display  = 'block';
+        if (iconLight) iconLight.style.display = 'none';
+    }
+}
+
+applyTheme(savedTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+        const isLight = document.body.classList.contains('tf-light');
+        const newTheme = isLight ? 'dark' : 'light';
+        localStorage.setItem('tf-theme', newTheme);
+        applyTheme(newTheme);
+
+        // Animate button
+        this.style.transform = 'scale(0.85) rotate(20deg)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 200);
+    });
+}
 
 })();
 </script>
