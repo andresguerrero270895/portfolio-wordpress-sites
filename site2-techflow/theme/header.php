@@ -66,18 +66,18 @@
                         <div class="tf-mega-grid">
                             <?php
                             $services = [
-                                ['icon'=>'🌐','title'=>'WordPress Development', 'desc'=>'Custom themes, plugins & full site builds'],
-                                ['icon'=>'🎨','title'=>'Web Design & UI/UX',    'desc'=>'Modern, conversion-focused interfaces'],
-                                ['icon'=>'🛒','title'=>'E-commerce',            'desc'=>'WooCommerce stores & custom shops'],
-                                ['icon'=>'⚛️','title'=>'Frontend / React',      'desc'=>'SPAs and interactive UIs'],
-                                ['icon'=>'⚙️','title'=>'Backend Development',   'desc'=>'Node.js, PHP & PostgreSQL APIs'],
-                                ['icon'=>'📈','title'=>'SEO Optimization',      'desc'=>'Rankings, speed & Core Web Vitals'],
-                                ['icon'=>'🚀','title'=>'Digital Marketing',     'desc'=>'Landing pages, ads & social media'],
-                                ['icon'=>'🤖','title'=>'AI Automation',         'desc'=>'Workflows, chatbots & pipelines'],
-                                ['icon'=>'🧠','title'=>'AI Agents',             'desc'=>'Custom intelligent agents & RAG'],
+                                ['icon'=>'🌐','title'=>'WordPress Development', 'desc'=>'Custom themes, plugins & full site builds',  'anchor'=>'wordpress'],
+                                ['icon'=>'🎨','title'=>'Web Design & UI/UX',    'desc'=>'Modern, conversion-focused interfaces',      'anchor'=>'design'],
+                                ['icon'=>'🛒','title'=>'E-commerce',            'desc'=>'WooCommerce stores & custom shops',          'anchor'=>'ecommerce'],
+                                ['icon'=>'⚛️','title'=>'Frontend / React',      'desc'=>'SPAs and interactive UIs',                  'anchor'=>'frontend'],
+                                ['icon'=>'⚙️','title'=>'Backend Development',   'desc'=>'Node.js, PHP & PostgreSQL APIs',            'anchor'=>'backend'],
+                                ['icon'=>'📈','title'=>'SEO Optimization',      'desc'=>'Rankings, speed & Core Web Vitals',         'anchor'=>'seo'],
+                                ['icon'=>'🚀','title'=>'Digital Marketing',     'desc'=>'Landing pages, ads & social media',         'anchor'=>'marketing'],
+                                ['icon'=>'🤖','title'=>'AI Automation',         'desc'=>'Workflows, chatbots & pipelines',           'anchor'=>'automation'],
+                                ['icon'=>'🧠','title'=>'AI Agents',             'desc'=>'Custom intelligent agents & RAG',           'anchor'=>'agents'],
                             ];
                             foreach($services as $s): ?>
-                            <a href="<?php echo esc_url(home_url('/services/')); ?>" class="tf-mega-item">
+                            <a href="<?php echo esc_url(home_url('/services/#' . $s['anchor'])); ?>" class="tf-mega-item">
                                 <span class="tf-mega-icon"><?php echo $s['icon']; ?></span>
                                 <div>
                                     <div class="tf-mega-title"><?php echo esc_html($s['title']); ?></div>
@@ -154,6 +154,29 @@
 /* ============================================================
    LOADER
 ============================================================ */
+
+/* ❌ ANTES — se cierra con scroll porque depende de :hover */
+.tf-has-dropdown:hover .tf-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+.tf-has-dropdown:hover .tf-nav-chevron {
+    transform: rotate(180deg);
+}
+
+/* ✅ DESPUÉS — controlado por clase JS */
+.tf-has-dropdown.tf-mega--open .tf-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+.tf-has-dropdown.tf-mega--open .tf-nav-chevron {
+    transform: rotate(180deg);
+}
+
 .tf-loader {
     position: fixed;
     inset: 0;
@@ -508,8 +531,51 @@
 </style>
 
 <script>
+
+
 (function(){
 'use strict';
+
+
+/* ============================================================
+   MEGA MENU — Click toggle (fix scroll close)
+============================================================ */
+const megaParent = document.querySelector('.tf-has-dropdown');
+const megaMenu   = document.querySelector('.tf-dropdown');
+
+if (megaParent && megaMenu) {
+    // Click en el nav link abre/cierra
+    const navLink = megaParent.querySelector('.tf-nav-link');
+
+    navLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isOpen = megaParent.classList.contains('tf-mega--open');
+
+        // Cerrar todos
+        document.querySelectorAll('.tf-has-dropdown').forEach(el => {
+            el.classList.remove('tf-mega--open');
+        });
+
+        // Abrir si estaba cerrado
+        if (!isOpen) {
+            megaParent.classList.add('tf-mega--open');
+        } else {
+            // Si ya estaba abierto — navegar a services
+            window.location.href = navLink.getAttribute('href') || '/services/';
+        }
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener('click', function(e) {
+        if (!megaParent.contains(e.target)) {
+            megaParent.classList.remove('tf-mega--open');
+        }
+    });
+
+    // Cerrar al hacer scroll
+    // ✅ NO cerrar en scroll — ese es el fix!
+    // Removemos el cierre por scroll
+}
 
 /* PAGE LOADER */
 const loader   = document.getElementById('tf-loader');
