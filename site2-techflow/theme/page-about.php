@@ -1,391 +1,424 @@
 <?php
 /**
- * Template Name: About Page
- * TechFlow Agency — About
+ * Page Template: About
+ * Developer: Andres Esteban Guerrero Rios
  */
 get_header(); ?>
 
-<!-- ============================================
-     1. HERO
-     ============================================ -->
-<section class="tf-about-hero">
-    <div class="tf-about-hero__bg">
-        <div class="tf-orb tf-orb--violet" style="top:-10%;left:60%;width:600px;height:600px;opacity:0.2;"></div>
-        <div class="tf-orb tf-orb--cyan"   style="bottom:0;left:-5%;width:400px;height:400px;opacity:0.1;"></div>
-        <div class="tf-grid-lines"></div>
+<!-- ============================================================
+     HERO — ABOUT
+============================================================ -->
+<section class="tf-page-hero">
+  <div class="tf-page-hero__bg">
+    <div class="tf-hero__grid"></div>
+    <div class="tf-page-hero__glow"></div>
+  </div>
+  <div class="tf-container">
+    <div class="tf-page-hero__inner" data-aos="fade-up">
+      <span class="tf-section-tag">About Me</span>
+      <h1 class="tf-page-hero__title">
+        Andres <span class="tf-gradient">Guerrero</span>
+      </h1>
+      <p class="tf-page-hero__subtitle">
+        Full Stack Developer from Medellín, Colombia 🇨🇴 — 
+        building modern web solutions for 5+ years.
+      </p>
     </div>
-    <div class="tf-container">
-        <nav class="tf-breadcrumb">
-            <a href="<?php echo home_url('/'); ?>">Home</a>
-            <span class="tf-breadcrumb__sep">→</span>
-            <span class="tf-breadcrumb__current">About</span>
-        </nav>
-        <div class="tf-about-hero__content">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                Who We Are
+  </div>
+</section>
+
+<!-- ============================================================
+     INTRO SECTION
+============================================================ -->
+<section class="tf-about-intro">
+  <div class="tf-container">
+    <div class="tf-about-intro__inner">
+
+      <!-- Avatar -->
+      <div class="tf-about-intro__avatar-wrap" data-aos="fade-right">
+        <div class="tf-about-intro__avatar">
+          <div class="tf-about-intro__avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>AG</span>
+          </div>
+          <div class="tf-about-intro__avatar-ring"></div>
+        </div>
+        <div class="tf-about-intro__badge">
+          <span class="tf-about-intro__badge-dot"></span>
+          Available for projects
+        </div>
+        <!-- Quick info card -->
+        <div class="tf-about-intro__info-card">
+          <div class="tf-about-intro__info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Medellín, Colombia</span>
+          </div>
+          <div class="tf-about-intro__info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>5+ Years Experience</span>
+          </div>
+          <div class="tf-about-intro__info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l1.27-.73a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+            <span>EN / ES</span>
+          </div>
+          <div class="tf-about-intro__info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>guerrero9510@hotmail.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="tf-about-intro__content" data-aos="fade-left">
+        <span class="tf-section-tag">My Story</span>
+        <h2 class="tf-about-intro__title">
+          Passionate about turning <span class="tf-gradient">ideas into products</span>
+        </h2>
+        <p>
+          I'm <strong>Andres Esteban Guerrero Rios</strong>, a Full Stack Developer based in 
+          Medellín, Colombia. I started coding over 5 years ago and since then I've been 
+          obsessed with building things that work well, look great and solve real problems.
+        </p>
+        <p>
+          My journey started with WordPress and PHP, then expanded into JavaScript, React 
+          and Node.js as I took on more complex projects. More recently, I've been diving 
+          deep into <strong>AI automation and intelligent agents</strong> — one of the most 
+          exciting frontiers in web development today.
+        </p>
+        <p>
+          I've worked on a wide range of projects: <strong>marketing landing pages</strong>, 
+          <strong>e-commerce platforms</strong>, <strong>financial software</strong>, 
+          <strong>React SPAs</strong> and <strong>academic systems</strong>. Each one 
+          taught me something new and pushed me to grow.
+        </p>
+        <p>
+          I work with clients worldwide — in English and Spanish — and I care deeply about 
+          communication, deadlines and delivering real value. Not just code, but solutions.
+        </p>
+        <div class="tf-about-intro__links">
+          <a href="https://github.com/andresguerrero270895" target="_blank" class="tf-btn tf-btn--outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/andres-guerrero-00862a217/" target="_blank" class="tf-btn tf-btn--outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:guerrero9510@hotmail.com" class="tf-btn tf-btn--ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Me
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS SECTION
+============================================================ -->
+<section class="tf-about-skills">
+  <div class="tf-container">
+
+    <div class="tf-section-header" data-aos="fade-up">
+      <span class="tf-section-tag">Tech Stack</span>
+      <h2 class="tf-section-title">Skills & <span class="tf-gradient">Technologies</span></h2>
+      <p class="tf-section-subtitle">Tools and technologies I work with on a daily basis.</p>
+    </div>
+
+    <div class="tf-skills-grid" data-aos="fade-up">
+      <?php
+      $skill_groups = [
+        [
+          'group' => 'Frontend',
+          'icon'  => '🎨',
+          'color' => 'cyan',
+          'skills' => [
+            ['name' => 'HTML5',       'level' => 95, 'icon' => '🌐'],
+            ['name' => 'CSS3 / SASS', 'level' => 92, 'icon' => '🎨'],
+            ['name' => 'JavaScript',  'level' => 90, 'icon' => '⚡'],
+            ['name' => 'React',       'level' => 88, 'icon' => '⚛️'],
+          ],
+        ],
+        [
+          'group' => 'Backend',
+          'icon'  => '⚙️',
+          'color' => 'purple',
+          'skills' => [
+            ['name' => 'Node.js',     'level' => 85, 'icon' => '🟢'],
+            ['name' => 'PHP',         'level' => 80, 'icon' => '🐘'],
+            ['name' => 'PostgreSQL',  'level' => 80, 'icon' => '🗄️'],
+            ['name' => 'Python',      'level' => 55, 'icon' => '🐍'],
+          ],
+        ],
+        [
+          'group' => 'WordPress',
+          'icon'  => '🌐',
+          'color' => 'green',
+          'skills' => [
+            ['name' => 'WordPress',   'level' => 95, 'icon' => '🔵'],
+            ['name' => 'WooCommerce', 'level' => 88, 'icon' => '🛒'],
+            ['name' => 'ACF / CPT',   'level' => 90, 'icon' => '🔧'],
+            ['name' => 'WP REST API', 'level' => 85, 'icon' => '🔌'],
+          ],
+        ],
+        [
+          'group' => 'AI & Tools',
+          'icon'  => '🤖',
+          'color' => 'amber',
+          'skills' => [
+            ['name' => 'AI Automation','level' => 75, 'icon' => '🤖'],
+            ['name' => 'LangChain',   'level' => 70, 'icon' => '🧠'],
+            ['name' => 'Git / GitHub','level' => 90, 'icon' => '📦'],
+            ['name' => 'Figma',       'level' => 78, 'icon' => '🎯'],
+          ],
+        ],
+      ];
+
+      foreach ( $skill_groups as $group ) : ?>
+        <div class="tf-skills-group tf-skills-group--<?php echo $group['color']; ?>" data-aos="fade-up">
+          <div class="tf-skills-group__header">
+            <span class="tf-skills-group__icon"><?php echo $group['icon']; ?></span>
+            <h3 class="tf-skills-group__title"><?php echo $group['group']; ?></h3>
+          </div>
+          <div class="tf-skills-group__list">
+            <?php foreach ( $group['skills'] as $skill ) : ?>
+              <div class="tf-skill-item">
+                <div class="tf-skill-item__header">
+                  <span class="tf-skill-item__name">
+                    <?php echo $skill['icon']; ?> <?php echo $skill['name']; ?>
+                  </span>
+                  <span class="tf-skill-item__level"><?php echo $skill['level']; ?>%</span>
+                </div>
+                <div class="tf-skill-item__track">
+                  <div class="tf-skill-item__fill tf-skill-item__fill--<?php echo $group['color']; ?>"
+                       data-width="<?php echo $skill['level']; ?>"
+                       style="width:0%">
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE TIMELINE
+============================================================ -->
+<section class="tf-timeline">
+  <div class="tf-container">
+
+    <div class="tf-section-header" data-aos="fade-up">
+      <span class="tf-section-tag">Experience</span>
+      <h2 class="tf-section-title">My <span class="tf-gradient">Journey</span></h2>
+    </div>
+
+    <div class="tf-timeline__list">
+      <?php
+      $timeline = [
+        [
+          'year'  => '2024 – Present',
+          'title' => 'Full Stack Developer & AI Specialist',
+          'place' => 'Freelance — Remote',
+          'desc'  => 'Building AI agents, automation workflows and full-stack web applications for clients worldwide. Specializing in LangChain, Python automation and WordPress enterprise solutions.',
+          'tags'  => ['AI Agents', 'LangChain', 'Python', 'WordPress'],
+          'color' => 'purple',
+          'current' => true,
+        ],
+        [
+          'year'  => '2022 – 2024',
+          'title' => 'Full Stack Web Developer',
+          'place' => 'Freelance — Remote',
+          'desc'  => 'Developed e-commerce platforms, React SPAs, REST APIs and marketing landing pages. Worked with clients in Colombia, USA and Spain across multiple industries.',
+          'tags'  => ['React', 'Node.js', 'WooCommerce', 'PostgreSQL'],
+          'color' => 'cyan',
+          'current' => false,
+        ],
+        [
+          'year'  => '2021 – 2022',
+          'title' => 'WordPress Developer & Digital Marketer',
+          'place' => 'Agency Work — Medellín',
+          'desc'  => 'Custom WordPress themes and plugins, Google Ads and Meta Ads campaign management, SEO optimization and community management for local and national brands.',
+          'tags'  => ['WordPress', 'PHP', 'Google Ads', 'SEO'],
+          'color' => 'green',
+          'current' => false,
+        ],
+        [
+          'year'  => '2020 – 2021',
+          'title' => 'Junior Web Developer',
+          'place' => 'Self-taught & First Projects',
+          'desc'  => 'Started professional development — first client projects, financial software tools, academic management systems and WordPress sites. The foundation of everything that followed.',
+          'tags'  => ['HTML', 'CSS', 'JavaScript', 'PHP'],
+          'color' => 'amber',
+          'current' => false,
+        ],
+      ];
+
+      foreach ( $timeline as $i => $item ) : ?>
+        <div class="tf-timeline__item tf-timeline__item--<?php echo $item['color']; ?> <?php echo $item['current'] ? 'tf-timeline__item--current' : ''; ?>"
+             data-aos="fade-up" data-aos-delay="<?php echo $i * 100; ?>">
+          <div class="tf-timeline__dot">
+            <?php if ( $item['current'] ) : ?>
+              <div class="tf-timeline__dot-pulse"></div>
+            <?php endif; ?>
+          </div>
+          <div class="tf-timeline__content">
+            <div class="tf-timeline__meta">
+              <span class="tf-timeline__year"><?php echo $item['year']; ?></span>
+              <?php if ( $item['current'] ) : ?>
+                <span class="tf-timeline__current-badge">Current</span>
+              <?php endif; ?>
             </div>
-            <h1 class="tf-about-hero__title">
-                We Build Digital Products
-                <span class="tf-gradient-text">That Matter</span>
-            </h1>
-            <p class="tf-about-hero__subtitle">
-                TechFlow is a team of engineers, designers, and strategists obsessed with 
-                crafting high-performance digital products. We partner with startups and 
-                enterprises to turn complex problems into elegant solutions.
+            <h3 class="tf-timeline__title"><?php echo $item['title']; ?></h3>
+            <p class="tf-timeline__place">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <?php echo $item['place']; ?>
             </p>
-            <div class="tf-about-hero__actions">
-                <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
-                    Work With Us
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="<?php echo home_url('/work'); ?>" class="tf-btn tf-btn--ghost tf-btn--lg">
-                    See Our Work
-                </a>
+            <p class="tf-timeline__desc"><?php echo $item['desc']; ?></p>
+            <div class="tf-timeline__tags">
+              <?php foreach ( $item['tags'] as $tag ) : ?>
+                <span><?php echo $tag; ?></span>
+              <?php endforeach; ?>
             </div>
+          </div>
         </div>
+      <?php endforeach; ?>
     </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     2. STATS STRIP
-     ============================================ -->
-<section class="tf-about-stats">
-    <div class="tf-container">
-        <div class="tf-about-stats__grid">
-            <div class="tf-about-stat">
-                <span class="tf-about-stat__number">5+</span>
-                <span class="tf-about-stat__label">Years in Business</span>
-            </div>
-            <div class="tf-about-stat">
-                <span class="tf-about-stat__number">40+</span>
-                <span class="tf-about-stat__label">Projects Delivered</span>
-            </div>
-            <div class="tf-about-stat">
-                <span class="tf-about-stat__number">18</span>
-                <span class="tf-about-stat__label">Team Members</span>
-            </div>
-            <div class="tf-about-stat">
-                <span class="tf-about-stat__number">12</span>
-                <span class="tf-about-stat__label">Countries Served</span>
-            </div>
-            <div class="tf-about-stat">
-                <span class="tf-about-stat__number">98%</span>
-                <span class="tf-about-stat__label">Client Satisfaction</span>
-            </div>
-        </div>
+<!-- ============================================================
+     VALUES SECTION
+============================================================ -->
+<section class="tf-values">
+  <div class="tf-container">
+
+    <div class="tf-section-header" data-aos="fade-up">
+      <span class="tf-section-tag">How I Work</span>
+      <h2 class="tf-section-title">My <span class="tf-gradient">Values</span></h2>
     </div>
+
+    <div class="tf-values__grid" data-aos="fade-up">
+      <?php
+      $values = [
+        [
+          'icon'  => '🎯',
+          'title' => 'Results-Focused',
+          'desc'  => 'I don\'t just write code — I solve problems. Every decision is guided by what actually moves the needle for your business.',
+          'color' => 'purple',
+        ],
+        [
+          'icon'  => '💬',
+          'title' => 'Clear Communication',
+          'desc'  => 'No ghosting, no vague updates. I keep you informed throughout the project with regular check-ins and honest feedback.',
+          'color' => 'cyan',
+        ],
+        [
+          'icon'  => '⚡',
+          'title' => 'Clean Code',
+          'desc'  => 'I write maintainable, well-documented code. Your project should be easy to understand and extend — by anyone.',
+          'color' => 'green',
+        ],
+        [
+          'icon'  => '📅',
+          'title' => 'On-Time Delivery',
+          'desc'  => 'Deadlines matter. I plan carefully and communicate early if anything changes — so you\'re never left in the dark.',
+          'color' => 'amber',
+        ],
+        [
+          'icon'  => '🔄',
+          'title' => 'Continuous Learning',
+          'desc'  => 'The web evolves fast. I stay current with AI, new frameworks and best practices so your projects use the best tools available.',
+          'color' => 'purple',
+        ],
+        [
+          'icon'  => '🤝',
+          'title' => 'Long-term Partnership',
+          'desc'  => 'I aim to be your go-to developer — not just for one project, but for everything that comes next.',
+          'color' => 'cyan',
+        ],
+      ];
+      foreach ( $values as $v ) : ?>
+        <div class="tf-value-card tf-value-card--<?php echo $v['color']; ?>" data-aos="fade-up">
+          <span class="tf-value-card__icon"><?php echo $v['icon']; ?></span>
+          <h3 class="tf-value-card__title"><?php echo $v['title']; ?></h3>
+          <p class="tf-value-card__desc"><?php echo $v['desc']; ?></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     3. STORY SECTION
-     ============================================ -->
-<section class="tf-about-story">
-    <div class="tf-container">
-        <div class="tf-about-story__inner">
-            <div class="tf-about-story__content">
-                <div class="tf-eyebrow">
-                    <span class="tf-eyebrow__dot"></span>
-                    Our Story
-                </div>
-                <h2 class="tf-section-title">
-                    Built by Builders,
-                    <span class="tf-gradient-text">For Builders</span>
-                </h2>
-                <p>
-                    TechFlow started in 2019 when three engineers got tired of watching 
-                    great ideas die because of bad execution. We knew there had to be a 
-                    better way to build software — faster, cleaner, and with less pain.
-                </p>
-                <p>
-                    We started small, taking on freelance projects and proving our process. 
-                    Within two years, we had a team of 10 and clients across three continents. 
-                    Today, we're 18 people strong — and still growing.
-                </p>
-                <p>
-                    Our north star has never changed: ship products that work, on time, 
-                    without the drama. We're not the cheapest option, but we are the most 
-                    reliable one.
-                </p>
-                <div class="tf-about-story__values">
-                    <div class="tf-value-pill">
-                        <span>🎯</span> Execution-first
-                    </div>
-                    <div class="tf-value-pill">
-                        <span>🔍</span> Transparent
-                    </div>
-                    <div class="tf-value-pill">
-                        <span>⚡</span> Fast & reliable
-                    </div>
-                    <div class="tf-value-pill">
-                        <span>🤝</span> Long-term partners
-                    </div>
-                </div>
-            </div>
-            <div class="tf-about-story__visual">
-                <div class="tf-about-card-stack">
-                    <div class="tf-about-card tf-about-card--1">
-                        <div class="tf-about-card__icon">🚀</div>
-                        <div class="tf-about-card__text">
-                            <strong>Founded 2019</strong>
-                            <span>San Francisco, CA</span>
-                        </div>
-                    </div>
-                    <div class="tf-about-card tf-about-card--2">
-                        <div class="tf-about-card__icon">💡</div>
-                        <div class="tf-about-card__text">
-                            <strong>40+ Products Shipped</strong>
-                            <span>Across 12 industries</span>
-                        </div>
-                    </div>
-                    <div class="tf-about-card tf-about-card--3">
-                        <div class="tf-about-card__icon">🏆</div>
-                        <div class="tf-about-card__text">
-                            <strong>Top Agency 2024</strong>
-                            <span>Clutch & G2 Certified</span>
-                        </div>
-                    </div>
-                    <div class="tf-about-card tf-about-card--4">
-                        <div class="tf-about-card__icon">⭐</div>
-                        <div class="tf-about-card__text">
-                            <strong>4.9/5 Rating</strong>
-                            <span>From 60+ reviews</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ============================================================
+     CTA
+============================================================ -->
+<section class="tf-cta-section">
+  <div class="tf-container">
+    <div class="tf-cta-section__inner" data-aos="fade-up">
+      <div class="tf-cta-section__glow"></div>
+      <h2 class="tf-cta-section__title">
+        Let's work <span class="tf-gradient">together</span>
+      </h2>
+      <p class="tf-cta-section__text">
+        I'm currently available for new projects. Let's talk about what you need.
+      </p>
+      <div class="tf-cta-section__actions">
+        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
+          Start a Project
+        </a>
+        <a href="<?php echo get_permalink(get_page_by_path('work')); ?>" class="tf-btn tf-btn--ghost tf-btn--lg">
+          View My Work
+        </a>
+      </div>
+      <div class="tf-cta-section__links">
+        <a href="https://github.com/andresguerrero270895" target="_blank">GitHub</a>
+        <span>·</span>
+        <a href="https://www.linkedin.com/in/andres-guerrero-00862a217/" target="_blank">LinkedIn</a>
+        <span>·</span>
+        <a href="mailto:guerrero9510@hotmail.com">guerrero9510@hotmail.com</a>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ============================================
-     4. VALUES SECTION
-     ============================================ -->
-<section class="tf-values-section">
-    <div class="tf-container">
-        <div class="tf-section-header tf-section-header--center">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                What Drives Us
-            </div>
-            <h2 class="tf-section-title">
-                Our Core
-                <span class="tf-gradient-text">Values</span>
-            </h2>
-        </div>
-        <div class="tf-values-grid">
+<!-- Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--violet">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
-                </div>
-                <h3>Speed Without Shortcuts</h3>
-                <p>We move fast because we've built the systems to do so — not because we cut corners. Quality is non-negotiable.</p>
-            </div>
+  // ── Skill bar animation ───────────────────────────────────
+  const bars = document.querySelectorAll('.tf-skill-item__fill');
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const bar = entry.target;
+      bar.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
+      bar.style.width = bar.dataset.width + '%';
+      barObs.unobserve(bar);
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barObs.observe(b));
 
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--cyan">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </div>
-                <h3>Radical Transparency</h3>
-                <p>No smoke and mirrors. You'll always know where your project stands — the good, the bad, and the blockers.</p>
-            </div>
+  // ── AOS lightweight ───────────────────────────────────────
+  const aosEls = document.querySelectorAll('[data-aos]');
+  const aosObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.dataset.aosDelay || 0;
+        setTimeout(() => e.target.classList.add('aos-animate'), parseInt(delay));
+        aosObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  aosEls.forEach(el => aosObs.observe(el));
 
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--amber">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <h3>Client Partnership</h3>
-                <p>We don't just deliver and disappear. We invest in understanding your business and become a long-term extension of your team.</p>
-            </div>
-
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--green">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                </div>
-                <h3>Ownership Mentality</h3>
-                <p>Every team member treats your project like it's their own startup. We care about outcomes, not just outputs.</p>
-            </div>
-
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--violet">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                    </svg>
-                </div>
-                <h3>Excellence as Default</h3>
-                <p>We don't aim for "good enough." Every pixel, every line of code, every interaction is crafted with intent and care.</p>
-            </div>
-
-            <div class="tf-value-card">
-                <div class="tf-value-card__icon tf-service-icon--cyan">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </div>
-                <h3>Security & Trust</h3>
-                <p>Your data, your IP, your business logic — we treat them with the highest level of security and confidentiality.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ============================================
-     5. TEAM SECTION
-     ============================================ -->
-<section class="tf-team-section">
-    <div class="tf-container">
-        <div class="tf-section-header tf-section-header--center">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                The Team
-            </div>
-            <h2 class="tf-section-title">
-                The People Behind
-                <span class="tf-gradient-text">Your Product</span>
-            </h2>
-            <p class="tf-section-subtitle">
-                Senior engineers, award-winning designers, and battle-tested product managers.
-            </p>
-        </div>
-
-        <div class="tf-team-grid">
-            <?php
-            $team = techflow_get_team(8);
-            if ( $team->have_posts() ) :
-                while ( $team->have_posts() ) : $team->the_post();
-                    $role    = get_post_meta( get_the_ID(), '_tf_team_role', true );
-                    $twitter = get_post_meta( get_the_ID(), '_tf_team_twitter', true );
-                    $github  = get_post_meta( get_the_ID(), '_tf_team_github', true );
-                    $linkedin= get_post_meta( get_the_ID(), '_tf_team_linkedin', true );
-                    ?>
-                    <div class="tf-team-card">
-                        <div class="tf-team-card__avatar">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail('medium', ['class' => 'tf-team-card__img']); ?>
-                            <?php else : ?>
-                                <div class="tf-team-card__placeholder">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                    </svg>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="tf-team-card__content">
-                            <h3 class="tf-team-card__name"><?php the_title(); ?></h3>
-                            <span class="tf-team-card__role"><?php echo esc_html($role); ?></span>
-                            <div class="tf-team-card__social">
-                                <?php if ($twitter) : ?>
-                                    <a href="<?php echo esc_url($twitter); ?>" target="_blank" class="tf-social-link" aria-label="Twitter">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                        </svg>
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($github) : ?>
-                                    <a href="<?php echo esc_url($github); ?>" target="_blank" class="tf-social-link" aria-label="GitHub">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                                        </svg>
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($linkedin) : ?>
-                                    <a href="<?php echo esc_url($linkedin); ?>" target="_blank" class="tf-social-link" aria-label="LinkedIn">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                        </svg>
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endwhile;
-                wp_reset_postdata();
-            else :
-                // Fallback team
-                $fallback_team = [
-                    ['name' => 'Alex Rivera',    'role' => 'CEO & Co-Founder',      'emoji' => '👨‍💻'],
-                    ['name' => 'Sarah Chen',     'role' => 'CTO & Co-Founder',      'emoji' => '👩‍💻'],
-                    ['name' => 'Marcus Johnson', 'role' => 'Lead Designer',         'emoji' => '🎨'],
-                    ['name' => 'Priya Patel',    'role' => 'Senior Engineer',       'emoji' => '⚡'],
-                    ['name' => 'Tom Williams',   'role' => 'DevOps Lead',           'emoji' => '☁️'],
-                    ['name' => 'Luna García',    'role' => 'Product Manager',       'emoji' => '🚀'],
-                    ['name' => 'James Park',     'role' => 'Mobile Developer',      'emoji' => '📱'],
-                    ['name' => 'Emma Wilson',    'role' => 'UI/UX Designer',        'emoji' => '✨'],
-                ];
-                foreach ( $fallback_team as $member ) : ?>
-                    <div class="tf-team-card">
-                        <div class="tf-team-card__avatar">
-                            <div class="tf-team-card__placeholder">
-                                <span style="font-size:2rem;"><?php echo $member['emoji']; ?></span>
-                            </div>
-                        </div>
-                        <div class="tf-team-card__content">
-                            <h3 class="tf-team-card__name"><?php echo esc_html($member['name']); ?></h3>
-                            <span class="tf-team-card__role"><?php echo esc_html($member['role']); ?></span>
-                            <div class="tf-team-card__social">
-                                <a href="#" class="tf-social-link">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach;
-            endif; ?>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================
-     6. CTA
-     ============================================ -->
-<section class="tf-about-cta">
-    <div class="tf-container">
-        <div class="tf-services-cta__inner">
-            <div class="tf-services-cta__bg">
-                <div class="tf-orb tf-orb--violet" style="top:50%;left:20%;transform:translate(-50%,-50%);width:400px;height:400px;opacity:0.2;"></div>
-            </div>
-            <div class="tf-services-cta__content">
-                <h2 class="tf-services-cta__title">
-                    Let's Build Something
-                    <span class="tf-gradient-text">Together</span>
-                </h2>
-                <p class="tf-services-cta__desc">
-                    We're always looking for great clients and great talent.
-                </p>
-                <div class="tf-services-cta__actions">
-                    <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
-                        Start a Project
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:hello@techflow.dev" class="tf-btn tf-btn--ghost tf-btn--lg">
-                        Join Our Team
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+});
+</script>
 
 <?php get_footer(); ?>
