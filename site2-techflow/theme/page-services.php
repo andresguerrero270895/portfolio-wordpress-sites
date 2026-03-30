@@ -1,771 +1,490 @@
 <?php
 /**
- * Template Name: Services Page
- * TechFlow Agency — Services
+ * Page Template: Services
+ * Developer: Andres Esteban Guerrero Rios
  */
 get_header(); ?>
 
-<!-- ============================================
-     1. HERO SECTION
-     ============================================ -->
-<section class="tf-services-hero">
-    <div class="tf-services-hero__bg">
-        <div class="tf-orb tf-orb--violet" style="top:-10%;left:60%;width:600px;height:600px;"></div>
-        <div class="tf-orb tf-orb--cyan"   style="top:40%;left:-5%;width:400px;height:400px;"></div>
-        <div class="tf-grid-lines"></div>
+<!-- ============================================================
+     HERO — SERVICES
+============================================================ -->
+<section class="tf-page-hero">
+  <div class="tf-page-hero__bg">
+    <div class="tf-hero__grid"></div>
+    <div class="tf-page-hero__glow"></div>
+  </div>
+  <div class="tf-container">
+    <div class="tf-page-hero__inner" data-aos="fade-up">
+      <span class="tf-section-tag">What I Offer</span>
+      <h1 class="tf-page-hero__title">
+        Services & <span class="tf-gradient">Expertise</span>
+      </h1>
+      <p class="tf-page-hero__subtitle">
+        From a simple landing page to a full AI-powered platform — 
+        I deliver clean, performant and scalable solutions tailored to your goals.
+      </p>
+      <div class="tf-page-hero__stats">
+        <div class="tf-page-hero__stat">
+          <span>9</span>
+          <small>Services</small>
+        </div>
+        <div class="tf-page-hero__stat">
+          <span>5+</span>
+          <small>Years Exp.</small>
+        </div>
+        <div class="tf-page-hero__stat">
+          <span>30+</span>
+          <small>Projects</small>
+        </div>
+        <div class="tf-page-hero__stat">
+          <span>100%</span>
+          <small>Committed</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES — DETAILED CARDS
+============================================================ -->
+<section class="tf-services-detail">
+  <div class="tf-container">
+
+    <?php
+    $services = [
+      [
+        'id'      => 'wordpress',
+        'icon'    => '🌐',
+        'color'   => 'purple',
+        'title'   => 'WordPress Development',
+        'tagline' => 'Custom themes, plugins & full site builds',
+        'desc'    => 'I build WordPress sites from scratch — custom themes without page builders, performant and fully tailored to your brand. From simple blogs to complex multi-site networks.',
+        'features' => [
+          'Custom theme development (no page builders)',
+          'Plugin development & customization',
+          'WP CLI, ACF, CPT UI integration',
+          'Performance optimization (90+ PageSpeed)',
+          'Security hardening & maintenance',
+          'WP REST API & Headless WordPress',
+          'Migration from other platforms',
+        ],
+        'stack'   => ['PHP', 'WordPress', 'ACF', 'WP CLI', 'MySQL'],
+        'price'   => '\$300 – \$2,500',
+        'time'    => '1 – 6 weeks',
+      ],
+      [
+        'id'      => 'design',
+        'icon'    => '🎨',
+        'color'   => 'cyan',
+        'title'   => 'Web Design & UI/UX',
+        'tagline' => 'Modern, conversion-focused interfaces',
+        'desc'    => 'I design and build interfaces that look great and convert. Every pixel has a purpose — from wireframe to fully responsive, accessible final product.',
+        'features' => [
+          'Responsive design (mobile-first)',
+          'Custom CSS animations & interactions',
+          'Design system & component library',
+          'Accessibility (WCAG 2.1)',
+          'Cross-browser compatibility',
+          'Figma to code (pixel-perfect)',
+          'UI/UX audit & improvement',
+        ],
+        'stack'   => ['Figma', 'CSS3', 'HTML5', 'JavaScript', 'SASS'],
+        'price'   => '\$200 – \$1,500',
+        'time'    => '1 – 4 weeks',
+      ],
+      [
+        'id'      => 'ecommerce',
+        'icon'    => '🛒',
+        'color'   => 'green',
+        'title'   => 'E-commerce (WooCommerce)',
+        'tagline' => 'Full online store setup & optimization',
+        'desc'    => 'Complete WooCommerce stores with custom product pages, payment gateways, shipping logic and checkout optimization to maximize your conversion rate.',
+        'features' => [
+          'WooCommerce setup & configuration',
+          'Custom product pages & variations',
+          'Payment gateway integration (Stripe, PayPal)',
+          'Custom checkout flow',
+          'Inventory & order management',
+          'Multi-currency & multi-language',
+          'Abandoned cart recovery',
+        ],
+        'stack'   => ['WooCommerce', 'PHP', 'Stripe', 'PayPal', 'MySQL'],
+        'price'   => '\$500 – \$3,000',
+        'time'    => '2 – 8 weeks',
+      ],
+      [
+        'id'      => 'frontend',
+        'icon'    => '⚛️',
+        'color'   => 'amber',
+        'title'   => 'Frontend Development',
+        'tagline' => 'React SPAs & interactive interfaces',
+        'desc'    => 'Single Page Applications, dashboards and interactive UIs built with React and modern JavaScript. Fast, scalable and maintainable code.',
+        'features' => [
+          'React SPA development',
+          'Component architecture & state management',
+          'REST API & GraphQL integration',
+          'Performance optimization (lazy loading, code splitting)',
+          'React Router & navigation',
+          'Form validation & UX',
+          'Unit testing (Jest)',
+        ],
+        'stack'   => ['React', 'JavaScript', 'CSS3', 'REST API', 'Jest'],
+        'price'   => '\$400 – \$2,500',
+        'time'    => '2 – 8 weeks',
+      ],
+      [
+        'id'      => 'backend',
+        'icon'    => '⚙️',
+        'color'   => 'purple',
+        'title'   => 'Backend Development',
+        'tagline' => 'Scalable APIs & server-side architecture',
+        'desc'    => 'Robust REST APIs, server-side logic and database architecture. I build backends that scale with your business using Node.js, PHP and PostgreSQL.',
+        'features' => [
+          'REST API design & development',
+          'Node.js / Express server',
+          'PostgreSQL database architecture',
+          'Authentication (JWT, OAuth)',
+          'File uploads & storage',
+          'Email & notification systems',
+          'API documentation',
+        ],
+        'stack'   => ['Node.js', 'Express', 'PHP', 'PostgreSQL', 'JWT'],
+        'price'   => '\$500 – \$3,000',
+        'time'    => '2 – 8 weeks',
+      ],
+      [
+        'id'      => 'seo',
+        'icon'    => '📈',
+        'color'   => 'cyan',
+        'title'   => 'SEO Optimization',
+        'tagline' => 'Rank higher, get more organic traffic',
+        'desc'    => 'Technical SEO audits, on-page optimization and Core Web Vitals improvements that get your site ranking higher and loading faster.',
+        'features' => [
+          'Technical SEO audit',
+          'On-page optimization',
+          'Core Web Vitals improvement',
+          'Schema markup implementation',
+          'Sitemap & robots.txt',
+          'Google Search Console setup',
+          'Monthly SEO report',
+        ],
+        'stack'   => ['SEO', 'Google Analytics', 'Search Console', 'Ahrefs'],
+        'price'   => '\$200 – \$800 / mo',
+        'time'    => 'Ongoing',
+      ],
+      [
+        'id'      => 'marketing',
+        'icon'    => '🚀',
+        'color'   => 'green',
+        'title'   => 'Digital Marketing',
+        'tagline' => 'Landing pages, paid traffic & social media',
+        'desc'    => 'High-converting landing pages, paid traffic campaigns and community management. I combine technical skills with marketing strategy to drive real results.',
+        'features' => [
+          'High-converting landing page design',
+          'Google Ads & Meta Ads management',
+          'Community management',
+          'Email marketing campaigns',
+          'Conversion rate optimization (CRO)',
+          'A/B testing',
+          'Analytics & reporting',
+        ],
+        'stack'   => ['Google Ads', 'Meta Ads', 'Mailchimp', 'Analytics', 'Hotjar'],
+        'price'   => '\$300 – \$1,500 / mo',
+        'time'    => 'Ongoing',
+      ],
+      [
+        'id'      => 'automation',
+        'icon'    => '🤖',
+        'color'   => 'amber',
+        'title'   => 'AI Automation',
+        'tagline' => 'Automate workflows & save time',
+        'desc'    => 'I design and implement AI-powered automation workflows that save your team hours every week — from content pipelines to business process automation.',
+        'features' => [
+          'Workflow automation with n8n / Zapier',
+          'AI-powered content generation pipelines',
+          'Chatbot development & integration',
+          'Data scraping & processing',
+          'Email automation with AI',
+          'CRM & tool integrations',
+          'Custom Python automation scripts',
+        ],
+        'stack'   => ['Python', 'n8n', 'OpenAI', 'Zapier', 'LangChain'],
+        'price'   => '\$400 – \$2,000',
+        'time'    => '1 – 4 weeks',
+      ],
+      [
+        'id'      => 'agents',
+        'icon'    => '🧠',
+        'color'   => 'purple',
+        'title'   => 'AI Agents',
+        'tagline' => 'Intelligent agents that think & act',
+        'desc'    => 'Custom AI agents that reason, plan and execute tasks autonomously. From customer service agents to research assistants and internal business tools.',
+        'features' => [
+          'Custom AI agent architecture',
+          'LangChain / LangGraph agents',
+          'Tool & API integration',
+          'Memory & context management',
+          'Multi-agent systems',
+          'RAG (Retrieval Augmented Generation)',
+          'Agent monitoring & logging',
+        ],
+        'stack'   => ['Python', 'LangChain', 'OpenAI', 'Pinecone', 'FastAPI'],
+        'price'   => '\$800 – \$4,000',
+        'time'    => '2 – 8 weeks',
+      ],
+    ];
+
+    foreach ( $services as $i => $s ) :
+      $reverse = $i % 2 !== 0 ? 'tf-service-detail--reverse' : '';
+    ?>
+
+    <div class="tf-service-detail <?php echo $reverse; ?> tf-service-detail--<?php echo $s['color']; ?>"
+         id="<?php echo $s['id']; ?>"
+         data-aos="fade-up">
+
+      <!-- Left: Info -->
+      <div class="tf-service-detail__content">
+        <div class="tf-service-detail__icon"><?php echo $s['icon']; ?></div>
+        <span class="tf-section-tag"><?php echo $s['tagline']; ?></span>
+        <h2 class="tf-service-detail__title"><?php echo $s['title']; ?></h2>
+        <p class="tf-service-detail__desc"><?php echo $s['desc']; ?></p>
+
+        <ul class="tf-service-detail__features">
+          <?php foreach ( $s['features'] as $f ) : ?>
+            <li>
+              <span class="tf-service-detail__check">✓</span>
+              <?php echo $f; ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+
+        <div class="tf-service-detail__stack">
+          <?php foreach ( $s['stack'] as $tech ) : ?>
+            <span><?php echo $tech; ?></span>
+          <?php endforeach; ?>
+        </div>
+      </div>
+
+      <!-- Right: Price Card -->
+      <div class="tf-service-detail__card">
+        <div class="tf-service-detail__card-inner">
+          <div class="tf-service-detail__price-label">Starting from</div>
+          <div class="tf-service-detail__price"><?php echo $s['price']; ?></div>
+          <div class="tf-service-detail__meta">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <?php echo $s['time']; ?>
+            </span>
+          </div>
+          <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>?service=<?php echo $s['id']; ?>"
+             class="tf-btn tf-btn--primary tf-btn--full">
+            Get a Quote →
+          </a>
+          <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>"
+             class="tf-service-detail__talk">
+            Or let's talk first
+          </a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="tf-container">
-        <!-- Breadcrumb -->
-        <nav class="tf-breadcrumb" aria-label="Breadcrumb">
-            <a href="<?php echo home_url('/'); ?>">Home</a>
-            <span class="tf-breadcrumb__sep">→</span>
-            <span class="tf-breadcrumb__current">Services</span>
-        </nav>
+    <?php if ( $i < count($services) - 1 ) : ?>
+      <div class="tf-service-divider"></div>
+    <?php endif; ?>
 
-        <div class="tf-services-hero__content">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                What We Do
-            </div>
-            <h1 class="tf-services-hero__title">
-                Full-Stack Solutions<br>
-                <span class="tf-gradient-text">Built to Perform</span>
-            </h1>
-            <p class="tf-services-hero__subtitle">
-                From pixel-perfect interfaces to scalable backend systems,
-                we deliver end-to-end digital products that drive real business results.
-            </p>
-            <div class="tf-services-hero__actions">
-                <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
-                    Start a Project
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="#tf-pricing" class="tf-btn tf-btn--ghost tf-btn--lg">
-                    View Pricing
-                </a>
-            </div>
-        </div>
+    <?php endforeach; ?>
 
-        <!-- Stats Row -->
-        <div class="tf-services-hero__stats">
-            <div class="tf-stat-pill">
-                <span class="tf-stat-pill__number">6</span>
-                <span class="tf-stat-pill__label">Core Services</span>
-            </div>
-            <div class="tf-stat-pill__divider"></div>
-            <div class="tf-stat-pill">
-                <span class="tf-stat-pill__number">48h</span>
-                <span class="tf-stat-pill__label">Avg. Response Time</span>
-            </div>
-            <div class="tf-stat-pill__divider"></div>
-            <div class="tf-stat-pill">
-                <span class="tf-stat-pill__number">100%</span>
-                <span class="tf-stat-pill__label">Satisfaction Rate</span>
-            </div>
-            <div class="tf-stat-pill__divider"></div>
-            <div class="tf-stat-pill">
-                <span class="tf-stat-pill__number">5yr</span>
-                <span class="tf-stat-pill__label">Average Partnership</span>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- ============================================
-     2. SERVICES GRID
-     ============================================ -->
-<section class="tf-services-grid-section" id="tf-services">
-    <div class="tf-container">
+<!-- ============================================================
+     PROCESS SECTION
+============================================================ -->
+<section class="tf-process">
+  <div class="tf-container">
 
-        <div class="tf-section-header tf-section-header--center">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                Our Expertise
-            </div>
-            <h2 class="tf-section-title">
-                Everything You Need to
-                <span class="tf-gradient-text">Ship & Scale</span>
-            </h2>
-            <p class="tf-section-subtitle">
-                Six specialized service areas, one unified team. We cover the full product lifecycle.
-            </p>
-        </div>
-
-        <div class="tf-services-grid">
-
-            <!-- Service 1: Web Development -->
-            <article class="tf-service-detail-card tf-service-detail-card--featured">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--violet">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                            </svg>
-                        </div>
-                        <span class="tf-service-badge">Most Popular</span>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">Web Development</h3>
-                    <p class="tf-service-detail-card__desc">
-                        Custom web applications built with modern frameworks. From SPAs to 
-                        complex enterprise platforms, we architect solutions that scale with your business.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> React / Next.js / Vue.js</li>
-                        <li><span class="tf-check">✓</span> Node.js / Python backends</li>
-                        <li><span class="tf-check">✓</span> REST & GraphQL APIs</li>
-                        <li><span class="tf-check">✓</span> Performance optimization</li>
-                        <li><span class="tf-check">✓</span> CI/CD pipelines</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$8,000</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Service 2: UI/UX Design -->
-            <article class="tf-service-detail-card">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--cyan">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"/>
-                                <circle cx="12" cy="12" r="4"/>
-                                <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/>
-                                <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
-                                <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/>
-                                <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">UI/UX Design</h3>
-                    <p class="tf-service-detail-card__desc">
-                        User-centered design that converts. We craft intuitive interfaces backed 
-                        by research, testing, and data — not assumptions.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> User research & personas</li>
-                        <li><span class="tf-check">✓</span> Wireframes & prototypes</li>
-                        <li><span class="tf-check">✓</span> Design systems</li>
-                        <li><span class="tf-check">✓</span> Usability testing</li>
-                        <li><span class="tf-check">✓</span> Figma handoff</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$4,500</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Service 3: Mobile Apps -->
-            <article class="tf-service-detail-card">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--amber">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                <line x1="12" y1="18" x2="12.01" y2="18"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">Mobile Apps</h3>
-                    <p class="tf-service-detail-card__desc">
-                        Native and cross-platform mobile experiences for iOS and Android. 
-                        High-performance apps that users actually love to use.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> React Native / Flutter</li>
-                        <li><span class="tf-check">✓</span> Native iOS (Swift)</li>
-                        <li><span class="tf-check">✓</span> Native Android (Kotlin)</li>
-                        <li><span class="tf-check">✓</span> App Store publishing</li>
-                        <li><span class="tf-check">✓</span> Push notifications</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$12,000</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Service 4: Cloud & DevOps -->
-            <article class="tf-service-detail-card">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--green">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">Cloud & DevOps</h3>
-                    <p class="tf-service-detail-card__desc">
-                        Scalable infrastructure that grows with you. We architect, deploy, 
-                        and monitor cloud systems for maximum reliability and performance.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> AWS / GCP / Azure</li>
-                        <li><span class="tf-check">✓</span> Docker & Kubernetes</li>
-                        <li><span class="tf-check">✓</span> Infrastructure as Code</li>
-                        <li><span class="tf-check">✓</span> 24/7 monitoring</li>
-                        <li><span class="tf-check">✓</span> Auto-scaling setup</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$3,000</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Service 5: E-Commerce -->
-            <article class="tf-service-detail-card">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--violet">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="9" cy="21" r="1"/>
-                                <circle cx="20" cy="21" r="1"/>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">E-Commerce</h3>
-                    <p class="tf-service-detail-card__desc">
-                        Revenue-optimized online stores built on proven platforms. 
-                        From MVP stores to enterprise-grade marketplaces with custom features.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> Shopify / WooCommerce</li>
-                        <li><span class="tf-check">✓</span> Custom checkout flows</li>
-                        <li><span class="tf-check">✓</span> Payment integrations</li>
-                        <li><span class="tf-check">✓</span> Inventory systems</li>
-                        <li><span class="tf-check">✓</span> Conversion optimization</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$6,000</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Service 6: AI Integration -->
-            <article class="tf-service-detail-card">
-                <div class="tf-service-detail-card__glow"></div>
-                <div class="tf-service-detail-card__inner">
-                    <div class="tf-service-detail-card__header">
-                        <div class="tf-service-icon tf-service-icon--cyan">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2a10 10 0 1 0 10 10"/>
-                                <path d="M12 6v6l4 2"/>
-                                <path d="M22 2L12 12"/>
-                                <circle cx="19" cy="5" r="3"/>
-                            </svg>
-                        </div>
-                        <span class="tf-service-badge tf-service-badge--new">New</span>
-                    </div>
-                    <h3 class="tf-service-detail-card__title">AI Integration</h3>
-                    <p class="tf-service-detail-card__desc">
-                        Supercharge your product with AI capabilities. We integrate LLMs, 
-                        build custom ML pipelines, and create intelligent automation workflows.
-                    </p>
-                    <ul class="tf-service-features">
-                        <li><span class="tf-check">✓</span> OpenAI / Claude APIs</li>
-                        <li><span class="tf-check">✓</span> Custom AI chatbots</li>
-                        <li><span class="tf-check">✓</span> RAG pipelines</li>
-                        <li><span class="tf-check">✓</span> ML model integration</li>
-                        <li><span class="tf-check">✓</span> Automation workflows</li>
-                    </ul>
-                    <div class="tf-service-detail-card__footer">
-                        <span class="tf-service-starting">Starting at</span>
-                        <span class="tf-service-price">\$5,000</span>
-                        <a href="<?php echo home_url('/contact'); ?>" class="tf-service-cta">
-                            Get a Quote →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-        </div><!-- .tf-services-grid -->
-    </div><!-- .tf-container -->
-</section>
-
-<!-- ============================================
-     3. PRICING SECTION
-     ============================================ -->
-<section class="tf-pricing-section" id="tf-pricing">
-    <div class="tf-pricing-section__bg">
-        <div class="tf-orb tf-orb--violet" style="bottom:0;right:10%;width:500px;height:500px;opacity:0.15;"></div>
+    <div class="tf-section-header" data-aos="fade-up">
+      <span class="tf-section-tag">How I Work</span>
+      <h2 class="tf-section-title">My <span class="tf-gradient">Process</span></h2>
+      <p class="tf-section-subtitle">A clear, collaborative process from first contact to final delivery.</p>
     </div>
 
-    <div class="tf-container">
-        <div class="tf-section-header tf-section-header--center">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                Transparent Pricing
-            </div>
-            <h2 class="tf-section-title">
-                Choose Your
-                <span class="tf-gradient-text">Engagement Model</span>
-            </h2>
-            <p class="tf-section-subtitle">
-                No hidden fees. No surprises. Pick the plan that fits your stage and scale up anytime.
-            </p>
-
-            <!-- Toggle Mensual / Anual -->
-            <div class="tf-pricing-toggle" id="tf-pricing-toggle">
-                <span class="tf-pricing-toggle__label tf-pricing-toggle__label--active" id="tf-toggle-monthly">Monthly</span>
-                <button class="tf-pricing-toggle__btn" id="tf-toggle-btn" aria-label="Toggle billing period">
-                    <span class="tf-pricing-toggle__knob"></span>
-                </button>
-                <span class="tf-pricing-toggle__label" id="tf-toggle-annual">
-                    Annual
-                    <span class="tf-pricing-toggle__save">Save 20%</span>
-                </span>
-            </div>
+    <div class="tf-process__steps">
+      <?php
+      $steps = [
+        [
+          'num'   => '01',
+          'icon'  => '💬',
+          'title' => 'Discovery Call',
+          'desc'  => 'We talk about your project, goals, timeline and budget. No commitment needed — just a conversation.',
+        ],
+        [
+          'num'   => '02',
+          'icon'  => '📋',
+          'title' => 'Proposal & Quote',
+          'desc'  => 'I send a detailed proposal with scope, deliverables, timeline and fixed price. No surprises.',
+        ],
+        [
+          'num'   => '03',
+          'icon'  => '🎨',
+          'title' => 'Design & Build',
+          'desc'  => 'I start building with regular updates and check-ins. You see progress every step of the way.',
+        ],
+        [
+          'num'   => '04',
+          'icon'  => '🔍',
+          'title' => 'Review & Revisions',
+          'desc'  => 'You review the work and request changes. We iterate until everything is exactly right.',
+        ],
+        [
+          'num'   => '05',
+          'icon'  => '🚀',
+          'title' => 'Launch & Support',
+          'desc'  => 'We go live! I provide post-launch support and make sure everything runs smoothly.',
+        ],
+      ];
+      foreach ( $steps as $step ) : ?>
+        <div class="tf-process__step" data-aos="fade-up">
+          <div class="tf-process__step-num"><?php echo $step['num']; ?></div>
+          <div class="tf-process__step-icon"><?php echo $step['icon']; ?></div>
+          <h3 class="tf-process__step-title"><?php echo $step['title']; ?></h3>
+          <p class="tf-process__step-desc"><?php echo $step['desc']; ?></p>
         </div>
-
-        <div class="tf-pricing-grid">
-
-            <!-- Plan Starter -->
-            <div class="tf-pricing-card">
-                <div class="tf-pricing-card__inner">
-                    <div class="tf-pricing-card__header">
-                        <span class="tf-pricing-plan-name">Starter</span>
-                        <p class="tf-pricing-plan-desc">Perfect for MVPs and early-stage products.</p>
-                    </div>
-                    <div class="tf-pricing-card__price">
-                        <span class="tf-price-currency">$</span>
-                        <span class="tf-price-amount" data-monthly="4,500" data-annual="3,600">4,500</span>
-                        <span class="tf-price-period">/project</span>
-                    </div>
-                    <ul class="tf-pricing-features">
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Up to 5 pages / screens
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Responsive design
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Basic CMS integration
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            2 revision rounds
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            30-day post-launch support
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--no">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                            Custom integrations
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--no">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                            Dedicated project manager
-                        </li>
-                    </ul>
-                    <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--ghost tf-btn--full">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <!-- Plan Growth — FEATURED -->
-            <div class="tf-pricing-card tf-pricing-card--featured">
-                <div class="tf-pricing-card__badge">Most Popular</div>
-                <div class="tf-pricing-card__inner">
-                    <div class="tf-pricing-card__header">
-                        <span class="tf-pricing-plan-name">Growth</span>
-                        <p class="tf-pricing-plan-desc">For scaling startups and growing businesses.</p>
-                    </div>
-                    <div class="tf-pricing-card__price">
-                        <span class="tf-price-currency">$</span>
-                        <span class="tf-price-amount" data-monthly="12,000" data-annual="9,600">12,000</span>
-                        <span class="tf-price-period">/project</span>
-                    </div>
-                    <ul class="tf-pricing-features">
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Up to 20 pages / screens
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Full UI/UX design system
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Custom API integrations
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Unlimited revision rounds
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            90-day post-launch support
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Dedicated project manager
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Analytics dashboard
-                        </li>
-                    </ul>
-                    <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--primary tf-btn--full">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <!-- Plan Enterprise -->
-            <div class="tf-pricing-card">
-                <div class="tf-pricing-card__inner">
-                    <div class="tf-pricing-card__header">
-                        <span class="tf-pricing-plan-name">Enterprise</span>
-                        <p class="tf-pricing-plan-desc">For complex products and long-term partnerships.</p>
-                    </div>
-                    <div class="tf-pricing-card__price">
-                        <span class="tf-price-amount tf-price-amount--custom">Custom</span>
-                    </div>
-                    <ul class="tf-pricing-features">
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Unlimited scope
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Full product team on-demand
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            SLA guaranteed uptime
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Priority 24/7 support
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Security audits
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Custom contracts & NDA
-                        </li>
-                        <li class="tf-pricing-feature tf-pricing-feature--yes">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Dedicated infrastructure
-                        </li>
-                    </ul>
-                    <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--ghost tf-btn--full">
-                        Contact Sales
-                    </a>
-                </div>
-            </div>
-
-        </div><!-- .tf-pricing-grid -->
-
-        <p class="tf-pricing-note">
-            All prices in USD. Projects billed in milestones. 
-            <a href="<?php echo home_url('/contact'); ?>">Need something custom?</a> Let's talk.
-        </p>
-
-    </div><!-- .tf-container -->
-</section>
-
-<!-- ============================================
-     4. PROCESS MINI SECTION
-     ============================================ -->
-<section class="tf-services-process">
-    <div class="tf-container">
-        <div class="tf-section-header tf-section-header--center">
-            <div class="tf-eyebrow">
-                <span class="tf-eyebrow__dot"></span>
-                How We Work
-            </div>
-            <h2 class="tf-section-title">
-                A Process Built for
-                <span class="tf-gradient-text">Clarity & Speed</span>
-            </h2>
-        </div>
-
-        <div class="tf-services-process__grid">
-
-            <div class="tf-process-mini-step">
-                <div class="tf-process-mini-step__number">01</div>
-                <div class="tf-process-mini-step__content">
-                    <h3>Discovery Call</h3>
-                    <p>30-minute call to understand your goals, constraints, and timeline. No sales pressure.</p>
-                </div>
-            </div>
-
-            <div class="tf-process-mini-connector"></div>
-
-            <div class="tf-process-mini-step">
-                <div class="tf-process-mini-step__number">02</div>
-                <div class="tf-process-mini-step__content">
-                    <h3>Proposal & Scope</h3>
-                    <p>Detailed proposal with timeline, deliverables, and fixed pricing. Delivered in 48 hours.</p>
-                </div>
-            </div>
-
-            <div class="tf-process-mini-connector"></div>
-
-            <div class="tf-process-mini-step">
-                <div class="tf-process-mini-step__number">03</div>
-                <div class="tf-process-mini-step__content">
-                    <h3>Build & Iterate</h3>
-                    <p>Weekly demos, async updates, and full transparency. You're always in the loop.</p>
-                </div>
-            </div>
-
-            <div class="tf-process-mini-connector"></div>
-
-            <div class="tf-process-mini-step">
-                <div class="tf-process-mini-step__number">04</div>
-                <div class="tf-process-mini-step__content">
-                    <h3>Launch & Support</h3>
-                    <p>Smooth deployment with post-launch monitoring and dedicated support period.</p>
-                </div>
-            </div>
-
-        </div>
+      <?php endforeach; ?>
     </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     5. FAQ SECTION
-     ============================================ -->
-<section class="tf-faq-section">
-    <div class="tf-container">
-        <div class="tf-faq-inner">
+<!-- ============================================================
+     FAQ SECTION
+============================================================ -->
+<section class="tf-faq">
+  <div class="tf-container">
 
-            <div class="tf-faq-header">
-                <div class="tf-eyebrow">
-                    <span class="tf-eyebrow__dot"></span>
-                    FAQ
-                </div>
-                <h2 class="tf-section-title">
-                    Questions We Get
-                    <span class="tf-gradient-text">All the Time</span>
-                </h2>
-                <p class="tf-section-subtitle">
-                    Can't find your answer? <a href="<?php echo home_url('/contact'); ?>">Ask us directly →</a>
-                </p>
-            </div>
-
-            <div class="tf-faq-list" id="tf-faq-list">
-
-                <div class="tf-faq-item" data-faq="0">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>How long does a typical project take?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>It depends on scope. A Starter project typically runs 4–6 weeks, Growth projects 8–14 weeks, and Enterprise engagements are ongoing. We'll give you an accurate timeline in your proposal.</p>
-                    </div>
-                </div>
-
-                <div class="tf-faq-item" data-faq="1">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>Do you work with early-stage startups?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>Absolutely. Some of our favorite projects started as napkin sketches. We help early-stage founders move from idea to MVP fast, without overengineering the first version.</p>
-                    </div>
-                </div>
-
-                <div class="tf-faq-item" data-faq="2">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>What's your payment structure?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>We bill in milestone-based installments — typically 40% upfront, 30% at mid-project review, and 30% on delivery. Enterprise clients have custom invoicing terms available.</p>
-                    </div>
-                </div>
-
-                <div class="tf-faq-item" data-faq="3">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>Will I own the code and designs?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>100% yes. Full IP transfer is included in every project. You get the source code, design files, documentation, and all credentials. We don't hold anything hostage.</p>
-                    </div>
-                </div>
-
-                <div class="tf-faq-item" data-faq="4">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>Do you offer ongoing maintenance?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>Yes. After the post-launch support period, we offer monthly retainer packages for ongoing development, bug fixes, and feature additions. Many clients transition to this model.</p>
-                    </div>
-                </div>
-
-                <div class="tf-faq-item" data-faq="5">
-                    <button class="tf-faq-question" aria-expanded="false">
-                        <span>Can you work with our existing team?</span>
-                        <span class="tf-faq-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="tf-faq-answer">
-                        <p>Definitely. We integrate seamlessly with in-house teams. We can embed as individual contributors, lead specific workstreams, or work as a fully separate pod with handoff documentation.</p>
-                    </div>
-                </div>
-
-            </div><!-- .tf-faq-list -->
-        </div><!-- .tf-faq-inner -->
-    </div><!-- .tf-container -->
-</section>
-
-<!-- ============================================
-     6. CTA STRIP
-     ============================================ -->
-<section class="tf-services-cta">
-    <div class="tf-container">
-        <div class="tf-services-cta__inner">
-            <div class="tf-services-cta__bg">
-                <div class="tf-orb tf-orb--violet" style="top:50%;left:20%;transform:translate(-50%,-50%);width:400px;height:400px;opacity:0.2;"></div>
-                <div class="tf-orb tf-orb--cyan"   style="top:50%;right:10%;transform:translateY(-50%);width:300px;height:300px;opacity:0.15;"></div>
-            </div>
-            <div class="tf-services-cta__content">
-                <h2 class="tf-services-cta__title">
-                    Ready to Build Something
-                    <span class="tf-gradient-text">Remarkable?</span>
-                </h2>
-                <p class="tf-services-cta__desc">
-                    Let's talk about your project. First call is free, no strings attached.
-                </p>
-                <div class="tf-services-cta__actions">
-                    <a href="<?php echo home_url('/contact'); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
-                        Book a Free Call
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16v.92z"/>
-                        </svg>
-                    </a>
-                    <a href="<?php echo home_url('/work'); ?>" class="tf-btn tf-btn--ghost tf-btn--lg">
-                        View Our Work
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="tf-section-header" data-aos="fade-up">
+      <span class="tf-section-tag">FAQ</span>
+      <h2 class="tf-section-title">Common <span class="tf-gradient">Questions</span></h2>
     </div>
+
+    <div class="tf-faq__list" data-aos="fade-up">
+      <?php
+      $faqs = [
+        [
+          'q' => 'Do you work with clients outside Colombia?',
+          'a' => 'Yes! I work with clients worldwide. All communication is in English or Spanish, and I adapt to your timezone for meetings.',
+        ],
+        [
+          'q' => 'How do payments work?',
+          'a' => 'I typically work with 50% upfront and 50% on delivery for projects under \$1,000. For larger projects, we split into milestones. I accept bank transfer, PayPal and crypto.',
+        ],
+        [
+          'q' => 'Do you offer ongoing maintenance?',
+          'a' => 'Yes. I offer monthly maintenance plans that include updates, backups, security monitoring and small content changes.',
+        ],
+        [
+          'q' => 'Can you work with my existing WordPress site?',
+          'a' => 'Absolutely. I can audit, fix, improve or completely rebuild your existing site while preserving your content and SEO.',
+        ],
+        [
+          'q' => 'How long does a typical project take?',
+          'a' => 'It depends on scope. A landing page takes 3–5 days. A full WordPress site takes 2–4 weeks. A custom platform or AI project can take 4–8 weeks.',
+        ],
+        [
+          'q' => 'What if I need changes after launch?',
+          'a' => 'Every project includes a post-launch support period (30–90 days depending on plan). After that, I offer hourly or retainer support.',
+        ],
+      ];
+      foreach ( $faqs as $i => $faq ) : ?>
+        <div class="tf-faq__item" data-index="<?php echo $i; ?>">
+          <button class="tf-faq__question" aria-expanded="false">
+            <span><?php echo $faq['q']; ?></span>
+            <svg class="tf-faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="tf-faq__answer">
+            <p><?php echo $faq['a']; ?></p>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     PAGE SCRIPTS — Pricing Toggle + FAQ
-     ============================================ -->
+<!-- ============================================================
+     CTA
+============================================================ -->
+<section class="tf-cta-section">
+  <div class="tf-container">
+    <div class="tf-cta-section__inner" data-aos="fade-up">
+      <div class="tf-cta-section__glow"></div>
+      <h2 class="tf-cta-section__title">
+        Let's build something <span class="tf-gradient">together</span>
+      </h2>
+      <p class="tf-cta-section__text">
+        Tell me about your project and I'll get back to you within 24 hours with a plan.
+      </p>
+      <div class="tf-cta-section__actions">
+        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="tf-btn tf-btn--primary tf-btn--lg">
+          Start a Project
+        </a>
+        <a href="mailto:guerrero9510@hotmail.com" class="tf-btn tf-btn--ghost tf-btn--lg">
+          guerrero9510@hotmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ SCRIPT
+============================================================ -->
 <script>
-(function() {
-    'use strict';
+document.addEventListener('DOMContentLoaded', function () {
 
-    /* ---- PRICING TOGGLE ---- */
-    const toggleBtn    = document.getElementById('tf-toggle-btn');
-    const labelMonthly = document.getElementById('tf-toggle-monthly');
-    const labelAnnual  = document.getElementById('tf-toggle-annual');
-    const priceAmounts = document.querySelectorAll('.tf-price-amount[data-monthly]');
-    let   isAnnual     = false;
+  // ── FAQ Accordion ─────────────────────────────────────────
+  document.querySelectorAll('.tf-faq__question').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const item     = this.closest('.tf-faq__item');
+      const answer   = item.querySelector('.tf-faq__answer');
+      const isOpen   = item.classList.contains('tf-faq--open');
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-            isAnnual = !isAnnual;
-            toggleBtn.classList.toggle('tf-pricing-toggle__btn--active', isAnnual);
-            labelMonthly.classList.toggle('tf-pricing-toggle__label--active', !isAnnual);
-            labelAnnual.classList.toggle('tf-pricing-toggle__label--active',  isAnnual);
+      // Close all
+      document.querySelectorAll('.tf-faq__item').forEach(el => {
+        el.classList.remove('tf-faq--open');
+        el.querySelector('.tf-faq__question').setAttribute('aria-expanded', 'false');
+        el.querySelector('.tf-faq__answer').style.maxHeight = '0';
+      });
 
-            priceAmounts.forEach(function(el) {
-                el.textContent = isAnnual
-                    ? el.dataset.annual
-                    : el.dataset.monthly;
-            });
-        });
-    }
-
-    /* ---- FAQ ACCORDION ---- */
-    const faqItems = document.querySelectorAll('.tf-faq-item');
-
-    faqItems.forEach(function(item) {
-        const btn    = item.querySelector('.tf-faq-question');
-        const answer = item.querySelector('.tf-faq-answer');
-
-        if (!btn || !answer) return;
-
-        btn.addEventListener('click', function() {
-            const isOpen = item.classList.contains('tf-faq-item--open');
-
-            // Cerrar todos
-            faqItems.forEach(function(i) {
-                i.classList.remove('tf-faq-item--open');
-                i.querySelector('.tf-faq-question').setAttribute('aria-expanded', 'false');
-                i.querySelector('.tf-faq-answer').style.maxHeight = '0';
-            });
-
-            // Abrir el clickeado si estaba cerrado
-            if (!isOpen) {
-                item.classList.add('tf-faq-item--open');
-                btn.setAttribute('aria-expanded', 'true');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        });
+      // Open clicked (if was closed)
+      if (!isOpen) {
+        item.classList.add('tf-faq--open');
+        this.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
     });
+  });
 
-})();
+  // ── AOS lightweight ───────────────────────────────────────
+  const aosEls = document.querySelectorAll('[data-aos]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.dataset.aosDelay || 0;
+        setTimeout(() => e.target.classList.add('aos-animate'), parseInt(delay));
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  aosEls.forEach(el => obs.observe(el));
+
+});
 </script>
 
 <?php get_footer(); ?>
