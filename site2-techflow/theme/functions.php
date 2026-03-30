@@ -670,3 +670,17 @@ function techflow_flush_rewrites() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'techflow_flush_rewrites' );
+
+
+// Services page CSS
+if ( is_page('services') ) {
+    $sv_css = get_stylesheet_directory() . '/assets/css/services.css';
+    if ( file_exists( $sv_css ) ) {
+        wp_enqueue_style(
+            'tf-services',
+            get_stylesheet_directory_uri() . '/assets/css/services.css',
+            ['techflow-style'],
+            filemtime( $sv_css )
+        );
+    }
+}
