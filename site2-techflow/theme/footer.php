@@ -1,7 +1,7 @@
 <?php
 /**
- * footer.php — TechFlow Agency
- * Dark premium footer — 5 columns
+ * footer.php — Andres Esteban Guerrero Rios
+ * Full Stack Developer — Medellín, Colombia
  */
 ?>
 
@@ -20,8 +20,8 @@
                         <span class="tf-gradient-text">Let's build it together.</span>
                     </h2>
                     <p class="tf-footer-cta-desc">
-                        From concept to launch — we craft digital products that
-                        perform, scale, and stand out.
+                        From concept to launch — I build digital products that
+                        perform, scale and stand out. WordPress, React, AI and more.
                     </p>
                 </div>
                 <div class="tf-footer-cta-actions">
@@ -34,7 +34,7 @@
                     </a>
                     <a href="<?php echo esc_url(home_url('/work/')); ?>"
                        class="tf-btn tf-btn-ghost">
-                        View Our Work
+                        View My Work
                     </a>
                 </div>
             </div>
@@ -54,7 +54,9 @@
                         <div class="tf-logo-icon">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                                 <rect width="32" height="32" rx="8" fill="url(#tf-footer-grad)"/>
-                                <path d="M8 11h10M8 16h16M8 21h12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                                <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+                                      fill="white" font-size="13" font-weight="800"
+                                      font-family="'Sora',sans-serif">AG</text>
                                 <defs>
                                     <linearGradient id="tf-footer-grad" x1="0" y1="0" x2="32" y2="32">
                                         <stop offset="0%" stop-color="#7C3AED"/>
@@ -63,33 +65,37 @@
                                 </defs>
                             </svg>
                         </div>
-                        <span class="tf-logo-text">Tech<span>Flow</span></span>
+                        <span class="tf-logo-text">Andres<span>Dev</span></span>
                     </a>
                     <p class="tf-footer-brand-desc">
-                        We engineer high-performance digital products —
-                        custom WordPress solutions, web apps, and e-commerce
-                        platforms for ambitious brands worldwide.
+                        Full Stack Developer from Medellín, Colombia 🇨🇴
+                        Building modern web solutions — WordPress, React, Node.js,
+                        AI Automation and digital marketing strategies.
                     </p>
                     <!-- Social Links -->
                     <div class="tf-footer-social">
-                        <a href="#" class="tf-social-link" aria-label="GitHub">
+                        <a href="https://github.com/andresguerrero270895"
+                           target="_blank"
+                           class="tf-social-link"
+                           aria-label="GitHub">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                             </svg>
                         </a>
-                        <a href="#" class="tf-social-link" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/andres-guerrero-00862a217/"
+                           target="_blank"
+                           class="tf-social-link"
+                           aria-label="LinkedIn">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a href="#" class="tf-social-link" aria-label="Twitter/X">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="tf-social-link" aria-label="Dribbble">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.017-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.816zm-11.62-2.073c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 12.3 2.986 12.2 2.574 12.183v.528c0 2.12.637 4.094 1.73 5.726zM2.659 10.18h.253c.486 0 4.167.024 8.33-1.123-.664-1.184-1.384-2.31-2.154-3.37-2.5 1.18-4.33 3.31-4.43 4.493zM10.86 4.23c.788 1.085 1.527 2.23 2.21 3.43 2.1-.79 2.99-1.99 3.1-2.15C14.87 4.094 13.48 3.5 12 3.5c-.39 0-.774.04-1.14.116zm5.362 2.197c-.152.193-1.162 1.49-3.348 2.405.146.3.285.602.42.907.045.1.09.207.134.31 2.34-.295 4.666.177 4.9.228-.02-1.37-.49-2.63-1.106-3.85z"/>
+                        <a href="mailto:guerrero9510@hotmail.com"
+                           class="tf-social-link"
+                           aria-label="Email">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
                             </svg>
                         </a>
                     </div>
@@ -99,70 +105,74 @@
                 <div class="tf-footer-col">
                     <h4 class="tf-footer-col-title">Services</h4>
                     <ul class="tf-footer-links">
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">WordPress Development</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">Web Applications</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">E-Commerce Solutions</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">API & Backend</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">UI/UX Design</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">Performance & SEO</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#wordpress')); ?>">WordPress Development</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#design')); ?>">Web Design & UI/UX</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#ecommerce')); ?>">E-commerce</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#frontend')); ?>">Frontend / React</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#backend')); ?>">Backend Development</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#seo')); ?>">SEO Optimization</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#marketing')); ?>">Digital Marketing</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#automation')); ?>">AI Automation</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/#agents')); ?>">AI Agents</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Company -->
+                <!-- Col 3: Navigation -->
                 <div class="tf-footer-col">
-                    <h4 class="tf-footer-col-title">Company</h4>
+                    <h4 class="tf-footer-col-title">Navigation</h4>
                     <ul class="tf-footer-links">
-                        <li><a href="<?php echo esc_url(home_url('/about/')); ?>">About Us</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/work/')); ?>">Our Work</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">Blog</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/careers/')); ?>">Careers</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/about/')); ?>">About Me</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/work/')); ?>">My Work</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/services/')); ?>">Services</a></li>
                         <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a></li>
                     </ul>
-                </div>
 
-                <!-- Col 4: Tech Stack -->
-                <div class="tf-footer-col">
-                    <h4 class="tf-footer-col-title">Tech Stack</h4>
+                    <h4 class="tf-footer-col-title" style="margin-top:2rem;">Tech Stack</h4>
                     <ul class="tf-footer-links">
                         <li><a href="#">WordPress & WooCommerce</a></li>
-                        <li><a href="#">React & Next.js</a></li>
+                        <li><a href="#">React & JavaScript</a></li>
                         <li><a href="#">Node.js & PHP</a></li>
-                        <li><a href="#">MySQL & PostgreSQL</a></li>
-                        <li><a href="#">AWS & Cloudflare</a></li>
-                        <li><a href="#">Figma & Design Systems</a></li>
+                        <li><a href="#">PostgreSQL</a></li>
+                        <li><a href="#">Python & AI Tools</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 5: Contact -->
+                <!-- Col 4: Contact -->
                 <div class="tf-footer-col">
                     <h4 class="tf-footer-col-title">Get In Touch</h4>
                     <ul class="tf-footer-contact-list">
                         <li>
                             <span class="tf-footer-contact-icon">✉️</span>
-                            <a href="mailto:hello@techflow.dev">hello@techflow.dev</a>
+                            <a href="mailto:guerrero9510@hotmail.com">guerrero9510@hotmail.com</a>
                         </li>
                         <li>
-                            <span class="tf-footer-contact-icon">📞</span>
-                            <a href="tel:+18005551234">+1 (800) 555-1234</a>
+                            <span class="tf-footer-contact-icon">💼</span>
+                            <a href="https://www.linkedin.com/in/andres-guerrero-00862a217/" target="_blank">LinkedIn Profile</a>
+                        </li>
+                        <li>
+                            <span class="tf-footer-contact-icon">💻</span>
+                            <a href="https://github.com/andresguerrero270895" target="_blank">GitHub Profile</a>
                         </li>
                         <li>
                             <span class="tf-footer-contact-icon">📍</span>
-                            <span>San Francisco, CA</span>
+                            <span>Medellín, Antioquia, Colombia 🇨🇴</span>
                         </li>
                         <li>
                             <span class="tf-footer-contact-icon">🕐</span>
-                            <span>Mon–Fri, 9am–6pm PST</span>
+                            <span>Mon–Fri, 8am–6pm COT</span>
+                        </li>
+                        <li>
+                            <span class="tf-footer-contact-icon">🌎</span>
+                            <span>Available worldwide (EN / ES)</span>
                         </li>
                     </ul>
-                    <!-- Newsletter -->
-                    <div class="tf-footer-newsletter">
-                        <p class="tf-footer-newsletter-label">Get tech insights weekly</p>
-                        <form class="tf-footer-newsletter-form" id="tf-newsletter-form">
-                            <input type="email" placeholder="your@email.com"
-                                   class="tf-footer-newsletter-input" required>
-                            <button type="submit" class="tf-footer-newsletter-btn">→</button>
-                        </form>
-                    </div>
+
+                    <!-- Quick contact CTA -->
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>"
+                       class="tf-footer-contact-cta">
+                        <span>💬 Let's talk about your project →</span>
+                    </a>
                 </div>
 
             </div><!-- /footer-grid -->
@@ -174,17 +184,18 @@
         <div class="tf-container">
             <div class="tf-footer-bottom-inner">
                 <p class="tf-footer-copy">
-                    © <?php echo date('Y'); ?> TechFlow Agency. Crafted with
-                    <span style="color:var(--tf-red);">♥</span> and clean code.
+                    © <?php echo date('Y'); ?> Andres Esteban Guerrero Rios.
+                    Built with <span style="color:#EF4444;">♥</span> and clean code
+                    from Medellín, Colombia 🇨🇴
                 </p>
                 <div class="tf-footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                    <a href="<?php echo esc_url(home_url('/about/')); ?>">About</a>
+                    <a href="<?php echo esc_url(home_url('/work/')); ?>">Work</a>
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a>
                 </div>
                 <div class="tf-footer-status">
                     <span class="tf-status-dot"></span>
-                    All systems operational
+                    Available for new projects
                 </div>
             </div>
         </div>
@@ -262,12 +273,11 @@
 }
 .tf-footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1.8fr 1.2fr 1fr 1.2fr;
     gap: 3rem;
 }
 
 /* Brand col */
-.tf-footer-brand {}
 .tf-footer-brand-desc {
     color: var(--tf-gray-500);
     font-size: .9rem;
@@ -302,7 +312,6 @@
 }
 
 /* Footer columns */
-.tf-footer-col {}
 .tf-footer-col-title {
     font-size: .8rem;
     font-weight: 700;
@@ -321,7 +330,7 @@
 }
 .tf-footer-links a {
     color: var(--tf-gray-500);
-    font-size: .9rem;
+    font-size: .875rem;
     text-decoration: none;
     transition: color .2s;
     display: inline-flex;
@@ -359,55 +368,25 @@
 .tf-footer-contact-list a:hover { color: var(--tf-primary-light); }
 .tf-footer-contact-icon { font-size: .95rem; flex-shrink: 0; }
 
-/* Newsletter */
-.tf-footer-newsletter {}
-.tf-footer-newsletter-label {
-    font-size: .78rem;
-    font-weight: 600;
-    color: var(--tf-gray-500);
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    margin-bottom: .6rem;
-}
-.tf-footer-newsletter-form {
-    display: flex;
-    gap: .4rem;
-}
-.tf-footer-newsletter-input {
-    flex: 1;
-    padding: .65rem 1rem;
-    background: var(--tf-bg-card);
-    border: 1.5px solid var(--tf-border-subtle);
-    border-radius: var(--tf-radius-sm);
-    color: var(--tf-white);
-    font-family: var(--tf-font);
+/* Quick contact CTA */
+.tf-footer-contact-cta {
+    display: block;
+    background: rgba(124,58,237,.1);
+    border: 1px solid rgba(124,58,237,.25);
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    color: var(--tf-primary-light);
     font-size: .85rem;
-    transition: border-color .2s;
-    min-width: 0;
-}
-.tf-footer-newsletter-input::placeholder { color: var(--tf-gray-500); }
-.tf-footer-newsletter-input:focus {
-    outline: none;
-    border-color: var(--tf-primary);
-}
-.tf-footer-newsletter-btn {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, var(--tf-primary), var(--tf-primary-light));
-    border: none;
-    border-radius: var(--tf-radius-sm);
-    color: var(--tf-white);
-    font-size: 1rem;
-    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
     transition: all .25s;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
-.tf-footer-newsletter-btn:hover {
+.tf-footer-contact-cta:hover {
+    background: rgba(124,58,237,.2);
+    border-color: var(--tf-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px var(--tf-primary-glow);
+    color: var(--tf-primary-light);
 }
 
 /* ============================================================
@@ -452,26 +431,22 @@
     height: 7px;
     background: var(--tf-green);
     border-radius: 50%;
-    animation: tf-pulse 2s infinite;
+    animation: pulse 2s infinite;
 }
 
 /* ============================================================
    RESPONSIVE
 ============================================================ */
 @media (max-width: 1200px) {
-    .tf-footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; }
-    .tf-footer-brand { grid-column: 1 / -1; }
-    .tf-footer-brand-desc { max-width: 100%; }
-    .tf-footer-social { }
+    .tf-footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 }
 @media (max-width: 768px) {
-    .tf-footer-cta-inner  { flex-direction: column; text-align: center; }
+    .tf-footer-cta-inner   { flex-direction: column; text-align: center; }
     .tf-footer-cta-actions { width: 100%; align-items: center; }
-    .tf-footer-grid       { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .tf-footer-brand      { grid-column: 1 / -1; }
-    .tf-footer-bottom-inner { justify-content: center; text-align: center; }
-    .tf-footer-bottom-links { justify-content: center; }
-    .tf-footer-status     { justify-content: center; }
+    .tf-footer-grid        { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .tf-footer-bottom-inner{ justify-content: center; text-align: center; }
+    .tf-footer-bottom-links{ justify-content: center; }
+    .tf-footer-status      { justify-content: center; }
 }
 @media (max-width: 480px) {
     .tf-footer-grid { grid-template-columns: 1fr; }
@@ -481,28 +456,6 @@
 <script>
 (function(){
     'use strict';
-
-    /* Newsletter form */
-    const form = document.getElementById('tf-newsletter-form');
-    if(form){
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-            const input = form.querySelector('input[type="email"]');
-            const btn   = form.querySelector('.tf-footer-newsletter-btn');
-            if(!input || !input.value.trim()) return;
-
-            btn.textContent = '✓';
-            btn.style.background = 'var(--tf-green)';
-            input.value = '';
-            input.placeholder = 'You\'re subscribed!';
-
-            setTimeout(()=>{
-                btn.textContent = '→';
-                btn.style.background = '';
-                input.placeholder = 'your@email.com';
-            }, 3000);
-        });
-    }
 
     /* Back to top on logo click */
     const footerLogo = document.querySelector('.tf-footer-brand .tf-logo');
