@@ -729,3 +729,89 @@
   .tf-work-filter__bar { gap: .5rem; }
   .tf-filter-btn { font-size: .78rem; padding: .45rem 1rem; }
 }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+
+.tf-contact-section       { padding: 5rem 0 7rem; background: var(--tf-bg-2); }
+.tf-contact__inner        { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+
+/* ── Info side ───────────────────────────────────────────── */
+.tf-contact__info-title   { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--tf-white); margin: 0 0 1rem; font-family: var(--tf-font-display); line-height: 1.2; }
+.tf-contact__info-text    { color: var(--tf-gray-400); line-height: 1.75; margin-bottom: 2rem; }
+
+/* Contact cards */
+.tf-contact__cards        { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
+.tf-contact__card         { display: flex; align-items: center; gap: 1rem; background: var(--tf-bg-card); border: 1px solid var(--tf-border); border-radius: 14px; padding: 1rem 1.25rem; text-decoration: none; transition: all .25s; }
+.tf-contact__card:hover   { border-color: var(--tf-primary); transform: translateX(4px); }
+.tf-contact__card--no-link{ cursor: default; }
+.tf-contact__card--no-link:hover { transform: none; border-color: var(--tf-border); }
+.tf-contact__card-icon    { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tf-contact__card-icon--purple { background: rgba(124,58,237,.15); color: var(--tf-primary-light); }
+.tf-contact__card-icon--cyan   { background: rgba(6,182,212,.15);  color: var(--tf-accent); }
+.tf-contact__card-icon--green  { background: rgba(16,185,129,.15); color: var(--tf-green); }
+.tf-contact__card-icon--amber  { background: rgba(245,158,11,.15); color: var(--tf-accent-2); }
+.tf-contact__card-body    { flex: 1; min-width: 0; }
+.tf-contact__card-label   { display: block; font-size: .72rem; color: var(--tf-gray-500); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .15rem; }
+.tf-contact__card-value   { display: block; font-size: .875rem; color: var(--tf-white); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tf-contact__card-arrow   { color: var(--tf-gray-500); flex-shrink: 0; transition: transform .2s; }
+.tf-contact__card:hover .tf-contact__card-arrow { transform: translateX(3px); color: var(--tf-primary-light); }
+
+/* Availability */
+.tf-contact__availability { display: flex; align-items: flex-start; gap: 1rem; background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+.tf-contact__availability-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--tf-green); flex-shrink: 0; margin-top: 4px; animation: pulse 2s infinite; }
+.tf-contact__availability strong { display: block; color: var(--tf-white); font-size: .9rem; margin-bottom: .2rem; }
+.tf-contact__availability span { font-size: .8rem; color: var(--tf-gray-400); }
+
+/* Services quick list */
+.tf-contact__services-title { font-size: .85rem; color: var(--tf-gray-400); margin-bottom: .75rem; }
+.tf-contact__services-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.tf-contact__services-grid span { font-size: .8rem; color: var(--tf-gray-400); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); padding: .4rem .75rem; border-radius: 8px; }
+
+/* ── Form side ───────────────────────────────────────────── */
+.tf-contact__form-card    { background: var(--tf-bg-card); border: 1px solid var(--tf-border); border-radius: 20px; padding: 2.5rem; }
+.tf-contact__form-header  { margin-bottom: 2rem; }
+.tf-contact__form-header h3 { font-size: 1.25rem; font-weight: 700; color: var(--tf-white); margin: 0 0 .4rem; }
+.tf-contact__form-header p  { font-size: .875rem; color: var(--tf-gray-400); margin: 0; }
+.tf-contact__form-row     { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Form groups */
+.tf-form-group            { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.25rem; }
+.tf-form-group label      { font-size: .82rem; font-weight: 600; color: var(--tf-gray-400); }
+.tf-form-group input,
+.tf-form-group select,
+.tf-form-group textarea   { background: rgba(255,255,255,.05); border: 1px solid var(--tf-border); border-radius: 10px; padding: .75rem 1rem; color: var(--tf-white); font-size: .9rem; font-family: var(--tf-font); transition: border-color .2s; width: 100%; }
+.tf-form-group input:focus,
+.tf-form-group select:focus,
+.tf-form-group textarea:focus { outline: none; border-color: var(--tf-primary); box-shadow: 0 0 0 3px rgba(124,58,237,.15); }
+.tf-form-group input::placeholder,
+.tf-form-group textarea::placeholder { color: var(--tf-gray-500); }
+.tf-form-group select option { background: var(--tf-bg-card); color: var(--tf-white); }
+.tf-form-group textarea   { resize: vertical; min-height: 120px; }
+.tf-input--error          { border-color: #EF4444 !important; }
+.tf-form-error            { font-size: .78rem; color: #EF4444; min-height: 1rem; }
+
+/* Submit */
+.tf-contact__submit       { margin-top: .5rem; gap: .5rem; }
+.tf-contact__submit-loading { display: inline-flex; align-items: center; gap: .5rem; }
+
+/* Success / Error */
+.tf-contact__success,
+.tf-contact__error-msg    { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; border-radius: 12px; margin-top: 1.25rem; font-size: .875rem; }
+.tf-contact__success      { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); color: var(--tf-green); }
+.tf-contact__error-msg    { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3); color: #FCA5A5; }
+.tf-contact__success strong,
+.tf-contact__error-msg strong { display: block; margin-bottom: .25rem; }
+.tf-contact__success p,
+.tf-contact__error-msg p  { margin: 0; opacity: .8; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .tf-contact__inner      { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 640px) {
+  .tf-contact__form-row   { grid-template-columns: 1fr; }
+  .tf-contact__form-card  { padding: 1.75rem; }
+  .tf-contact__services-grid { grid-template-columns: 1fr; }
+}
