@@ -1,7 +1,6 @@
 <?php
 /**
- * header.php — TechFlow Agency
- * Dark premium nav with glassmorphism + mega menu
+ * header.php — Andres Guerrero | Full Stack Developer
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -17,7 +16,7 @@
 <div id="tf-loader" class="tf-loader">
     <div class="tf-loader-inner">
         <div class="tf-loader-logo">
-            <span class="tf-loader-logo-text">Tech<span>Flow</span></span>
+            <span class="tf-loader-logo-text">Andres<span>Dev</span></span>
         </div>
         <div class="tf-loader-bar">
             <div class="tf-loader-progress"></div>
@@ -35,11 +34,13 @@
     <div class="tf-header-inner tf-container">
 
         <!-- Logo -->
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="tf-logo" aria-label="TechFlow Home">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="tf-logo" aria-label="Andres Guerrero Home">
             <div class="tf-logo-icon">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <rect width="32" height="32" rx="8" fill="url(#tf-logo-grad)"/>
-                    <path d="M8 11h10M8 16h16M8 21h12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+                          fill="white" font-size="13" font-weight="800"
+                          font-family="'Sora',sans-serif">AG</text>
                     <defs>
                         <linearGradient id="tf-logo-grad" x1="0" y1="0" x2="32" y2="32">
                             <stop offset="0%" stop-color="#7C3AED"/>
@@ -48,7 +49,7 @@
                     </defs>
                 </svg>
             </div>
-            <span class="tf-logo-text">Tech<span>Flow</span></span>
+            <span class="tf-logo-text">Andres<span>Dev</span></span>
         </a>
 
         <!-- Nav Desktop -->
@@ -65,12 +66,15 @@
                         <div class="tf-mega-grid">
                             <?php
                             $services = [
-                                ['icon'=>'🌐','title'=>'WordPress Development','desc'=>'Custom themes, plugins & headless WP'],
-                                ['icon'=>'⚡','title'=>'Web Applications',     'desc'=>'Scalable apps with modern stack'],
-                                ['icon'=>'🛒','title'=>'E-Commerce',           'desc'=>'WooCommerce & custom shops'],
-                                ['icon'=>'🔌','title'=>'API & Backend',        'desc'=>'REST APIs, integrations & automation'],
-                                ['icon'=>'🎨','title'=>'UI/UX Design',         'desc'=>'Design systems & prototyping'],
-                                ['icon'=>'🚀','title'=>'Performance & SEO',    'desc'=>'Speed optimization & ranking'],
+                                ['icon'=>'🌐','title'=>'WordPress Development', 'desc'=>'Custom themes, plugins & full site builds'],
+                                ['icon'=>'🎨','title'=>'Web Design & UI/UX',    'desc'=>'Modern, conversion-focused interfaces'],
+                                ['icon'=>'🛒','title'=>'E-commerce',            'desc'=>'WooCommerce stores & custom shops'],
+                                ['icon'=>'⚛️','title'=>'Frontend / React',      'desc'=>'SPAs and interactive UIs'],
+                                ['icon'=>'⚙️','title'=>'Backend Development',   'desc'=>'Node.js, PHP & PostgreSQL APIs'],
+                                ['icon'=>'📈','title'=>'SEO Optimization',      'desc'=>'Rankings, speed & Core Web Vitals'],
+                                ['icon'=>'🚀','title'=>'Digital Marketing',     'desc'=>'Landing pages, ads & social media'],
+                                ['icon'=>'🤖','title'=>'AI Automation',         'desc'=>'Workflows, chatbots & pipelines'],
+                                ['icon'=>'🧠','title'=>'AI Agents',             'desc'=>'Custom intelligent agents & RAG'],
                             ];
                             foreach($services as $s): ?>
                             <a href="<?php echo esc_url(home_url('/services/')); ?>" class="tf-mega-item">
@@ -83,7 +87,7 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="tf-mega-footer">
-                            <span>🔥 Available for new projects</span>
+                            <span>🟢 Available for new projects</span>
                             <a href="<?php echo esc_url(home_url('/contact/')); ?>"
                                class="tf-btn tf-btn-accent"
                                style="padding:.5rem 1.25rem;font-size:.85rem;">
@@ -93,13 +97,13 @@
                     </div>
                 </li>
                 <li class="tf-nav-item">
-                    <a href="<?php echo esc_url(home_url('/work/')); ?>"  class="tf-nav-link">Work</a>
+                    <a href="<?php echo esc_url(home_url('/work/')); ?>"    class="tf-nav-link">Work</a>
                 </li>
                 <li class="tf-nav-item">
-                    <a href="<?php echo esc_url(home_url('/about/')); ?>" class="tf-nav-link">About</a>
+                    <a href="<?php echo esc_url(home_url('/about/')); ?>"   class="tf-nav-link">About</a>
                 </li>
                 <li class="tf-nav-item">
-                    <a href="<?php echo esc_url(home_url('/blog/')); ?>"  class="tf-nav-link">Blog</a>
+                    <a href="<?php echo esc_url(home_url('/blog/')); ?>"    class="tf-nav-link">Blog</a>
                 </li>
             </ul>
         </nav>
@@ -329,7 +333,7 @@
 .tf-has-dropdown:hover .tf-nav-chevron { transform: rotate(180deg); }
 
 /* ============================================================
-   MEGA MENU DROPDOWN
+   MEGA MENU
 ============================================================ */
 .tf-dropdown {
     position: absolute;
@@ -348,7 +352,7 @@
     transform: translateX(-50%) translateY(0);
 }
 .tf-mega-menu {
-    width: 520px;
+    width: 560px;
     background: rgba(10,14,26,0.97);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -360,7 +364,7 @@
 }
 .tf-mega-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: .5rem;
     margin-bottom: 1rem;
 }
@@ -376,13 +380,13 @@
 .tf-mega-item:hover { background: rgba(124,58,237,0.1); }
 .tf-mega-icon { font-size: 1.25rem; flex-shrink: 0; }
 .tf-mega-title {
-    font-size: .875rem;
+    font-size: .82rem;
     font-weight: 600;
     color: var(--tf-white);
     margin-bottom: .2rem;
 }
 .tf-mega-desc {
-    font-size: .78rem;
+    font-size: .72rem;
     color: var(--tf-gray-500);
     line-height: 1.4;
 }
@@ -465,7 +469,7 @@
 .tf-mobile-badge   { display: flex; justify-content: center; }
 
 /* ============================================================
-   STARS — used in testimonials
+   STARS
 ============================================================ */
 .tf-stars     { display: flex; gap: .2rem; }
 .tf-star      { color: var(--tf-border-subtle); font-size: 1rem; }
@@ -507,9 +511,7 @@
 (function(){
 'use strict';
 
-/* ============================================================
-   PAGE LOADER
-============================================================ */
+/* PAGE LOADER */
 const loader   = document.getElementById('tf-loader');
 const progress = loader ? loader.querySelector('.tf-loader-progress') : null;
 const count    = loader ? loader.querySelector('.tf-loader-count')    : null;
@@ -535,9 +537,7 @@ if(loader){
     document.body.style.overflow = 'hidden';
 }
 
-/* ============================================================
-   CUSTOM CURSOR
-============================================================ */
+/* CUSTOM CURSOR */
 const cursor      = document.getElementById('tf-cursor');
 const cursorTrail = document.getElementById('tf-cursor-trail');
 
@@ -552,7 +552,6 @@ if(cursor && cursorTrail && window.matchMedia('(hover:hover)').matches){
         cursor.style.top  = mouseY + 'px';
     });
 
-    // Smooth trail follow
     function animateTrail(){
         trailX += (mouseX - trailX) * 0.12;
         trailY += (mouseY - trailY) * 0.12;
@@ -562,7 +561,6 @@ if(cursor && cursorTrail && window.matchMedia('(hover:hover)').matches){
     }
     animateTrail();
 
-    // Hover effect on interactive elements
     const hoverEls = document.querySelectorAll('a, button, .tf-card, .tf-btn, input, textarea');
     hoverEls.forEach(el =>{
         el.addEventListener('mouseenter', ()=>{
@@ -575,7 +573,6 @@ if(cursor && cursorTrail && window.matchMedia('(hover:hover)').matches){
         });
     });
 
-    // Hide on leave window
     document.addEventListener('mouseleave', ()=>{
         cursor.style.opacity      = '0';
         cursorTrail.style.opacity = '0';
@@ -586,23 +583,17 @@ if(cursor && cursorTrail && window.matchMedia('(hover:hover)').matches){
     });
 }
 
-/* ============================================================
-   HEADER SCROLL BEHAVIOR
-============================================================ */
+/* HEADER SCROLL */
 const header = document.getElementById('tf-header');
 if(header){
     let lastScroll = 0;
     window.addEventListener('scroll', ()=>{
         const scrollY = window.scrollY;
-
-        // Add scrolled class
         if(scrollY > 50){
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-
-        // Hide on scroll down / show on scroll up
         if(scrollY > 300){
             if(scrollY > lastScroll + 5){
                 header.style.transform = 'translateY(-100%)';
@@ -616,9 +607,7 @@ if(header){
     }, { passive: true });
 }
 
-/* ============================================================
-   MOBILE MENU TOGGLE
-============================================================ */
+/* MOBILE MENU */
 const mobileToggle = document.getElementById('tf-mobile-toggle');
 const mobileMenu   = document.getElementById('tf-mobile-menu');
 
@@ -630,7 +619,6 @@ if(mobileToggle && mobileMenu){
         document.body.style.overflow = isOpen ? '' : 'hidden';
     });
 
-    // Close on link click
     mobileMenu.querySelectorAll('.tf-mobile-link').forEach(link =>{
         link.addEventListener('click', ()=>{
             mobileMenu.classList.remove('open');
@@ -639,7 +627,6 @@ if(mobileToggle && mobileMenu){
         });
     });
 
-    // Close on outside click
     document.addEventListener('click', e =>{
         if(!header.contains(e.target)){
             mobileMenu.classList.remove('open');
@@ -649,10 +636,8 @@ if(mobileToggle && mobileMenu){
     });
 }
 
-/* ============================================================
-   ACTIVE NAV LINK
-============================================================ */
-const navLinks = document.querySelectorAll('.tf-nav-link, .tf-mobile-link');
+/* ACTIVE NAV */
+const navLinks    = document.querySelectorAll('.tf-nav-link, .tf-mobile-link');
 const currentPath = window.location.pathname;
 
 navLinks.forEach(link =>{
@@ -663,9 +648,7 @@ navLinks.forEach(link =>{
     }
 });
 
-/* ============================================================
-   SCROLL REVEAL — global
-============================================================ */
+/* SCROLL REVEAL */
 const revealEls = document.querySelectorAll('.tf-reveal');
 if('IntersectionObserver' in window && revealEls.length){
     const io = new IntersectionObserver((entries)=>{
@@ -681,9 +664,7 @@ if('IntersectionObserver' in window && revealEls.length){
     revealEls.forEach(el => el.classList.add('visible'));
 }
 
-/* ============================================================
-   SMOOTH SCROLL
-============================================================ */
+/* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(link =>{
     link.addEventListener('click', function(e){
         const target = document.querySelector(this.getAttribute('href'));
