@@ -50,17 +50,24 @@ function techflow_enqueue_assets() {
         filemtime( get_stylesheet_directory() . '/style.css' )
     );
 
-    // CSS modules
+    // ✅ Cargar TODOS los CSS en TODAS las páginasz 
     $css_files = [
-        'tf-animations' => '/assets/css/animations.css',
-        'tf-components' => '/assets/css/components.css',
+    'tf-animations' => '/assets/css/animations.css',
+    'tf-components' => '/assets/css/components.css',
+    'tf-front-page' => '/assets/css/front-page.css',
     ];
+
     foreach ( $css_files as $handle => $path ) {
-        $full = get_stylesheet_directory() . $path;
-        if ( file_exists( $full ) ) {
-            wp_enqueue_style( $handle, get_stylesheet_directory_uri() . $path, ['techflow-style'], filemtime($full) );
-        }
+    $full = get_stylesheet_directory() . $path;
+    if ( file_exists( $full ) ) {
+        wp_enqueue_style(
+            $handle,
+            get_stylesheet_directory_uri() . $path,
+            ['techflow-style'],
+            filemtime( $full )
+        );
     }
+}
 
     // ✅ Front page CSS — AQUÍ, en el lugar correcto
     if ( is_front_page() ) {
@@ -684,3 +691,4 @@ if ( is_page('services') ) {
         );
     }
 }
+
