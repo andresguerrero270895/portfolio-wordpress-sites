@@ -34,6 +34,14 @@ function freshbite_enqueue_styles() {
         null
     );
 
+    // ── Cart CSS — cargado globalmente para evitar problemas de caché ──
+    wp_enqueue_style(
+        'freshbite-cart',
+        get_stylesheet_directory_uri() . '/assets/css/cart.css',
+        ['freshbite-style'],
+        '1.0.1'
+    );
+
     wp_enqueue_script(
         'freshbite-main',
         get_stylesheet_directory_uri() . '/assets/js/main.js',
@@ -678,3 +686,253 @@ add_filter( 'theme_page_templates', function( $templates ) {
   $templates['page-shop.php']     = 'Tienda — FreshBite';
   return $templates;
 } );
+
+// ══════════════════════════════════════════════════════
+// FRESHBITE — WooCommerce Customizations
+// Agregar AL FINAL del functions.php existente
+// ══════════════════════════════════════════════════════
+
+// ─── 1. Ocultar imagen grande del carrito vacío ───────
+add_action('wp_head', function() {
+    if ( is_cart() ) {
+        echo '<style>
+            /* Ocultar imagen/SVG gigante del carrito vacío de WC */
+            .woocommerce-cart .wc-empty-cart-message img,
+            .woocommerce-cart .cart-empty-page img,
+            .e-cart-empty-icon,
+            .woocommerce-cart-form ~ .cart-empty + .return-to-shop,
+            .wc-empty-cart-message svg,
+            .woodmart-cart-img,
+            body.woocommerce-cart .woocommerce > .cart-empty-page img,
+            body.woocommerce-cart .entry-content > img,
+            body.woocommerce-cart .page-content > img {
+                display: none !important;
+                width: 0 !important;
+                height: 0 !important;
+            }
+        </style>';
+    }
+});
+
+// ─── 2. Estilizar TODOS los notices de WC globalmente ─
+add_action('wp_head', function() {
+    echo '<style>
+    /* ════ WC NOTICES — FreshBite Global ════ */
+    .woocommerce-message,
+    .woocommerce-info,
+    .woocommerce .woocommerce-message,
+    .woocommerce .woocommerce-info {
+        background: #D8F3DC !important;
+        color: #1E5631 !important;
+        border-top-color: #52B788 !important;
+        border-radius: 10px !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: 0.9rem !important;
+        padding: 14px 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        box-shadow: none !important;
+    }
+    .woocommerce-message::before,
+    .woocommerce-info::before {
+        color: #2D6A4F !important;
+    }
+    .woocommerce-message a.button,
+    .woocommerce-info a.button {
+        background: #2D6A4F !important;
+        color: #fff !important;
+        border-radius: 50px !important;
+        padding: 8px 20px !important;
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin-left: auto !important;
+        text-decoration: none !important;
+        transition: background 0.2s !important;
+    }
+    .woocommerce-message a.button:hover {
+        background: #52B788 !important;
+    }
+    /* Error */
+    .woocommerce-error {
+        background: #FFF5F5 !important;
+        border-top-color: #FC8181 !important;
+        border-radius: 10px !important;
+    }
+    .woocommerce-error li {
+        color: #742A2A !important;
+    }
+    /* "View cart" button */
+    .woocommerce-message a.wc-forward {
+        background: #2D6A4F !important;
+        color: #fff !important;
+        border-radius: 50px !important;
+        padding: 8px 20px !important;
+        font-weight: 600 !important;
+        font-size: 0.85rem !important;
+        border: none !important;
+        float: none !important;
+        margin-left: auto !important;
+        white-space: nowrap;
+    }
+    .woocommerce-message a.wc-forward:hover {
+        background: #52B788 !important;
+    }
+    </style>';
+});
+
+// ─── 3. Traducir textos del carrito vacío ─────────────
+add_filter('woocommerce_empty_cart_message', function($message) {
+    return '<span class="fb-wc-empty">🛒 Tu carrito está vacío</span>';
+});
+
+// ─── 4. Redirigir "Return to shop" a la tienda ────────
+add_filter('woocommerce_return_to_shop_redirect', function() {
+    return wc_get_page_permalink('shop');
+});
+
+// ─── 5. Cambiar texto del botón "Return to shop" ──────
+add_filter('woocommerce_return_to_shop_text', function() {
+    return '🛍️ Explorar productos';
+});
+
+// ─── 6. Estilo inline para el empty cart de WC ────────
+// (cuando WC renderiza su propio template y no el nuestro)
+add_action('woocommerce_cart_is_empty', function() {
+    ?>
+    <style>
+    /* Override completo del empty cart de WC */
+    .woocommerce-cart .cart-empty,
+    p.cart-empty {
+        display: none !important;
+    }
+    .woocommerce-cart .return-to-shop {
+        text-align: center !important;
+        padding: 60px 24px !important;
+        background: #FFFFFF !important;
+        border-radius: 16px !important;
+        border: 1px solid #D1E8D6 !important;
+        box-shadow: 0 4px 24px rgba(45,106,79,0.10) !important;
+        max-width: 560px !important;
+        margin: 0 auto !important;
+    }
+    .woocommerce-cart .return-to-shop::before {
+        content: "🛒";
+        display: block;
+        font-size: 4rem;
+        margin-bottom: 16px;
+        animation: wobble 2.5s ease infinite;
+    }
+    .woocommerce-cart .return-to-shop::after {
+        content: "Descubre productos frescos y orgánicos directamente de nuestros productores locales";
+        display: block;
+        color: #6B7C6E;
+        font-size: 0.9rem;
+        margin: 8px 0 24px;
+        line-height: 1.6;
+        font-family: "Inter", sans-serif;
+    }
+    @keyframes wobble {
+        0%,100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(8deg); }
+    }
+    .woocommerce-cart .return-to-shop .button,
+    .return-to-shop a.wc-backward {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 14px 32px !important;
+        background: #2D6A4F !important;
+        color: #fff !important;
+        border-radius: 50px !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
+        text-decoration: none !important;
+        border: none !important;
+        box-shadow: 0 4px 20px rgba(45,106,79,0.25) !important;
+        transition: all 0.3s !important;
+        font-family: "Inter", sans-serif !important;
+    }
+    .return-to-shop a.wc-backward:hover {
+        background: #52B788 !important;
+        transform: translateY(-2px) !important;
+    }
+    </style>
+
+    <!-- Nuestro empty cart custom -->
+    <div style="
+        text-align:center;
+        padding:80px 24px;
+        background:#fff;
+        border-radius:16px;
+        border:1px solid #D1E8D6;
+        box-shadow:0 4px 24px rgba(45,106,79,0.10);
+        max-width:560px;
+        margin:0 auto;
+        font-family:'Inter',sans-serif;
+    ">
+        <span style="font-size:5rem;display:block;margin-bottom:20px;animation:wobble 2.5s ease infinite;">🛒</span>
+        <h3 style="color:#2D6A4F;font-size:1.6rem;font-weight:700;margin-bottom:10px;">
+            Tu carrito está vacío
+        </h3>
+        <p style="color:#6B7C6E;margin-bottom:32px;font-size:0.95rem;line-height:1.6;">
+            Descubre productos frescos y orgánicos<br>
+            directamente de nuestros productores locales.
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="<?php echo esc_url( wc_get_page_permalink('shop') ); ?>"
+               style="
+                display:inline-flex;align-items:center;gap:10px;
+                padding:14px 32px;background:#2D6A4F;color:#fff;
+                border-radius:50px;font-weight:700;text-decoration:none;
+                font-size:0.95rem;box-shadow:0 4px 20px rgba(45,106,79,0.25);
+                transition:all 0.3s;
+               ">
+                🛍️ Explorar productos
+            </a>
+            <a href="<?php echo esc_url( home_url('/') ); ?>"
+               style="
+                display:inline-flex;align-items:center;gap:10px;
+                padding:14px 24px;background:transparent;color:#F4845F;
+                border:2px solid #F4845F;border-radius:50px;
+                font-weight:600;text-decoration:none;font-size:0.9rem;
+               ">
+                🏠 Ir al inicio
+            </a>
+        </div>
+
+        <?php
+        // Categorías sugeridas
+        $cats = get_terms(array(
+            'taxonomy'   => 'product_cat',
+            'hide_empty' => true,
+            'number'     => 6,
+            'orderby'    => 'count',
+            'order'      => 'DESC',
+            'exclude'    => array( get_option('default_product_cat') ),
+        ));
+        if ( ! empty($cats) && ! is_wp_error($cats) ) : ?>
+        <div style="margin-top:40px;">
+            <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:#6B7C6E;margin-bottom:14px;">
+                Categorías populares
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+                <?php foreach ($cats as $cat) : ?>
+                <a href="<?php echo esc_url(get_term_link($cat)); ?>"
+                   style="
+                    padding:7px 16px;background:#FEFAE0;
+                    border:1.5px solid #D1E8D6;border-radius:50px;
+                    font-size:0.82rem;color:#2D6A4F;font-weight:600;
+                    text-decoration:none;transition:all 0.2s;
+                   ">
+                    <?php echo esc_html($cat->name); ?>
+                </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php
+});
