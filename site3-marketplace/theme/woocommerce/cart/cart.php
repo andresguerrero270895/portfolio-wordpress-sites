@@ -526,7 +526,6 @@ do_action( 'woocommerce_before_cart' );
                 </div>
               </div>
 
-              <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 
               <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
                  class="fb-btn fb-btn--primary fb-btn--lg fb-btn--full fb-cart-checkout-btn">
@@ -545,8 +544,6 @@ do_action( 'woocommerce_before_cart' );
                 <span class="fb-payment-icon-text">💳 Mastercard</span>
                 <span class="fb-payment-icon-text">🅿️ PayPal</span>
               </div>
-
-              <?php do_action( 'woocommerce_cart_collaterals' ); ?>
 
             </div><!-- .fb-cart-summary -->
           </div><!-- .fb-cart-summary-col -->
