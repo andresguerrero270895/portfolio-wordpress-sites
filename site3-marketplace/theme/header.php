@@ -104,8 +104,8 @@ defined('ABSPATH') || exit;
                     Tienda
                 </a>
                 <a href="<?php echo esc_url(home_url('/vendedores')); ?>"
-                   class="<?php echo is_post_type_archive('fb_vendor') ? 'active' : ''; ?>">
-                    Vendedores
+                class="<?php echo (is_page('vendedores') || is_post_type_archive('fb_vendor') || dokan_is_store_listing()) ? 'active' : ''; ?>">
+                Vendedores
                 </a>
                 <a href="<?php echo esc_url(home_url('/nosotros')); ?>"
                    class="<?php echo is_page('nosotros') ? 'active' : ''; ?>">
